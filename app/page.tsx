@@ -27,6 +27,7 @@ export default async function HomePage() {
     const h1 = page?.acf?.main_heading
 
   return (
+    <main>
     <div className="page">
       {/* ================= NAV ================= */}
       <Header />
@@ -686,10 +687,12 @@ export default async function HomePage() {
       { <section className="section faqSection">
         <div className="faqBg" aria-hidden="true" />
 
-          <Footer />
+          
         </div>
       </section> }
     </div>
+        <Footer />
+        </main>
   );
 }
 
