@@ -18,7 +18,7 @@ export default function Header(){
 
           <nav className="navLinks" aria-label="Primary">
             <Link href="#">Plans</Link>
-            <Link href="#">Locations</Link>
+            <Link href="/listing">Locations</Link>
             <Link href="#">Support</Link>
             <Link href="/about">About Us</Link>
             <Link href="#">Contact Us</Link>
