@@ -38,20 +38,29 @@ export default function About() {
             </section>
             <section className="third commonsec">
                 <div className="third-inner">
+                <div className="standard">
+                    <div className="heading"><h2>The standards that define us.</h2></div>
+                <div className="discover"><p> Scroll to discover </p></div>
+                </div>    
                 <div className="left">
+                    <div className="handled">
                     <h3>Compliance handled in house</h3>
                     <p>Using a business address comes with legal responsibilities. All AML and KYC checks are carried out by our own team and are reviewed properly.</p>
-
+                    </div>
+                <div className="our-promise">
                     <h5>OUR PROMISE</h5>
                     <p>We don't outsource compliance or rush approvals. This protects the reputation of everyone involved.</p>
+                    </div>
                 </div>
                 <div className="right">
                     <div className="right-top">
                         <div className="right-top-left">
                             <h3>Clear Pricing</h3>
                             <p>We believe virtual office services should be fairly priced and easy to understand. Our fair price promise means you won't be charged inflated fees or unexpected extras.</p>
+                            <div className="clear-pricing">
                             <p className="fst common">Sensible</p>
                             <p className="scnd common">Consitsent</p>
+                            </div>
                         </div>
                         <div className="right-top-right">
 
@@ -62,6 +71,7 @@ export default function About() {
                                 <p>We are a small team by choice. That allows us to stay responsive and deal with queries quickly.Support feels personal, not informal.</p>
                                 <p>Meet the team</p>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
