@@ -532,8 +532,10 @@ export default async function HomePage() {
             </div>
 
         </div>
+         </section>
 
         {/* ================= PLATFORM FEATURES ================= */}
+      <section className="section-platform">
         <div className="container platform">
           <div className="platformTitle">
             <h2 className="h2">Platform Features</h2>
