@@ -399,7 +399,7 @@ export default async function HomePage() {
       </section>
 
       {/* ================= HOW IT WORKS ================= */}
-<section className="section">
+<section className="section-how-work">
   <div className="container">
     <div className="centerTitle">
       <div className="pill soft-two">Simple process</div>
@@ -456,7 +456,7 @@ export default async function HomePage() {
 
 
       {/* ================= COMPLIANCE & SECURITY ================= */}
-      <section className="section">
+      <section className="section-copliance">
         <div className="container complianceGrid">
           <div className="complianceLeft">
             <h2 className="h2">Compliance and Security</h2>
@@ -614,7 +614,7 @@ export default async function HomePage() {
       </section>
 
       {/* ================= SEE THE DIFFERENCE ================= */}
-      <section className="section">
+      <section className="section-see-difference">
               <div className="container">
                 <div className="diffHead">
                   <h2 className="h2 diffTitle">See the Difference</h2>
