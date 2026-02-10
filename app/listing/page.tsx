@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useMemo, useState } from "react";
 import Header from "../components/header";
 import Footer from "../components/footer";
-import Footer from "../globals.css";
+import CSS from "../globals.css";
 export default function Listing() {
     return (
         <main>
