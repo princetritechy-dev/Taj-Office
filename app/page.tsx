@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useMemo } from "react";
-type FAQ = { q: string; a: string };
 import PlatformCard from "./PlatformCard";
 import Link from "next/link";
 import Header from "./components/header";
