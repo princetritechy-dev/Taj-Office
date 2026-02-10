@@ -650,12 +650,12 @@ export default async function HomePage() {
 
 
                       <div className="diffMainList">
-                        <div className="diffMainItem accentText">From £20 per month</div>
+                        <div className="diffMainItem 20-month">From £20 per month</div>
                         <div className="diffMainItem">Only two simple packages</div>
                         <div className="diffMainItem">No setup fees, no extras</div>
-                        <div className="diffMainItem accentText">Prestigious Mayfair</div>
-                        <div className="diffMainItem">Collect or Scan &amp; Forward</div>
-                        <div className="diffMainItem accentText">NONE</div>
+                        <div className="diffMainItem">Prestigious Mayfair</div>
+                        <div className="diffMainItem collect-scan">Collect or Scan &amp; Forward</div>
+                        <div className="diffMainItem collect-scan">NONE</div>
                         <div className="diffMainItem">Friendly, responsive team</div>
                       </div>
 
