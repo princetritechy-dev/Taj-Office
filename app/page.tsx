@@ -652,16 +652,6 @@
               </div>
             </section>
 
-
-      {/* ================= FAQ ================= */}
-      { <section className="section faqSection">
-        <div className="faqBg" aria-hidden="true" />
-
-          
-        </div>
-      </section> }
-    </div>
-        <Footer />
         </main>
   );
 }
