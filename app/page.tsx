@@ -398,7 +398,7 @@ export default async function HomePage() {
       </section>
 
       {/* ================= HOW IT WORKS ================= */}
-<section className="section">
+<section className="section-how-work">
   <div className="container">
     <div className="centerTitle">
       <div className="pill soft-two">Simple process</div>
@@ -455,7 +455,7 @@ export default async function HomePage() {
 
 
       {/* ================= COMPLIANCE & SECURITY ================= */}
-      <section className="section">
+      <section className="section-compliance">
         <div className="container complianceGrid">
           <div className="complianceLeft">
             <h2 className="h2">Compliance and Security</h2>
@@ -531,8 +531,10 @@ export default async function HomePage() {
             </div>
 
         </div>
+         </section>
 
         {/* ================= PLATFORM FEATURES ================= */}
+      <section className="section-platform">
         <div className="container platform">
           <div className="platformTitle">
             <h2 className="h2">Platform Features</h2>
@@ -613,7 +615,7 @@ export default async function HomePage() {
       </section>
 
       {/* ================= SEE THE DIFFERENCE ================= */}
-      <section className="section">
+      <section className="section-see-difference">
               <div className="container">
                 <div className="diffHead">
                   <h2 className="h2 diffTitle">See the Difference</h2>
@@ -647,12 +649,12 @@ export default async function HomePage() {
 
 
                       <div className="diffMainList">
-                        <div className="diffMainItem accentText">From £20 per month</div>
+                        <div className="diffMainItem per-month">From £20 per month</div>
                         <div className="diffMainItem">Only two simple packages</div>
                         <div className="diffMainItem">No setup fees, no extras</div>
-                        <div className="diffMainItem accentText">Prestigious Mayfair</div>
-                        <div className="diffMainItem">Collect or Scan &amp; Forward</div>
-                        <div className="diffMainItem accentText">NONE</div>
+                        <div className="diffMainItem">Prestigious Mayfair</div>
+                        <div className="diffMainItem collect-scan">Collect or Scan &amp; Forward</div>
+                        <div className="diffMainItem collect-scan">NONE</div>
                         <div className="diffMainItem">Friendly, responsive team</div>
                       </div>
 
