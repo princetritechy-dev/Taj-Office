@@ -742,7 +742,10 @@ section.section-compliance {
 .secureBot{color:rgba(37,50,77,.65);font-size:11px;font-weight:700}
 
 /* Platform */
-.platform{margin-top:100px;background: #F8FAFC;width: 1000px;}
+section.section-platform {
+    background-color: #F8FAFC;
+    padding: 80px 0px;
+}
 .platformTitle{display:flex; flex-direction:column; align-items:center; gap:8px; text-align:center; margin-bottom:18px}
 .platformGrid{
   display:grid;
