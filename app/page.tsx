@@ -666,7 +666,7 @@ export default async function HomePage() {
                   {/* RIGHT PROVIDERS CARD */}
                   <div className="diffRight">
                     <div className="diffOtherCard">
-                      <div className="diffOtherHead">Large Mass Providers</div>
+                      <div className="diffOtherHead head">Large Mass Providers</div>
                       <div className="diffOtherList">
                         <div className="diffOtherItem">Often higher with add ons</div>
                         <div className="diffOtherItem">Complicated plans with extras</div>
