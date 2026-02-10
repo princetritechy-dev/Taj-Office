@@ -615,7 +615,7 @@ export default async function HomePage() {
       </section>
 
       {/* ================= SEE THE DIFFERENCE ================= */}
-      <section className="section">
+      <section className="section-see-difference">
               <div className="container">
                 <div className="diffHead">
                   <h2 className="h2 diffTitle">See the Difference</h2>
