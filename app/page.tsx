@@ -22,11 +22,10 @@ async function getHomePage() {
 }
 
 
-export default function HomePage() {
-  const faqs: FAQ[] = useMemo( () => [ { q: "What is a virtual office and how does it work?", a: "A virtual office gives your company a professional UK business address without the cost of renting a physical office. You can use it on your website, invoices, Companies House and more. We handle your mail and provide optional services like scan & forward.", }, { q: "Do you charge setup fees or add ons?", a: "No. We keep pricing simple—no setup fees and no hidden extras. You can choose a plan that fits your business and upgrade anytime.", }, { q: "Can I use the address as my registered office?", a: "Yes. Our Premium UK Address can be used as your registered office address, as well as on official business documents.", }, { q: "How does a virtual office help with SEO?", a: "A UK business address can improve trust signals and local relevance. It can support credibility for customers searching in your target sector and location.", }, { q: "How long does setup take?", a: "Setup is quick. Once you choose your plan and complete basic compliance checks, you can start using your address.", }, { q: "Can I book a meeting room?", a: "Yes. Many locations offer meeting rooms you can book when you need a professional space for clients or interviews.", }, { q: "Is a virtual office suitable for international businesses?", a: "Absolutely. It’s a common solution for overseas businesses that want a UK presence and a reliable way to handle mail.", }, ], [] ); const [openFaq, setOpenFaq] = useState<number | null>(null);
+export default async function HomePage() {
 
     const page = await getHomePage();
-    // const h1 = page?.acf?.main_heading
+    const h1 = page?.acf?.main_heading
 
   return (
     <div className="page">
@@ -400,7 +399,7 @@ export default function HomePage() {
       </section>
 
       {/* ================= HOW IT WORKS ================= */}
-<section className="section-how-work">
+<section className="section">
   <div className="container">
     <div className="centerTitle">
       <div className="pill soft-two">Simple process</div>
@@ -457,7 +456,7 @@ export default function HomePage() {
 
 
       {/* ================= COMPLIANCE & SECURITY ================= */}
-      <section className="section-copliance">
+      <section className="section">
         <div className="container complianceGrid">
           <div className="complianceLeft">
             <h2 className="h2">Compliance and Security</h2>
@@ -533,10 +532,8 @@ export default function HomePage() {
             </div>
 
         </div>
-         </section>
 
         {/* ================= PLATFORM FEATURES ================= */}
-      <section className="section-platform">
         <div className="container platform">
           <div className="platformTitle">
             <h2 className="h2">Platform Features</h2>
@@ -617,7 +614,7 @@ export default function HomePage() {
       </section>
 
       {/* ================= SEE THE DIFFERENCE ================= */}
-      <section className="section-see-difference">
+      <section className="section">
               <div className="container">
                 <div className="diffHead">
                   <h2 className="h2 diffTitle">See the Difference</h2>
@@ -651,12 +648,12 @@ export default function HomePage() {
 
 
                       <div className="diffMainList">
-                        <div className="diffMainItem 20-month">From £20 per month</div>
+                        <div className="diffMainItem accentText">From £20 per month</div>
                         <div className="diffMainItem">Only two simple packages</div>
                         <div className="diffMainItem">No setup fees, no extras</div>
-                        <div className="diffMainItem">Prestigious Mayfair</div>
-                        <div className="diffMainItem collect-scan">Collect or Scan &amp; Forward</div>
-                        <div className="diffMainItem collect-scan">NONE</div>
+                        <div className="diffMainItem accentText">Prestigious Mayfair</div>
+                        <div className="diffMainItem">Collect or Scan &amp; Forward</div>
+                        <div className="diffMainItem accentText">NONE</div>
                         <div className="diffMainItem">Friendly, responsive team</div>
                       </div>
 
@@ -667,7 +664,7 @@ export default function HomePage() {
                   {/* RIGHT PROVIDERS CARD */}
                   <div className="diffRight">
                     <div className="diffOtherCard">
-                      <div className="diffOtherHead head">Large Mass Providers</div>
+                      <div className="diffOtherHead">Large Mass Providers</div>
                       <div className="diffOtherList">
                         <div className="diffOtherItem">Often higher with add ons</div>
                         <div className="diffOtherItem">Complicated plans with extras</div>
@@ -685,7 +682,7 @@ export default function HomePage() {
 
 
       {/* ================= FAQ ================= */}
-      {<section className="section faqSection">
+      {/* <section className="section faqSection">
         <div className="faqBg" aria-hidden="true" />
         <div className="container">
           <div className="centerTitle">
@@ -718,7 +715,7 @@ export default function HomePage() {
 
           <Footer />
         </div>
-      </section> }
+      </section> */}
     </div>
   );
 }
