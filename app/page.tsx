@@ -711,10 +711,9 @@ export default async function HomePage() {
               );
             })}
           </div>
-
-          <Footer />
         </div>
       </section> */}
+                <Footer />
     </div>
   );
 }
