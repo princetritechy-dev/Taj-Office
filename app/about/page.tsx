@@ -37,6 +37,7 @@ export default function About() {
                 </div>
             </section>
             <section className="third commonsec">
+                <div className="third-inner">
                 <div className="left">
                     <h3>Compliance handled in house</h3>
                     <p>Using a business address comes with legal responsibilities. All AML and KYC checks are carried out by our own team and are reviewed properly.</p>
@@ -64,6 +65,7 @@ export default function About() {
                         </div>
                     </div>
                 </div>
+            </div>
             </section>
             <section className="fourth commonsec">
                 <div className="left">
