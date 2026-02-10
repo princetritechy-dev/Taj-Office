@@ -1,0 +1,32 @@
+import Link from "next/link"
+import Image from "next/image"
+export default function Header(){
+  return(
+    <header className="nav">
+        <div className="container navInner">
+          <div className="brand">
+            {/* Logo Image */}
+            <Image
+              src="/logo.png"
+              alt="Virtual Office Anywhere Logo"
+              width={150}
+              height={50}
+              className="brandLogo"
+            />
+          </div>
+
+
+          <nav className="navLinks" aria-label="Primary">
+            <Link href="#">Plans</Link>
+            <Link href="#">Locations</Link>
+            <Link href="#">Support</Link>
+            <Link href="/about">About Us</Link>
+            <Link href="#">Contact Us</Link>
+            <Link className="navLogin" href="#">
+              Login
+            </Link>
+          </nav>
+        </div>
+      </header>
+  )
+}
