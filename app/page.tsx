@@ -684,7 +684,7 @@ export default async function HomePage() {
 
 
       {/* ================= FAQ ================= */}
-      {/* <section className="section faqSection">
+      {<section className="section faqSection">
         <div className="faqBg" aria-hidden="true" />
         <div className="container">
           <div className="centerTitle">
@@ -717,7 +717,7 @@ export default async function HomePage() {
 
           <Footer />
         </div>
-      </section> */}
+      </section> }
     </div>
   );
 }
