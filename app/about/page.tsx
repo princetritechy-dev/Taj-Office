@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 type FAQ = { q: string; a: string };
 import Header from "../components/header";
 import Footer from "../components/footer";
-import Footer from "../globals.css";
+import CSS from "../globals.css";
 export default function About() {
     return (
         <main>
