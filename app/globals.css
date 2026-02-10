@@ -1007,14 +1007,7 @@ section.section-see-difference {
 .diffBtn{margin-top: 14px}
 
 /* right card (light + subtle) */
-.diffOtherCard{
-  width: 320px;
-  background:#fff;
-  border-radius: 14px;
-  padding: 16px;
-  box-shadow: 0 16px 40px rgba(16,24,40,.06);
-  opacity: .9;
-}
+
 .section-see-difference .diffOtherHead
  {
     color: #25324db3;
