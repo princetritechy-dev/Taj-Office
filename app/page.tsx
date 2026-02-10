@@ -28,9 +28,10 @@ export default async function HomePage() {
 
   return (
     <main>
+      <Header />
     <div className="page">
       {/* ================= NAV ================= */}
-      <Header />
+      
       {/* ================= HERO ================= */}
       <section className="hero">
         <div className="heroBg" aria-hidden="true" />
