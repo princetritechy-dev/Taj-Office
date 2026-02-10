@@ -683,34 +683,6 @@ export default async function HomePage() {
       {/* ================= FAQ ================= */}
       { <section className="section faqSection">
         <div className="faqBg" aria-hidden="true" />
-        {/* <div className="container">
-          <div className="centerTitle">
-            <h2 className="h2">Frequently Asked Questions</h2>
-            <div className="titleUnderline" aria-hidden="true" />
-          </div>
-
-          <div className="faqGrid">
-            {faqs.map((f, idx) => {
-              const open = openFaq === idx;
-              return (
-                <button
-                  key={idx}
-                  type="button"
-                  className={`faqItem ${open ? "open" : ""}`}
-                  onClick={() => setOpenFaq(open ? null : idx)}
-                  aria-expanded={open}
-                >
-                  <div className="faqQ">
-                    <span>{f.q}</span>
-                    <span className="faqPlus" aria-hidden="true">
-                      {open ? "–" : "+"}
-                    </span>
-                  </div>
-                  <div className="faqA">{f.a}</div>
-                </button>
-              );
-            })}
-          </div> */}
 
           <Footer />
         </div>
