@@ -510,6 +510,11 @@ p.muted-two {
 
 /* ================= HOW IT WORKS (MATCH IMAGE) ================= */
 
+section.section-how-work
+ {
+    padding: 80px 0px !important;
+}
+
 .howWrap{
   margin-top: 34px;
 }
@@ -651,20 +656,32 @@ p.muted-two {
 
 
 /* Compliance */
+section.section-compliance {
+    background-color: #fff !important;
+    padding: 80px 0px;
+}
+
 .complianceGrid{
   display:grid;
   grid-template-columns: 1.1fr .9fr;
   gap:36px;
   align-items:center;
 }
-.miniCards{display:flex; flex-direction:column; gap:10px; margin-top:14px}
-.miniCard{
-  display:flex; gap:10px;
-  padding:12px 12px;
-  background:#fff;
-  border: 1px solid #F3F4F6;
-  border-radius:16px;
-  box-shadow:0 16px 40px rgba(16,24,40,.05);
+.section-compliance .miniCards
+ {
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 14px;
+    display: flex;
+}
+.section-compliance .miniCard {
+    background: #F8FAFC;
+    border: 1px solid #f3f4f6;
+    border-radius: 16px;
+    gap: 10px;
+    padding: 15px !important;
+    display: flex;
+    box-shadow: none !important;
 }
 .miniIcon{
   border-radius: 9999px;
@@ -748,6 +765,8 @@ p.muted-two {
 .platformCardSub{margin-top:6px;font-weight:400;color:#6B7280; font-size:12px; line-height:16px}
 
 /* Dark section testimonials */
+
+
 .section.dark{
   background:var(--navy);
   color:#fff;
@@ -764,23 +783,23 @@ p.muted-two {
 }
 
 /* grid spacing like screenshot */
-.testGrid{
-  margin-top:22px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
-  justify-content:center;
+.section.dark .testGrid
+ {
+    display: flex;
+    justify-content: center;
+    gap: 20px !important;
 }
 
 /* compact card */
-.testCard{
-  max-width: 360px;
-  margin: 0 auto;
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.10);
-  border-radius: 14px;
-  padding: 16px 16px;
-  box-shadow: 0 16px 40px rgba(0,0,0,.18);
+.section.dark .testCard {
+    background: #ffffff0f;
+    border: 1px solid #ffffff1a;
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 0 16px 40px #0000002e;
+    width: 33% !important;
+    padding: 30px !important;
+    margin:0px;
 }
 
 /* teal stars */
@@ -790,14 +809,13 @@ p.muted-two {
   color: var(--teal);
   opacity: .95;
 }
-
-.testQuote{
-  margin-top:10px;
-  font-size:11px;
-  line-height:1.7;
-  color: rgba(255,255,255,.78);
+ .section.dark .testQuote {
+    color: #ffffffc7;
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 24px;
+    font-style: italic;
 }
-
 /* footer row */
 .testPerson{
   margin-top:14px;
@@ -856,6 +874,25 @@ p.muted-two {
 
 /* ===== See the Difference (match screenshot) ===== */
 
+section.section-see-difference {
+    padding: 80px 0px !important;
+}
+.section-see-difference .diffMainItem.per-month {
+    background-color: #ffffff10;
+    border-radius: 10px;
+    color: #00A699;
+    font-weight: 700;
+}
+.section-see-difference .diffRight {
+    background: #F8FAFC !important;
+    padding: 30px 20px;
+    border: 1px solid #F3F4F6;
+    border-radius: 20px;
+    width:25%;
+}
+.section-see-difference .diffCenter {
+    width: 30%;
+}
 .diffHead{
   text-align:center;
   margin-bottom: 18px;
@@ -864,42 +901,45 @@ p.muted-two {
 .diffSub{margin:0; font-size:12px}
 
 /* 3 columns, center tighter */
-.diffWrap{
-  margin-top: 18px;
-  display:grid;
-  grid-template-columns: 1fr 380px 1fr;
-  gap: 28px;
-  align-items:center;
-  justify-items:center;
+.section-see-difference .diffWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width:100%;
 }
 
 /* left labels = simple text, no boxes */
-.diffLeft{
-  width:100%;
-  max-width: 240px;
-  display:flex;
-  flex-direction:column;
-  gap: 18px;
-  align-items:flex-end;
+.section-see-difference .diffLeft
+ {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+    width: 30%;
+    display: flex;
 }
-.diffLabel{
-  font-size:11px;
-  font-weight:800;
-  color: rgba(37,50,77,.55);
+.section-see-difference .diffLabel
+ {
+    color: #25324d8c;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.section-see-difference .collect-scan {
+    color: #00A699;
+    font-weight: 700;
 }
 
 /* center card (taller like screenshot) */
-.diffMainCard{
-  width: 360px;
-  min-height: 420px;
-  background: var(--navy);
-  border-radius: 16px;
-  padding: 18px;
-  color:#fff;
-  box-shadow: 0 28px 70px rgba(16,24,40,.18);
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
+.section-see-difference .diffMainCard {
+    background: var(--navy);
+    color: #fff;
+    border-radius: 15px;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    padding: 30px 20px;
+    display: flex;
 }
 
 /* brand row */
@@ -941,10 +981,25 @@ p.muted-two {
   text-align:center;
   font-family: var(--font-montserrat);
 }
-.diffMainItem{
-  font-size:11px;
-  font-weight:700;
-  color: rgba(255,255,255,.78);
+.section-see-difference .diffMainItem
+ {
+    padding: 20px 0px;
+    font-size: 16px !important;
+    font-weight: 400;
+}
+.section-see-difference .btn
+ {
+    font-family: var(--font-montserrat);
+    cursor: pointer;
+    border: 0;
+    border-radius: 11px;
+    padding: 19px 18px;
+    font-size: 17px;
+    font-weight: 700;
+    transition: transform .12s, box-shadow .12s, background .12s;
+    color: #fff;
+    background: linear-gradient(180deg, var(--teal), #00a79a);
+    box-shadow: 0 12px 22px #00b8a938;
 }
 .diffBtn{margin-top: 14px}
 
