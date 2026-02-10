@@ -22,11 +22,11 @@ async function getHomePage() {
 }
 
 
-export default async function HomePage() {
+export default function HomePage() {
   const faqs: FAQ[] = useMemo( () => [ { q: "What is a virtual office and how does it work?", a: "A virtual office gives your company a professional UK business address without the cost of renting a physical office. You can use it on your website, invoices, Companies House and more. We handle your mail and provide optional services like scan & forward.", }, { q: "Do you charge setup fees or add ons?", a: "No. We keep pricing simple—no setup fees and no hidden extras. You can choose a plan that fits your business and upgrade anytime.", }, { q: "Can I use the address as my registered office?", a: "Yes. Our Premium UK Address can be used as your registered office address, as well as on official business documents.", }, { q: "How does a virtual office help with SEO?", a: "A UK business address can improve trust signals and local relevance. It can support credibility for customers searching in your target sector and location.", }, { q: "How long does setup take?", a: "Setup is quick. Once you choose your plan and complete basic compliance checks, you can start using your address.", }, { q: "Can I book a meeting room?", a: "Yes. Many locations offer meeting rooms you can book when you need a professional space for clients or interviews.", }, { q: "Is a virtual office suitable for international businesses?", a: "Absolutely. It’s a common solution for overseas businesses that want a UK presence and a reliable way to handle mail.", }, ], [] ); const [openFaq, setOpenFaq] = useState<number | null>(null);
 
     const page = await getHomePage();
-    const h1 = page?.acf?.main_heading
+    // const h1 = page?.acf?.main_heading
 
   return (
     <div className="page">
