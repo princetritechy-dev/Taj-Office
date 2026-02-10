@@ -1,6 +1,35 @@
- <div className="page">
+
+
+import Image from "next/image";
+import { useMemo } from "react";
+import PlatformCard from "./PlatformCard";
+import Link from "next/link";
+import Header from "./components/header";
+import Footer from "./components/footer";
+
+
+async function getHomePage() {
+  const res = await fetch(
+    "https://lavender-alligator-176962.hostingersite.com/index.php/wp-json/wp/v2/pages?slug=home",
+    { cache: "force-cache" }
+  );
+
+  if (!res.ok) return null;
+
+  const data = await res.json();
+  return data?.[0] ?? null;
+}
+
+
+export default async function HomePage() {
+
+    const page = await getHomePage();
+    const h1 = page?.acf?.main_heading
+
+  return (
+    <div className="page">
       {/* ================= NAV ================= */}
-      
+      <Header />
       {/* ================= HERO ================= */}
       <section className="hero">
         <div className="heroBg" aria-hidden="true" />
@@ -369,7 +398,7 @@
       </section>
 
       {/* ================= HOW IT WORKS ================= */}
-<section className="section-how-work">
+<section className="section">
   <div className="container">
     <div className="centerTitle">
       <div className="pill soft-two">Simple process</div>
@@ -426,7 +455,7 @@
 
 
       {/* ================= COMPLIANCE & SECURITY ================= */}
-      <section className="section-compliance">
+      <section className="section">
         <div className="container complianceGrid">
           <div className="complianceLeft">
             <h2 className="h2">Compliance and Security</h2>
@@ -502,10 +531,8 @@
             </div>
 
         </div>
-        </section>
 
         {/* ================= PLATFORM FEATURES ================= */}
-      <section className="section-platform">
         <div className="container platform">
           <div className="platformTitle">
             <h2 className="h2">Platform Features</h2>
@@ -586,7 +613,7 @@
       </section>
 
       {/* ================= SEE THE DIFFERENCE ================= */}
-      <section className="section-see-difference">
+      <section className="section">
               <div className="container">
                 <div className="diffHead">
                   <h2 className="h2 diffTitle">See the Difference</h2>
@@ -620,12 +647,12 @@
 
 
                       <div className="diffMainList">
-                        <div className="diffMainItem per-month">From £20 per month</div>
+                        <div className="diffMainItem accentText">From £20 per month</div>
                         <div className="diffMainItem">Only two simple packages</div>
                         <div className="diffMainItem">No setup fees, no extras</div>
-                        <div className="diffMainItem">Prestigious Mayfair</div>
-                        <div className="diffMainItem collect-scan">Collect or Scan &amp; Forward</div>
-                        <div className="diffMainItem collect-scan">NONE</div>
+                        <div className="diffMainItem accentText">Prestigious Mayfair</div>
+                        <div className="diffMainItem">Collect or Scan &amp; Forward</div>
+                        <div className="diffMainItem accentText">NONE</div>
                         <div className="diffMainItem">Friendly, responsive team</div>
                       </div>
 
@@ -652,7 +679,43 @@
               </div>
             </section>
 
-        </main>
+
+      {/* ================= FAQ ================= */}
+      {/* <section className="section faqSection">
+        <div className="faqBg" aria-hidden="true" />
+        <div className="container">
+          <div className="centerTitle">
+            <h2 className="h2">Frequently Asked Questions</h2>
+            <div className="titleUnderline" aria-hidden="true" />
+          </div>
+
+          <div className="faqGrid">
+            {faqs.map((f, idx) => {
+              const open = openFaq === idx;
+              return (
+                <button
+                  key={idx}
+                  type="button"
+                  className={`faqItem ${open ? "open" : ""}`}
+                  onClick={() => setOpenFaq(open ? null : idx)}
+                  aria-expanded={open}
+                >
+                  <div className="faqQ">
+                    <span>{f.q}</span>
+                    <span className="faqPlus" aria-hidden="true">
+                      {open ? "–" : "+"}
+                    </span>
+                  </div>
+                  <div className="faqA">{f.a}</div>
+                </button>
+              );
+            })}
+          </div>
+
+          <Footer />
+        </div>
+      </section> */}
+    </div>
   );
 }
 
