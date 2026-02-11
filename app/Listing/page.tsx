@@ -39,7 +39,7 @@ export default function Listing() {
   </div>
 </section>
 
-<div className={`floating-card ${styles.floatingCard}`}>
+<div className={`float-card ${styles.floatCard}`}>
   <div className="container">
     <div className={`card ${styles.card}`}>
       <h3>
@@ -276,5 +276,6 @@ export default function Listing() {
     </main>
   );
 }
+
 
 
