@@ -45,7 +45,7 @@ export default async function HomePage() {
     </div>
   </section>
 
-  <!-- Floating Card -->
+      {/* Floating Card */}
   <div className="floating-card">
     <div className="container">
       <div className="card">
@@ -68,7 +68,8 @@ export default async function HomePage() {
     </div>
   </div>
 
-  <!-- Revenue Split -->
+          {/* Revenue Split */}
+
   <section className="section">
     <div className="container split">
       <div className="rev-card">
@@ -103,7 +104,8 @@ export default async function HomePage() {
     </div>
   </section>
 
-  <!-- Support Cards -->
+              {/* Support Cards */}
+
   <section className="section">
     <div className="container">
       <div className="title-center">
@@ -148,7 +150,7 @@ export default async function HomePage() {
     </div>
   </section>
 
-  <!-- Dark Section -->
+ {/* Dark Section  */}
   <section className="dark">
     <div className="container dark-inner">
       <h2>Built by people who use<br/><span>virtual offices themselves</span></h2>
@@ -163,8 +165,8 @@ export default async function HomePage() {
     </div>
   </section>
 
-  <!-- CTA -->
-  <section className="cta-wrap">
+ 
+      <section className="cta-wrap">
     <div className="container">
       <div className="cta">
         <div className="cta-media">
