@@ -293,60 +293,40 @@ export default async function HomePage() {
       </section>
 
       {/* ================= HOW IT WORKS ================= */}
-<section className="section-how-work">
-  <div className="container">
-    <div className="centerTitle">
-      <div className="pill soft-two">Simple process</div>
-      <h2 className="h2">How It Works</h2>
-      <p className="muted centerMax">
-        A simple setup with support at every step. We keep the process clear so you
-        always know what comes next.
-      </p>
-    </div>
-
-    <div className="howWrap">
-      {/* Track (circles + line) */}
-      <div className="howTrack" aria-hidden="true">
-        <div className="howLine" />
-        <div className="howNodes">
-          <div className="howNode">
-            <div className="howCircle howCircleIdle">1</div>
+      <section className="section-how-work">
+        <div className="container">
+          <div className="centerTitle">
+            <div className="pill soft-two">Simple process</div>
+            <h2 className="h2">How It Works</h2>
+            <p className="muted centerMax">
+              A simple setup with support at every step. We keep the process
+              clear so you always know what comes next.
+            </p>
           </div>
 
-          <div className="howNode">
-            <div className="howCircle howCircleActive">
-              2
-              <span className="howActiveRing" />
+          <div className="howWrap">
+            <div className="howCards">
+              <StepCard
+                title="Create Your Account"
+                desc="Choose your address, complete checkout and open your client profile."
+              />
+              <StepCard
+                title="Upload Your Documents"
+                desc="Provide ID and proof of address for verification. Our team checks everything manually."
+              />
+              <StepCard
+                title="Start Using Your Address"
+                desc="Once approved, you receive your welcome email and can begin using your Mayfair address."
+              />
             </div>
-          </div>
 
-          <div className="howNode">
-            <div className="howCircle howCircleDone">
-              ✓
+            <div className="howFoot muted centerMax">
+              Compliance is part of UK regulations, and we manage the process
+              carefully without making it complicated for you.
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Cards */}
-      <div className="howCards">
-        <StepCard
-                title="Create Your Account"
-                desc="Choose your address, complete checkout and open your client profile."        />
-        <StepCard
-                title="Upload Your Documents"
-                desc="Provide ID and proof of address for verification. Our team checks everything manually."       />
-        <StepCard
-                title="Start Using Your Address"
-                desc="Once approved, you receive your welcome email and can begin using your Mayfair address."       />
-      </div>
-
-      <div className="howFoot muted centerMax">
-        Compliance is part of UK regulations, and we manage the process carefully without making it complicated for you.
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* ================= PLATFORM FEATURES ================= */}
       <section className="section-platform">
