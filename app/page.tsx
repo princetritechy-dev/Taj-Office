@@ -29,165 +29,654 @@ export default async function HomePage() {
       <Header />
 
        <section className="hero">
-    <div className="container hero-inner">
-      <div className="pill">PARTNERSHIP PROGRAM</div>
+        <div className="heroBg" aria-hidden="true" />
+        <div className="container heroGrid">
+          <div className="heroLeft">
+            <div className="pill">
+              <Image
+                src="/icon-top.png"
+                alt="Check icon"
+                width={8}
+                height={8}
+                className="dotIcon"
+              />
+              <span>
+              Live in 24 HOURS
+              </span>
+            </div>
 
-      <h1>Why work with<br/>Virtual Office Anywhere</h1>
-      <div className="hero-divider"></div>
+            <h1 className="h1"> Your UK Business <br /> Address. <br /> 
+            <span className="accent">Anywhere.</span> </h1>
 
-      <p>Generate additional revenue from virtual office services, without the hassle that usually comes with running them.</p>
+            <p className="lead">
+              A trusted UK business address from £20 a month. Choose a
+              professional location for your company and enjoy simple pricing,
+              friendly support and a service that helps you present your
+              business well from day one.
+            </p>
 
-      <div className="hero-down" aria-hidden="true">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-          <path d="M12 16l-6-6m6 6l6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-    </div>
-  </section>
+            <div className="heroCtas">
+              <button className="btn btnPrimary">Get Started</button>
+              <button className="btn btnGhost">Choose Your Address</button>
+            </div>
 
-      {/* Floating Card */}
-  <div className="floating-card">
-    <div className="container">
-      <div className="card">
-        <h3>Virtual Office Anywhere partners with office buildings and<br/>virtual office providers.</h3>
-        <p>We operate deliberately. We don’t aim to list hundreds of buildings or flood a single address with large volumes of companies.</p>
-
-        <div className="promise">
-          <div className="icon" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z" stroke="#13b6a6" stroke-width="2" stroke-linejoin="round"/>
-            </svg>
+            <div className="heroNote">
+              <p>
+                A virtual office gives you the freedom to work from anywhere
+                while keeping your company linked to a respected UK location.
+                Our virtual office addresses help you build trust with clients,
+                protect your privacy and strengthen your online presence. Setup
+                is quick and there are no setup fees or hidden extras—just
+                honest support.
+              </p>
+            </div>
           </div>
-          <div>
-            <small>OUR PROMISE</small>
-            <div>We work with a small number of office partners so each location stays credible and well managed.</div>
+
+          <div className="heroRight">
+            <div className="heroMediaCard">
+              {/* Replace these with your real images in /public/images */}
+              <div className="collage">
+                <div className="collageTop">
+                  <div className="imgWrap">
+                    <Image
+                      src="/View.png"   // put this file in /public
+                      alt="Office"
+                      fill
+                      className="collageImg"
+                      priority
+                    />
+                  </div>
+                </div>
+              </div>
+
+               
+          </div>
+
+
+          <div className="statusPill">
+                <div className="statusIcon" aria-hidden="true" />
+                <div className="statusText">
+                  <div className="statusLabel">STATUS</div>
+                  <div className="statusValue">Mail Received</div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </section>
+
+      {/* ================= WHY CHOOSE ================= */}
+      <section className="section sectionWhy">
+        <div className="container whyGrid">
+          <div className="whyImages">
+            <div className="whyCard whyCardTall">
+              <div className="imgWrap">
+              <Image
+                src="/why1.png"   // put in /public
+                alt="Office workspace"
+                fill
+                className="whyImg"
+              />
+            </div>
+            </div>
+            <div className="whyCard whyCardTop">
+              <div className="imgWrap">
+              <Image
+                src="/why2.png"
+                alt="Business team"
+                fill
+                className="whyImg"
+              />
+            </div>
+            </div>
+          </div>
+
+          <div className="whyText">
+            <h2 className="h2">
+              Why Choose Virtual Office <span className="accent">Anywhere</span>
+            </h2>
+            <h3 className="subhead">
+              A virtual office service designed to support your business
+            </h3>
+            <p className="muted">
+              Not all virtual office providers work in the same way. We keep
+              things small, personal and professional, offering a premium UK
+              address with a service that is friendly, reliable and easy to
+              understand.
+            </p>
+            <p className="muted-two">
+              A UK virtual office is more than a postcode. It helps improve
+              client confidence, meet UK trading expectations and strengthen
+              your brand so you're seen as a real business from day one.
+            </p>
           </div>
         </div>
 
+        <div className="container benefitsCard">
+          <div className="benefitsTitle">Benefits of choosing a virtual office with us</div>
+
+          <div className="benefitsGrid">
+            <ul className="checkList">
+              <li>
+              <Image
+                src="/icon.png"
+                alt="Check icon"
+                width={15}
+                height={20}
+                className="checkIcon"
+              />
+                <span> A recognised business address that helps your company look credible</span>
+              </li>
+              <li>
+                <Image
+                src="/icon.png"
+                alt="Check icon"
+                width={15}
+                height={20}
+                className="checkIcon"
+              />
+                <span> Stronger SEO signals for customers searching in your sector</span>
+              </li>
+              <li>
+                <Image
+                src="/icon.png"
+                alt="Check icon"
+                width={15}
+                height={20}
+                className="checkIcon"
+              />
+                <span> Secure mail handling and friendly support </span>
+              </li>
+              <li>
+                <Image
+                src="/icon.png"
+                alt="Check icon"
+                width={15}
+                height={20}
+                className="checkIcon"
+              />
+                <span> Two clear packages with everything included </span>
+              </li>
+            </ul>
+
+            <ul className="checkList">
+              <li>
+                <Image
+                src="/icon.png"
+                alt="Check icon"
+                width={15}
+                height={20}
+                className="checkIcon"
+              />
+                <span> Privacy for your home address on public records</span>   
+              </li>
+              <li>
+                <Image
+                src="/icon.png"
+                alt="Check icon"
+                width={15}
+                height={20}
+                className="checkIcon"
+              />
+                <span> A place to host clients with meeting rooms available to book</span> 
+              </li>
+              <li>
+                <Image
+                src="/icon.png"
+                alt="Check icon"
+                width={15}
+                height={20}
+                className="checkIcon"
+              />
+                <span> Straightforward monthly pricing with no setup fees or surprise charges</span>   
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= WHAT YOU RECEIVE ================= */}
+      <section className="section">
+        <div className="container">
+          <div className="centerTitle">
+            <h2 className="h2">What You Receive</h2>
+            <div className="titleUnderline" aria-hidden="true" />
+          </div>
+
+          <div className="cardsGrid">
+            <FeatureCard
+              icon={
+              <Image
+                src="/symb1.png"
+                alt="Premium UK Address Icon"
+                width={40}
+                height={40}
+                className="featureIconImg"
+              />
+            }
+              title="Premium UK Address"
+              q2="What This Means"
+              desc="Use your address for business documents, websites and registrations."
+              note="Why it helps"
+              noteText="Builds trust and strengthens your company image."
+            />
+            <FeatureCard
+              icon={
+                <Image
+                src="/symb2.png"
+                alt="Premium UK Address Icon"
+                width={40}
+                height={40}
+                className="featureIconImg"
+              />
+              }
+              title="Friendly Support"
+              q2="What This Means"
+              desc="Real people who help with updates and questions."
+              note="Why it helps"
+              noteText="A smoother experience without delays."
+            />
+            <FeatureCard
+              icon={
+                <Image
+                src="/symb3.png"
+                alt="Premium UK Address Icon"
+                width={40}
+                height={40}
+                className="featureIconImg"
+              />
+              }
+              title="Thoughtful Mail Handling"
+              q2="What This Means"
+              desc="Mail is received, safely managed by our team."
+              note="Why it helps"
+              noteText="Peace of mind and better organisation."
+            />
+            <FeatureCard
+              icon={
+                <Image
+                src="/symb4.png"
+                alt="Premium UK Address Icon"
+                width={40}
+                height={40}
+                className="featureIconImg"
+              />
+              }
+              title="Clear, Simple Pricing"
+              q2="What This Means"
+              desc="Two packages with no setup fees and no hidden extras."
+              note="Why it helps"
+              noteText="Easy budgeting and no surprise bills."
+            />
+            <FeatureCard
+              icon={
+                <Image
+                src="/symb5.png"
+                alt="Premium UK Address Icon"
+                width={40}
+                height={40}
+                className="featureIconImg"
+              />
+              }
+              title="Meeting Rooms Available"
+              q2="What This Means"
+              desc="Book rooms at select locations when you need them."
+              note="Why it helps"
+              noteText="A more polished and professional presence."
+            />
+            <FeatureCard
+              icon={
+                <Image
+                src="/symb6.png"
+                alt="Premium UK Address Icon"
+                width={40}
+                height={40}
+                className="featureIconImg"
+              />
+              }
+              title="Proper Compliance Checks"
+              q2="What This Means"
+              desc="We meet basic requirements and keep things secure."
+              note="Why it helps"
+              noteText="Helps you stay protected and meet UK requirements."
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ================= PICK ADDRESS ================= */}
+      <section className="picksection">
+        <div className="container">
+          <div className="pickCard">
+            <div className="pickLeft">
+              <div className="pill soft">FEATURED LOCATION</div>
+              <h2 className="h2 light">
+                Pick Your Perfect Business <br />
+                Address
+              </h2>
+              <p className="muted lightMuted">
+                Choose a professional location that supports the image you want
+                for your business. Our Mayfair address is known for its
+                reputation, stability and high quality surroundings.
+              </p>
+
+              <div className="locationRow">
+                <div className="locIcon" aria-hidden="true">
+                  <Image
+                    src="/location.png"
+                    alt=""
+                    width={47}
+                    height={47}
+                    className="locIconImg"
+                  />
+                </div>
+                <div className="locText">
+                  <div className="locTitle">Mayfair, London W1</div>
+                  <div className="locSub">
+                    Business address for Companies House, HMRC & banking
+                  </div>
+                </div>
+              </div>
+
+              <button className="btn btnLight">View Plans</button>
+            </div>
+
+            <div className="pickRight">
+            <div className="pickImage">
+              <Image
+                src="/bg1.png"
+                alt="Why choose us"
+                fill
+                className="pickImageImg"
+              />
+            </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= HOW IT WORKS ================= */}
+<section className="section-how-work">
+  <div className="container">
+    <div className="centerTitle">
+      <div className="pill soft-two">Simple process</div>
+      <h2 className="h2">How It Works</h2>
+      <p className="muted centerMax">
+        A simple setup with support at every step. We keep the process clear so you
+        always know what comes next.
+      </p>
+    </div>
+
+    <div className="howWrap">
+      {/* Track (circles + line) */}
+      <div className="howTrack" aria-hidden="true">
+        <div className="howLine" />
+        <div className="howNodes">
+          <div className="howNode">
+            <div className="howCircle howCircleIdle">1</div>
+          </div>
+
+          <div className="howNode">
+            <div className="howCircle howCircleActive">
+              2
+              <span className="howActiveRing" />
+            </div>
+          </div>
+
+          <div className="howNode">
+            <div className="howCircle howCircleDone">
+              ✓
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Cards */}
+      <div className="howCards">
+        <StepCard
+                title="Create Your Account"
+                desc="Choose your address, complete checkout and open your client profile." num={""}        />
+        <StepCard
+                title="Upload Your Documents"
+                desc="Provide ID and proof of address for verification. Our team checks everything manually." num={""}        />
+        <StepCard
+                title="Start Using Your Address"
+                desc="Once approved, you receive your welcome email and can begin using your Mayfair address." num={""}        />
+      </div>
+
+      <div className="howFoot muted centerMax">
+        Compliance is part of UK regulations, and we manage the process carefully without making it complicated for you.
       </div>
     </div>
   </div>
+</section>
 
-          {/* Revenue Split */}
 
-  <section className="section">
-    <div className="container split">
-      <div className="rev-card">
-        <div className="rev-top">REVENUE SPLIT</div>
-        <div className="rev-numbers">
-          <div className="big">60</div>
-          <div className="slash">/</div>
-          <div className="small">40</div>
-        </div>
-        <div className="rev-bar"><span></span></div>
-        <div className="rev-note">The larger share goes to the <strong>building partner</strong>.</div>
-      </div>
+      {/* ================= COMPLIANCE & SECURITY ================= */}
+      <section className="section-compliance">
+        <div className="container complianceGrid">
+          <div className="complianceLeft">
+            <h2 className="h2">Compliance and Security</h2>
+            <div className="pil">We keep things simple while protecting your business</div>
+            <p className="muted">
+              Every virtual office in the UK must follow certain checks. We make
+              this as easy as possible while ensuring your business is protected.
+            </p>
 
-      <div className="split-text">
-        <h2>A fair and transparent split</h2>
-        <p>We believe the building should benefit properly from the address it provides, and we structure our partnerships to reflect that.</p>
+            <div className="miniCards">
 
-        <ul className="ticks">
-          <li><span className="tick">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span> No hidden fees</li>
+              <div className="miniCard">
+                <div className="miniIcon">
+                  <Image src="/id.png" alt="" width={50} height={40} />
+                </div>
+                <div>
+                  <div className="miniTitle">Identity and Address Documents</div>
+                  <div className="miniDesc">
+                    We verify your company and personal details.
+                  </div>
+                </div>
+              </div>
 
-          <li><span className="tick">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span> No complex pricing models</li>
+              <div className="miniCard">
+                <div className="miniIcon">
+                  <Image src="/business.png" alt="" width={50} height={40} />
+                </div>
+                <div>
+                  <div className="miniTitle">Business Details</div>
+                  <div className="miniDesc">
+                    We collect basic business information to protect your reputation.
+                  </div>
+                </div>
+              </div>
 
-          <li><span className="tick">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span> See exactly what is generated from your address</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+              <div className="miniCard">
+                <div className="miniIcon">
+                  <Image src="/check.png" alt="" width={50} height={40} />
+                </div>
+                <div>
+                  <div className="miniTitle">Companies House Cross Checks</div>
+                  <div className="miniDesc">
+                    We ensure your listing information is accurate and compliant.
+                  </div>
+                </div>
+              </div>
 
-              {/* Support Cards */}
+            </div>
 
-  <section className="section">
-    <div className="container">
-      <div className="title-center">
-        <h2>How we support you</h2>
-        <div className="underline"></div>
-      </div>
-
-      <div className="cards">
-        <div className="info-card">
-          <div className="ic" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path d="M12 21s-7-4.4-7-11V6l7-3 7 3v4c0 6.6-7 11-7 11z" stroke="#13b6a6" stroke-width="2"/>
-              <path d="M9 12l2 2 4-5" stroke="#13b6a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <h3>We handle the work</h3>
-          <p>Running a virtual office properly takes time. We manage all client onboarding, including KYC and AML checks, handled thoroughly in-house.</p>
-        </div>
-
-        <div className="info-card">
-          <div className="ic" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path d="M4 14h16v6H4v-6z" stroke="#13b6a6" stroke-width="2"/>
-              <path d="M7 14V7a5 5 0 0 1 10 0v7" stroke="#13b6a6" stroke-width="2"/>
-            </svg>
-          </div>
-          <h3>Low effort for your team</h3>
-          <p>Your role is simple. Mail is received and stored securely. You take care of the basics, we handle the rest.</p>
-        </div>
-
-        <div className="info-card">
-          <div className="ic" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path d="M11 21a9 9 0 1 1 6.36-2.64L21 22" stroke="#13b6a6" stroke-width="2" stroke-linecap="round"/>
-              <path d="M8 11h6" stroke="#13b6a6" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <h3>Strong listings</h3>
-          <p>We create high quality, SEO optimised listings for each partner to attract legitimate businesses and protect the location.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
- {/* Dark Section  */}
-  <section className="dark">
-    <div className="container dark-inner">
-      <h2>Built by people who use<br/><span>virtual offices themselves</span></h2>
-      <p>We operate our own virtual office, so we understand how these services work day to day. That experience shapes how we onboard clients, manage post, and protect the reputation of each address.</p>
-
-      <div className="quote">
-        <em>“We have seen the other side of the industry: unfair revenue splits, poor marketing, and compliance checks not carried out to standard.”</em>
-        <strong>Those experiences are exactly why we built Virtual Office Anywhere differently.</strong>
-      </div>
-
-      <div className="footer-line">We care about long term partnerships, not quick wins.</div>
-    </div>
-  </section>
-
- 
-      <section className="cta-wrap">
-    <div className="container">
-      <div className="cta">
-        <div className="cta-media">
-          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1400&auto=format&fit=crop" alt="Partner with us" />
-        </div>
-
-        <div>
-          <h3>Partner with us</h3>
-          <p>If you operate an office building and would like to explore offering virtual office services without the operational overhead, we would be happy to talk.</p>
-
-          <div className="btns">
-            <a className="btn primary" href="#">Get in touch</a>
-            <a className="btn" href="#">Learn More</a>
           </div>
 
-          <small>We will walk you through how the partnership works and answer any questions.</small>
-        </div>
-      </div>
-    </div>
-  </section>
+          <div className="complianceRight">
+              <div className="codeCollage singleImage">
+                
+                <div className="imgWrap">
+                  <Image
+                    src="/Secure.png"   // put your real image here
+                    alt="Secure compliance process"
+                    fill
+                    className="collageImg"
+                  />
+                </div>
 
+                <div className="secureBadge">
+                  <div className="play" aria-hidden="true" />
+                  <div className="secureTxt">
+                    <div className="secureTop">100%</div>
+                    <div className="secureBot">Secure</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+        </div>
+         </section>
+
+        {/* ================= PLATFORM FEATURES ================= */}
+      <section className="section-platform">
+        <div className="container platform">
+          <div className="platformTitle">
+            <h2 className="h2">Platform Features</h2>
+            <p className="muted">
+              Everything you need in one place. Your client dashboard gives you
+              access to tools that make managing your virtual office simple.
+            </p>
+          </div>
+
+          <div className="platformGrid">
+
+  <PlatformCard
+  icon={<Image src="/1.png" alt="" width={30} height={36} />}
+  title="Mail Dashboard"
+  subtitle="View mail received and track delivery requests."
+/>
+
+  <PlatformCard
+    icon={<Image src="/2.png" alt="" width={30} height={36} />}
+    title="Automatic Billing"
+    subtitle="Manage subscriptions with clear monthly billing."
+  />
+
+  <PlatformCard
+    icon={<Image src="/3.png" alt="" width={30} height={36} />}
+    title="Document Vault"
+    subtitle="Store important files securely."
+  />
+
+  <PlatformCard
+    icon={<Image src="/4.png" alt="" width={30} height={36} />}
+    title="ID Upload Portal"
+    subtitle="Easy compliance document upload."
+  />
+
+  <PlatformCard
+    icon={<Image src="/5.png" alt="" width={30} height={36} />}
+    title="AI Chat Support"
+    subtitle="Quick answers and helpful guidance."
+  />
+
+  <PlatformCard
+    icon={<Image src="/6.png" alt="" width={30} height={36} />}
+    title="Future Integrations"
+    subtitle="More tools coming soon."
+    ghost
+  />
+
+</div>
+
+        </div>
+      </section>
+
+      {/* ================= TESTIMONIALS ================= */}
+      <section className="section dark">
+        <div className="container">
+          <div className="centerTitle darkTitle">
+            <h2 className="h2 light">Trusted by businesses of all sizes</h2>
+          </div>
+
+          <div className="testGrid">
+          <TestimonialCard
+            quote="Setting up our UK business address was quick and stress free. The team was incredibly helpful and the Mayfair location gives our company real presence."
+            name="Daniel"
+            role="Executive Owner"
+            avatar="/Daniel.png"
+          />
+
+          <TestimonialCard
+            quote="Mail handling has been smooth from the start. The dashboard makes everything easy to manage and support replies fast."
+            name="Priya"
+            role="Digital Consultant"
+            avatar="/Priya.png"
+          />
+
+          </div>
+        </div>
+      </section>
+
+      {/* ================= SEE THE DIFFERENCE ================= */}
+      <section className="section-see-difference">
+              <div className="container">
+                <div className="diffHead">
+                  <h2 className="h2 diffTitle">See the Difference</h2>
+                  <p className="muted diffSub">Why businesses switch to Virtual Office Anywhere.</p>
+                </div>
+
+                <div className="diffWrap">
+                  {/* LEFT LABELS */}
+                  <div className="diffLeft">
+                    <div className="diffLabel">Starting Price</div>
+                    <div className="diffLabel">Packages</div>
+                    <div className="diffLabel">Address Quality</div>
+                    <div className="diffLabel">Mail Handling</div>
+                    <div className="diffLabel">Hidden Fees</div>
+                    <div className="diffLabel">Client Support</div>
+                  </div>
+
+                  {/* CENTER MAIN CARD */}
+                  <div className="diffCenter">
+                    <div className="diffMainCard">
+                      <div className="diffBrand">
+                        <Image
+                          src="/logo2.png"
+                          alt="Virtual Office Anywhere"
+                          width={180}
+                          height={80}
+                          className="diffLogo"
+                          priority
+                        />
+                      </div>
+
+
+                      <div className="diffMainList">
+                        <div className="diffMainItem per-month">From £20 per month</div>
+                        <div className="diffMainItem">Only two simple packages</div>
+                        <div className="diffMainItem">No setup fees, no extras</div>
+                        <div className="diffMainItem">Prestigious Mayfair</div>
+                        <div className="diffMainItem collect-scan">Collect or Scan &amp; Forward</div>
+                        <div className="diffMainItem collect-scan">NONE</div>
+                        <div className="diffMainItem">Friendly, responsive team</div>
+                      </div>
+
+                      <button className="btn btnPrimary full diffBtn">Choose Us</button>
+                    </div>
+                  </div>
+
+                  {/* RIGHT PROVIDERS CARD */}
+                  <div className="diffRight">
+                    <div className="diffOtherCard">
+                      <div className="diffOtherHead">Large Mass Providers</div>
+                      <div className="diffOtherList">
+                        <div className="diffOtherItem">Often higher with add ons</div>
+                        <div className="diffOtherItem">Complicated plans with extras</div>
+                        <div className="diffOtherItem">Generic addresses</div>
+                        <div className="diffOtherItem">Mixed locations, variable standards</div>
+                        <div className="diffOtherItem">Often charged per action</div>
+                        <div className="diffOtherItem">Setup fees, small charges and add ons</div>
+                        <div className="diffOtherItem">Ticket queues and slow replies</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
       <Footer />
     </div>
   );
