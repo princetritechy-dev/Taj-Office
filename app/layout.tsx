@@ -20,11 +20,3 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     </html>
   );
 }
-export function StepCard({ title, desc }: { title: string; desc: string }) {
-  return (
-    <div className="howCard">
-      <div className="howCardTitle">{title}</div>
-      <div className="howCardDesc">{desc}</div>
-    </div>
-  );
-}
