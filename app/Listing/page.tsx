@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo, useState } from "react";
-type FAQ = { q: string; a: string };
+ 
 import Header from "../components/header";
 import Footer from "../components/footer";
 import "../globals.css";
@@ -166,4 +165,5 @@ export default function Listing() {
         </main>
     )
 }
+
 
