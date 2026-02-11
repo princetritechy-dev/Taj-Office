@@ -30,6 +30,13 @@ export default function About() {
                         <p className="bold-heading">We don't run a large network of offices. We work with a small number of locations that we know well and manage carefully.</p>
                         <p>This means you aren't sharing your business address with an unlimited number of companies, and we have a clear understanding of who is using each address.</p>
                         <div className="lowerbox">
+                            <Image
+                                src="/icons/real-experience.png"
+                                alt="Real Experience Icon"
+                                width={28}
+                                height={28}
+                                priority
+                            />
                             <h3>Real Experience</h3>
                             <p className="bold-heading">We operate our own virtual office from Albemarle Street in Mayfair, so we understand how the service works in practice.</p>
                             <p>We deal with post arriving every day, client requests, compliance checks, and the practical details that matter when you are using a virtual office as part of a real business.</p>
