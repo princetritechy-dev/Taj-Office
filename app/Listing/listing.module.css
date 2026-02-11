@@ -1,4 +1,6 @@
-
+.hero-inner {
+    text-align: center !important;
+}
     .container{
       width:min(var(--container), calc(100% - 40px));
       margin-inline:auto;
