@@ -33,7 +33,7 @@ export default function ListingPage() {
       </section>
 
       {/* ✅ Floating Card (global + module both) */}
-      <div className={`floatingcard`}>
+      <div className={`floatingcard ${styles.floatingCard}`}>
         <div className="container">
           <div className={`card ${styles.card}`}>
             <h3 className={styles.cardTitle}>
