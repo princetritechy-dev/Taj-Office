@@ -23,7 +23,7 @@ export default function About() {
             <section className="second commonsec">
                 <div className="row">
                     <div className="container-left">
-                        <h2>Quality over <span className="green-color">Quantity<span></h2>
+                        <h2>Quality over <span className="green-color">Quantity</span></h2>
                         <p>OUR CORE PHILOSOPHY</p>
                     </div>
                     <div className="container-right">
