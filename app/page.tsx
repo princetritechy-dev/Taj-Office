@@ -332,13 +332,13 @@ export default async function HomePage() {
       <div className="howCards">
         <StepCard
                 title="Create Your Account"
-                desc="Choose your address, complete checkout and open your client profile." num={""}        />
+                desc="Choose your address, complete checkout and open your client profile."        />
         <StepCard
                 title="Upload Your Documents"
-                desc="Provide ID and proof of address for verification. Our team checks everything manually." num={""}        />
+                desc="Provide ID and proof of address for verification. Our team checks everything manually."       />
         <StepCard
                 title="Start Using Your Address"
-                desc="Once approved, you receive your welcome email and can begin using your Mayfair address." num={""}        />
+                desc="Once approved, you receive your welcome email and can begin using your Mayfair address."       />
       </div>
 
       <div className="howFoot muted centerMax">
