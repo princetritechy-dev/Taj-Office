@@ -1,4 +1,7 @@
- .hero-inner {
+.container {
+    background: red;
+}
+.hero-inner {
     text-align: center !important;
 }
     .container{
