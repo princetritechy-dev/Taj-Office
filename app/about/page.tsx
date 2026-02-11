@@ -31,7 +31,7 @@ export default function About() {
                         <p>This means you aren't sharing your business address with an unlimited number of companies, and we have a clear understanding of who is using each address.</p>
                         <div className="lowerbox">
                             <Image
-                                src="/icons/real-experience.png"
+                                src="/icons/real.png"
                                 alt="Real Experience Icon"
                                 width={28}
                                 height={28}
