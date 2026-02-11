@@ -12,7 +12,7 @@ export default function Listing() {
 
       {/* HERO */}
      <section className={`hero ${styles.hero}`}>
-  <div className={`container hero-inner ${styles.heroInner}`}>
+    <div className={`container hero-inner ${styles.heroInner}`}>
     <div className={`pill ${styles.pill}`}>PARTNERSHIP PROGRAM</div>
 
     <h1>
@@ -276,4 +276,5 @@ export default function Listing() {
     </main>
   );
 }
+
 
