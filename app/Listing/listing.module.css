@@ -504,6 +504,9 @@
     box-shadow: 0 14px 34px rgba(19, 182, 166, .12), 0 10px 25px rgba(10, 35, 55, .08);
 }
 
+.ctaMedia {
+  position: relative !important;   /* ✅ IMPORTANT */
+}
     /* ================= RESPONSIVE ================= */
     @media (max-width: 980px){
       .hero{ padding: 70px 0 150px; }
