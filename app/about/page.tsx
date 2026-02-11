@@ -10,20 +10,24 @@ export default function About() {
     return (
         <main>
             <Header />
-            <section className="first commonsec">
+<section className="first commonsec">
                 <div className="row">
                     <div className="container">
+                        <div className="banner-content">
                         <h2>MORE THAN JUST AN ADDRESS</h2>
                         <p>Anywhere is a virtual office provider for businesses that want a reliable UK address and a service that is properly looked after</p>
                         <h1>About Us</h1>
+                        </div>
+                        <div className="scroll-content">
                         <p>Scroll to explore</p>
+                        </div>
                     </div>
                 </div>
             </section>
             <section className="second commonsec">
                 <div className="row">
                     <div className="container-left">
-                        <h2>Quality over Quantity</h2>
+                        <h2>Quality <br>over <span style="color:#00A699"><br>Quantity</span></h2>
                         <p>OUR CORE PHILOSOPHY</p>
                     </div>
                     <div className="container-right">
@@ -56,21 +60,25 @@ export default function About() {
                 <div className="right">
                     <div className="right-top">
                         <div className="right-top-left">
+                            <div className="believe-virtual">
                             <h3>Clear Pricing</h3>
                             <p>We believe virtual office services should be fairly priced and easy to understand. Our fair price promise means you won't be charged inflated fees or unexpected extras.</p>
                             <div className="clear-pricing">
                             <p className="fst common">Sensible</p>
                             <p className="scnd common">Consitsent</p>
                             </div>
-                        </div>
-                        <div className="right-top-right">
-
+                            </div>
+                            <div className="pricing-img"></div>
                         </div>
                         <div className="right-bottom">
                             <div className="right bottom left">
                                 <h3>Approachable Team</h3>
                                 <p>We are a small team by choice. That allows us to stay responsive and deal with queries quickly.Support feels personal, not informal.</p>
                                 <p>Meet the team</p>
+                            </div>
+                            <div className="year-experience">
+                                <h2>60+</h2>
+                                <p>Years Experience</p>
                             </div>
                             
                         </div>
@@ -79,10 +87,11 @@ export default function About() {
             </div>
             </section>
             <section className="fourth commonsec">
+                <div className="forth-inner">
                 <div className="left">
-                    <h2>Our Services</h2>
+                    <h2>Our <br><span style="color:#00A699;">Services</span></h2>
                     <p>Registered office and business address services suitable for Companies House, HMRC, and everyday business use.</p>
-
+                    <div className="service-block">
                     <div className="left-one">
                         <p>Mail Collection</p>
                     </div>
@@ -92,11 +101,13 @@ export default function About() {
                     <div className="left-three">
                         Scan and Email
                     </div>
+                    </div>
                 </div>
                 <div className="right">
                     <h3>Meeting Rooms</h3>
                     <p>At selected locations, meeting rooms are available to book when you need a physical space for client meetings or internal sessions.</p>
                     <button>View Locations</button>
+                </div>
                 </div>
             </section>
             <Footer />
