@@ -4,6 +4,8 @@ import Link from "next/link";
 import Header from "./components/header";
 import Footer from "./components/footer";
 
+export const dynamic = "force-dynamic"; // ✅ IMPORTANT for Vercel
+
 async function getHomePage() {
   const res = await fetch(
     "https://lavender-alligator-176962.hostingersite.com/index.php/wp-json/wp/v2/pages?slug=home",
