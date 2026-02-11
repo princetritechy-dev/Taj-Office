@@ -47,7 +47,7 @@ export default function About() {
                     <div className="heading"><h2>The standards that define us.</h2></div>
                 <div className="discover"><p> Scroll to discover </p></div>
                 </div>
-                <div className="third-inner-main">    
+                    
                 <div className="left">
                     <div className="handled">
                     <h3>Compliance handled in house</h3>
@@ -85,7 +85,7 @@ export default function About() {
                         </div>
                     </div>
                 </div>
-                </div>
+                
             </div>
             </section>
             <section className="fourth commonsec">
