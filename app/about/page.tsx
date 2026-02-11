@@ -27,7 +27,7 @@ export default function About() {
             <section className="second commonsec">
                 <div className="row">
                     <div className="container-left">
-                        <h2>Quality <br>over <span style="color:#00A699"><br>Quantity</span></h2>
+                        <h2>Quality <br>over <span><br>Quantity</span></h2>
                         <p>OUR CORE PHILOSOPHY</p>
                     </div>
                     <div className="container-right">
@@ -91,7 +91,7 @@ export default function About() {
             <section className="fourth commonsec">
                 <div className="forth-inner">
                 <div className="left">
-                    <h2>Our <br><span style="color:#00A699;">Services</span></h2>
+                    <h2>Our <br><span>Services</span></h2>
                     <p>Registered office and business address services suitable for Companies House, HMRC, and everyday business use.</p>
                     <div className="service-block">
                     <div className="left-one">
