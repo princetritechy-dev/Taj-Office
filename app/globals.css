@@ -1375,10 +1375,10 @@ section.third.commonsec {
   display: flex;
   justify-content: center;
 }
-
 .step {
-  margin: 0 20px;
-  text-align: center;
+    text-align: center;
+    margin: 0 20px;
+    z-index: 9;
 }
 
 .step-number {
