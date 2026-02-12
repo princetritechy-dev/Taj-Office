@@ -37,6 +37,7 @@ export default function AboutUsPage() {
               <div className="qm-line2">over</div>
               <div className="qm-line3">Quantity</div>
             </div>
+            <div className="divider"></div>
             <div className="quality-caption">OUR CORE PHILOSOPHY</div>
           </div>
 
@@ -50,9 +51,13 @@ export default function AboutUsPage() {
             </p>
 
             <div className="experience-card">
+              <div className="experience-card-icon">
               <div className="exp-icon" aria-hidden="true">📍</div>
+                 <div className="exp-title">Real Experience</div>
+
+              </div>
               <div>
-                <div className="exp-title">Real Experience</div>
+              
                 <p className="exp-text">
                   We operate our own virtual office from Albemarle Street in Mayfair, so we understand how the service works in practice.
                 </p>
@@ -139,6 +144,7 @@ export default function AboutUsPage() {
             <h2 className="services-title">
               Our <span>Services</span>
             </h2>
+            <div className="divider"></div>
 
             <p className="services-text">
               Registered office and business address services suitable for Companies House, HMRC, and everyday business use.
@@ -209,4 +215,5 @@ export default function AboutUsPage() {
     </main>
   );
 }
+
 
