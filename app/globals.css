@@ -1393,10 +1393,7 @@ section.third.commonsec {
   margin-bottom: 10px;
 }
 
-.step p {
-  font-size: 16px;
-}
-
+ 
 .business-address {
     background-color: #fff;
     justify-content: center;
@@ -1478,14 +1475,104 @@ span.step-number:hover {
     color:#fff !important;
 }
 .step p {
-    font-size: 16px;
-    margin: 0px;
-    padding: 30px;
-    background-color: #fff !important;
-    border-radius: 20px;
-    color: #2E3C5C;
-    font-weight: 700;
+    color: #2e3c5c;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+}
+.step-inner h3 {
+    margin-top: 0;
 }
 
 
+
+ p.feature-location {
+    width: fit-content;
+    background: #00A69933;
+    padding: 10px;
+    border-radius: 20px;
+    color: #00A699 !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+.business-address h2 {
+    margin-bottom: 20px;
+    font-size: 32px;
+    color: #fff !important;
+}
+.business-address .left p {
+    color: #D1D5DB !important;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.mayfair {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background-color: #ffffff26;
+    border-radius: 20px;
+    margin-top: 29px;
+}
+.mayfair h3.address {
+    color: #fff !important;
+    margin: 0px;
+    font-size: 18px;
+    font-weight: 700;
+}
+.mayfair p.address {
+    color: #9CA3AF !important;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0px !important;
+}
+.mayfair img {
+    margin-bottom: -23px;
+}
+.view-plans-btn {
+    color: #2e3c5c;
+    background-color: #fff;
+    border-radius: 30px;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 24px;
+}
+
+.steps::before {
+    content: '';
+    background: linear-gradient(45deg, #E5E7EB, #00A699, #e5e7eb);
+    width: 42%;
+    height: 5px;
+    position: absolute;
+    margin-top: 28px;
+}
+p.simple {
+    color: #00A699;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0px !important;
+}
+.how-it-works h2 {
+    color: #2e3c5c;
+    margin-bottom: 20px;
+    font-size: 32px;
+    font-weight: 800;
+    margin: 8px 0px 14px 0px !important;
+}
+.step-inner {
+    color: #2e3c5c;
+    border-radius: 20px;
+    margin: 0;
+    padding: 30px;
+    font-size: 16px;
+    font-weight: 700;
+    background-color: #fff !important;
+}
 
