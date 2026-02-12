@@ -292,41 +292,40 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ================= HOW IT WORKS ================= */}
-      <section className="section-how-work">
-        <div className="container">
-          <div className="centerTitle">
-            <div className="pill soft-two">Simple process</div>
-            <h2 className="h2">How It Works</h2>
-            <p className="muted centerMax">
-              A simple setup with support at every step. We keep the process
-              clear so you always know what comes next.
-            </p>
-          </div>
+      <section class="business-address">
+  <div class="container">
+    <div class="left">
+      <h2>Pick Your Perfect Business Address</h2>
+      <p>Choose a professional location that supports the image you want for your business. Our Mayfair address is known for its reputation, stability, and high-quality surroundings.</p>
+      <p class="address">Mayfair, London W1</p>
+      <a href="#" class="view-plans-btn">View Plans</a>
+    </div>
+    <div class="right">
+      <img src="your-image-path.jpg" alt="Business Location">
+    </div>
+  </div>
+</section>
 
-          <div className="howWrap">
-            <div className="howCards">
-              <StepCard
-                title="Create Your Account"
-                desc="Choose your address, complete checkout and open your client profile."
-              />
-              <StepCard
-                title="Upload Your Documents"
-                desc="Provide ID and proof of address for verification. Our team checks everything manually."
-              />
-              <StepCard
-                title="Start Using Your Address"
-                desc="Once approved, you receive your welcome email and can begin using your Mayfair address."
-              />
-            </div>
-
-            <div className="howFoot muted centerMax">
-              Compliance is part of UK regulations, and we manage the process
-              carefully without making it complicated for you.
-            </div>
-          </div>
-        </div>
-      </section>
+<section class="how-it-works">
+  <div class="container">
+    <h2>How It Works</h2>
+    <p>A simple walk-through process at every step. We help the process clear so you know what comes next.</p>
+    <div class="steps">
+      <div class="step">
+        <span class="step-number">1</span>
+        <p>Create Your Account</p>
+      </div>
+      <div class="step">
+        <span class="step-number">2</span>
+        <p>Upload Your Documents</p>
+      </div>
+      <div class="step">
+        <span class="step-number">3</span>
+        <p>Start Using Your Address</p>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* ================= PLATFORM FEATURES ================= */}
       <section className="section-platform">
