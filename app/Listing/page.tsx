@@ -3,30 +3,31 @@
 import Image from "next/image";
 import Header from "../components/header";
 import Footer from "../components/footer";
-import styles from "./listing.module.css";
+
+import "./listing.css"; // ✅ only this page css
 
 export default function ListingPage() {
   return (
-    <main className={styles.page}>
+    <main className="listing-page">
       <Header />
 
       {/* HERO */}
-      <section className={styles.hero}>
-        <div className={`container ${styles.heroInner}`}>
-          <div className={styles.pill}>PARTNERSHIP PROGRAM</div>
+      <section className="hero">
+        <div className="container hero-inner">
+          <div className="pill">PARTNERSHIP PROGRAM</div>
 
-          <h1 className={styles.heroH1}>
+          <h1>
             Why work with <br /> Virtual Office Anywhere
           </h1>
 
-          <div className={styles.heroDivider} />
+          <div className="hero-divider" />
 
-          <p className={styles.heroP}>
+          <p>
             Generate additional revenue from virtual office services, without the
             hassle that usually comes with running them.
           </p>
 
-          <div className={styles.heroDown} aria-hidden="true">
+          <div className="hero-down" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
               <path
                 d="M12 16l-6-6m6 6l6-6"
@@ -39,26 +40,26 @@ export default function ListingPage() {
           </div>
         </div>
 
-        {/* Curved white shape */}
-        <div className={styles.heroCurve} aria-hidden="true" />
+        {/* Curved white bottom */}
+        <div className="hero-curve" aria-hidden="true" />
       </section>
 
       {/* FLOATING CARD */}
-      <section className={styles.floatWrap}>
-        <div className={`container ${styles.floatContainer}`}>
-          <div className={styles.floatCard}>
-            <h3 className={styles.floatTitle}>
+      <section className="float-wrap">
+        <div className="container">
+          <div className="float-card">
+            <h3>
               Virtual Office Anywhere partners with office buildings and <br />
               virtual office providers.
             </h3>
 
-            <p className={styles.floatDesc}>
+            <p>
               We operate deliberately. We don’t aim to list hundreds of buildings
               or flood a single address with large volumes of companies.
             </p>
 
-            <div className={styles.promise}>
-              <div className={styles.promiseIcon} aria-hidden="true">
+            <div className="promise">
+              <div className="promise-icon" aria-hidden="true">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                   <path
                     d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z"
@@ -68,9 +69,10 @@ export default function ListingPage() {
                   />
                 </svg>
               </div>
+
               <div>
-                <div className={styles.promiseSmall}>OUR PROMISE</div>
-                <div className={styles.promiseText}>
+                <div className="promise-small">OUR PROMISE</div>
+                <div className="promise-text">
                   We work with a small number of office partners so each location
                   stays credible and well managed.
                 </div>
@@ -81,36 +83,36 @@ export default function ListingPage() {
       </section>
 
       {/* REVENUE SPLIT */}
-      <section className={styles.section}>
-        <div className={`container ${styles.split}`}>
-          <div className={styles.revCard}>
-            <div className={styles.revTop}>REVENUE SPLIT</div>
+      <section className="section">
+        <div className="container split">
+          <div className="rev-card">
+            <div className="rev-top">REVENUE SPLIT</div>
 
-            <div className={styles.revNums}>
-              <div className={styles.revBig}>60</div>
-              <div className={styles.revSlash}>/</div>
-              <div className={styles.revSmall}>40</div>
+            <div className="rev-numbers">
+              <div className="big">60</div>
+              <div className="slash">/</div>
+              <div className="small">40</div>
             </div>
 
-            <div className={styles.revBar}>
+            <div className="rev-bar">
               <span />
             </div>
 
-            <div className={styles.revNote}>
+            <div className="rev-note">
               The larger share goes to the <strong>building partner</strong>.
             </div>
           </div>
 
-          <div className={styles.splitText}>
-            <h2 className={styles.h2}>A fair and transparent split</h2>
-            <p className={styles.muted}>
+          <div className="split-text">
+            <h2>A fair and transparent split</h2>
+            <p>
               We believe the building should benefit properly from the address it
               provides, and we structure our partnerships to reflect that.
             </p>
 
-            <ul className={styles.ticks}>
+            <ul className="ticks">
               <li>
-                <span className={styles.tick}>
+                <span className="tick">
                   <svg viewBox="0 0 24 24" fill="none">
                     <path
                       d="M20 6L9 17l-5-5"
@@ -124,7 +126,7 @@ export default function ListingPage() {
                 No hidden fees
               </li>
               <li>
-                <span className={styles.tick}>
+                <span className="tick">
                   <svg viewBox="0 0 24 24" fill="none">
                     <path
                       d="M20 6L9 17l-5-5"
@@ -138,7 +140,7 @@ export default function ListingPage() {
                 No complex pricing models
               </li>
               <li>
-                <span className={styles.tick}>
+                <span className="tick">
                   <svg viewBox="0 0 24 24" fill="none">
                     <path
                       d="M20 6L9 17l-5-5"
@@ -156,17 +158,17 @@ export default function ListingPage() {
         </div>
       </section>
 
-      {/* SUPPORT CARDS */}
-      <section className={styles.section}>
+      {/* SUPPORT */}
+      <section className="section">
         <div className="container">
-          <div className={styles.centerTitle}>
-            <h2 className={styles.h2}>How we support you</h2>
-            <div className={styles.underline} />
+          <div className="title-center">
+            <h2>How we support you</h2>
+            <div className="underline" />
           </div>
 
-          <div className={styles.cards}>
-            <div className={styles.infoCard}>
-              <div className={styles.ic} aria-hidden="true">
+          <div className="cards">
+            <div className="info-card">
+              <div className="ic" aria-hidden="true">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                   <path
                     d="M12 21s-7-4.4-7-11V6l7-3 7 3v4c0 6.6-7 11-7 11z"
@@ -189,8 +191,8 @@ export default function ListingPage() {
               </p>
             </div>
 
-            <div className={styles.infoCard}>
-              <div className={styles.ic} aria-hidden="true">
+            <div className="info-card">
+              <div className="ic" aria-hidden="true">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                   <path d="M4 14h16v6H4v-6z" stroke="#13b6a6" strokeWidth="2" />
                   <path
@@ -207,8 +209,8 @@ export default function ListingPage() {
               </p>
             </div>
 
-            <div className={styles.infoCard}>
-              <div className={styles.ic} aria-hidden="true">
+            <div className="info-card">
+              <div className="ic" aria-hidden="true">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                   <path
                     d="M11 21a9 9 0 1 1 6.36-2.64L21 22"
@@ -234,24 +236,23 @@ export default function ListingPage() {
         </div>
       </section>
 
-      {/* DARK SECTION */}
-      <section className={styles.dark}>
-        <div className={`container ${styles.darkInner}`}>
-          <h2 className={styles.darkH2}>
+      {/* DARK */}
+      <section className="dark">
+        <div className="container dark-inner">
+          <h2>
             Built by people who use <br />
             <span>virtual offices themselves</span>
           </h2>
 
-          <p className={styles.darkP}>
+          <p>
             We operate our own virtual office, so we understand how these
             services work day to day.
           </p>
 
-          <div className={styles.quote}>
+          <div className="quote">
             <em>
-              “We have seen the other side of the industry: unfair revenue
-              splits, poor marketing, and compliance checks not carried out to
-              standard.”
+              “We have seen the other side of the industry: unfair revenue splits,
+              poor marketing, and compliance checks not carried out to standard.”
             </em>
             <strong>
               Those experiences are exactly why we built Virtual Office Anywhere
@@ -259,17 +260,18 @@ export default function ListingPage() {
             </strong>
           </div>
 
-          <div className={styles.footerLine}>
+          <div className="footer-line">
             We care about long term partnerships, not quick wins.
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className={styles.ctaWrap}>
+      <section className="cta-wrap">
         <div className="container">
-          <div className={styles.cta}>
-            <div className={styles.ctaMedia}>
+          <div className="cta">
+            {/* ✅ Next/Image fill: parent must be relative + height */}
+            <div className="cta-media">
               <Image
                 src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1400&auto=format&fit=crop"
                 alt="Partner with us"
@@ -280,25 +282,25 @@ export default function ListingPage() {
             </div>
 
             <div>
-              <h3 className={styles.ctaH3}>Partner with us</h3>
-              <p className={styles.ctaP}>
+              <h3>Partner with us</h3>
+              <p>
                 If you operate an office building and would like to explore
-                offering virtual office services without the operational
-                overhead, we would be happy to talk.
+                offering virtual office services without the operational overhead,
+                we would be happy to talk.
               </p>
 
-              <div className={styles.btns}>
-                <a className={styles.btnPrimary} href="#">
+              <div className="btns">
+                <a className="btn primary" href="#">
                   Get in touch
                 </a>
-                <a className={styles.btnGhost} href="#">
+                <a className="btn" href="#">
                   Learn More
                 </a>
               </div>
 
-              <small className={styles.ctaSmall}>
-                We will walk you through how the partnership works and answer
-                any questions.
+              <small>
+                We will walk you through how the partnership works and answer any
+                questions.
               </small>
             </div>
           </div>
