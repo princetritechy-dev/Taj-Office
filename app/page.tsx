@@ -301,7 +301,7 @@ export default async function HomePage() {
       <div className="mayfair"> 
         <div> 
           <Image
-                  src="/images/right.jpg"
+                  src="/images/map.png"
                   alt="Check icon"
                   className="checkIcon"
                 />
