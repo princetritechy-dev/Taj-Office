@@ -5,7 +5,9 @@ export default function Header(){
     <header className="nav">
         <div className="container navInner">
           <div className="brand">
+            
             {/* Logo Image */}
+            <a href="https://taj-office.vercel.app/">
             <Image
               src="/images/logo.png"
               alt="Virtual Office Anywhere Logo"
@@ -13,6 +15,7 @@ export default function Header(){
               height={50}
               className="brandLogo"
             />
+              </a>
           </div>
 
 
