@@ -28,7 +28,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* ================= QUALITY + EXPERIENCE ================= */}
-      <section className="section quality">
+      <section className="section">
         <div className="container quality-grid">
           {/* Left logo/heading */}
           <div className="quality-left">
@@ -37,7 +37,6 @@ export default function AboutUsPage() {
               <div className="qm-line2">over</div>
               <div className="qm-line3">Quantity</div>
             </div>
-            <div className="divider"></div>
             <div className="quality-caption">OUR CORE PHILOSOPHY</div>
           </div>
 
@@ -51,13 +50,9 @@ export default function AboutUsPage() {
             </p>
 
             <div className="experience-card">
-                <div className="exp-icon-box">
-                    <div className="exp-icon" aria-hidden="true">📍</div>
-                    <div className="exp-title">Real Experience</div>
-                </div>
-              
+              <div className="exp-icon" aria-hidden="true">📍</div>
               <div>
-                
+                <div className="exp-title">Real Experience</div>
                 <p className="exp-text">
                   We operate our own virtual office from Albemarle Street in Mayfair, so we understand how the service works in practice.
                 </p>
@@ -83,13 +78,13 @@ export default function AboutUsPage() {
         <div className="container standards-grid">
           {/* Big left card */}
           <div className="card big-card">
-            <div className="big-card-box">
             <div className="card-icon" aria-hidden="true">⚖️</div>
             <h3 className="card-title">Compliance handled in house</h3>
             <p className="card-text">
               Using a business address comes with legal responsibilities. AML and KYC checks are carried out by our own team and reviewed properly.
             </p>
-            </div>
+
+            <div className="card-divider" />
 
             <div className="card-bottom">
               <div className="card-label">OUR PROMISE</div>
@@ -142,9 +137,9 @@ export default function AboutUsPage() {
         <div className="container services-grid">
           <div className="services-left">
             <h2 className="services-title">
-              Our <br> <span>Services</span>
+              Our <span>Services</span>
             </h2>
-            <div className="divider"></div>
+
             <p className="services-text">
               Registered office and business address services suitable for Companies House, HMRC, and everyday business use.
             </p>
