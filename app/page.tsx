@@ -32,7 +32,7 @@ export default async function HomePage() {
           <div className="heroLeft">
             <div className="pill">
               <Image
-                src="/icon-top.png"
+                src="/images/icon-top.png"
                 alt="Check icon"
                 width={8}
                 height={8}
@@ -73,7 +73,7 @@ export default async function HomePage() {
                 <div className="collageTop">
                   <div className="imgWrap">
                     <Image
-                      src="/View.png"
+                      src="/images/View.png"
                       alt="Office"
                       fill
                       className="collageImg"
@@ -102,7 +102,7 @@ export default async function HomePage() {
             <div className="whyCard whyCardTall">
               <div className="imgWrap">
                 <Image
-                  src="/why1.png"
+                  src="/images/why1.png"
                   alt="Office workspace"
                   fill
                   className="whyImg"
@@ -113,7 +113,7 @@ export default async function HomePage() {
             <div className="whyCard whyCardTop">
               <div className="imgWrap">
                 <Image
-                  src="/why2.png"
+                  src="/images/why2.png"
                   alt="Business team"
                   fill
                   className="whyImg"
@@ -152,7 +152,7 @@ export default async function HomePage() {
             <ul className="checkList">
               <li>
                 <Image
-                  src="/icon.png"
+                  src="/images/icon.png"
                   alt="Check icon"
                   width={15}
                   height={20}
@@ -165,7 +165,7 @@ export default async function HomePage() {
               </li>
               <li>
                 <Image
-                  src="/icon.png"
+                  src="/images/icon.png"
                   alt="Check icon"
                   width={15}
                   height={20}
@@ -175,7 +175,7 @@ export default async function HomePage() {
               </li>
               <li>
                 <Image
-                  src="/icon.png"
+                  src="/images/icon.png"
                   alt="Check icon"
                   width={15}
                   height={20}
@@ -185,7 +185,7 @@ export default async function HomePage() {
               </li>
               <li>
                 <Image
-                  src="/icon.png"
+                  src="/images/icon.png"
                   alt="Check icon"
                   width={15}
                   height={20}
@@ -198,7 +198,7 @@ export default async function HomePage() {
             <ul className="checkList">
               <li>
                 <Image
-                  src="/icon.png"
+                  src="/images/icon.png"
                   alt="Check icon"
                   width={15}
                   height={20}
@@ -208,7 +208,7 @@ export default async function HomePage() {
               </li>
               <li>
                 <Image
-                  src="/icon.png"
+                  src="/images/icon.png"
                   alt="Check icon"
                   width={15}
                   height={20}
@@ -218,7 +218,7 @@ export default async function HomePage() {
               </li>
               <li>
                 <Image
-                  src="/icon.png"
+                  src="/images/icon.png"
                   alt="Check icon"
                   width={15}
                   height={20}
@@ -241,7 +241,7 @@ export default async function HomePage() {
 
           <div className="cardsGrid">
             <FeatureCard
-              icon={<Image src="/symb1.png" alt="" width={40} height={40} />}
+              icon={<Image src="/images/symb1.png" alt="" width={40} height={40} />}
               title="Premium UK Address"
               q2="What This Means"
               desc="Use your address for business documents, websites and registrations."
@@ -249,7 +249,7 @@ export default async function HomePage() {
               noteText="Builds trust and strengthens your company image."
             />
             <FeatureCard
-              icon={<Image src="/symb2.png" alt="" width={40} height={40} />}
+              icon={<Image src="/images/symb2.png" alt="" width={40} height={40} />}
               title="Friendly Support"
               q2="What This Means"
               desc="Real people who help with updates and questions."
@@ -257,7 +257,7 @@ export default async function HomePage() {
               noteText="A smoother experience without delays."
             />
             <FeatureCard
-              icon={<Image src="/symb3.png" alt="" width={40} height={40} />}
+              icon={<Image src="/images/symb3.png" alt="" width={40} height={40} />}
               title="Thoughtful Mail Handling"
               q2="What This Means"
               desc="Mail is received, safely managed by our team."
@@ -265,7 +265,7 @@ export default async function HomePage() {
               noteText="Peace of mind and better organisation."
             />
             <FeatureCard
-              icon={<Image src="/symb4.png" alt="" width={40} height={40} />}
+              icon={<Image src="/images/symb4.png" alt="" width={40} height={40} />}
               title="Clear, Simple Pricing"
               q2="What This Means"
               desc="Two packages with no setup fees and no hidden extras."
@@ -273,7 +273,7 @@ export default async function HomePage() {
               noteText="Easy budgeting and no surprise bills."
             />
             <FeatureCard
-              icon={<Image src="/symb5.png" alt="" width={40} height={40} />}
+              icon={<Image src="/images/symb5.png" alt="" width={40} height={40} />}
               title="Meeting Rooms Available"
               q2="What This Means"
               desc="Book rooms at select locations when you need them."
@@ -281,7 +281,7 @@ export default async function HomePage() {
               noteText="A more polished and professional presence."
             />
             <FeatureCard
-              icon={<Image src="/symb6.png" alt="" width={40} height={40} />}
+              icon={<Image src="/images/symb6.png" alt="" width={40} height={40} />}
               title="Proper Compliance Checks"
               q2="What This Means"
               desc="We meet basic requirements and keep things secure."
@@ -341,32 +341,32 @@ export default async function HomePage() {
 
           <div className="platformGrid">
             <PlatformCard
-              icon={<Image src="/1.png" alt="" width={30} height={36} />}
+              icon={<Image src="/images/1.png" alt="" width={30} height={36} />}
               title="Mail Dashboard"
               subtitle="View mail received and track delivery requests."
             />
             <PlatformCard
-              icon={<Image src="/2.png" alt="" width={30} height={36} />}
+              icon={<Image src="/images/2.png" alt="" width={30} height={36} />}
               title="Automatic Billing"
               subtitle="Manage subscriptions with clear monthly billing."
             />
             <PlatformCard
-              icon={<Image src="/3.png" alt="" width={30} height={36} />}
+              icon={<Image src="/images/3.png" alt="" width={30} height={36} />}
               title="Document Vault"
               subtitle="Store important files securely."
             />
             <PlatformCard
-              icon={<Image src="/4.png" alt="" width={30} height={36} />}
+              icon={<Image src="/images/4.png" alt="" width={30} height={36} />}
               title="ID Upload Portal"
               subtitle="Easy compliance document upload."
             />
             <PlatformCard
-              icon={<Image src="/5.png" alt="" width={30} height={36} />}
+              icon={<Image src="/images/5.png" alt="" width={30} height={36} />}
               title="AI Chat Support"
               subtitle="Quick answers and helpful guidance."
             />
             <PlatformCard
-              icon={<Image src="/6.png" alt="" width={30} height={36} />}
+              icon={<Image src="/images/6.png" alt="" width={30} height={36} />}
               title="Future Integrations"
               subtitle="More tools coming soon."
               ghost
