@@ -1575,4 +1575,11 @@ p.simple {
     font-weight: 700;
     background-color: #fff !important;
 }
+.footer {
+    margin: 0;
+    background: #2E3C5C;
+}
+.footer .footerCopy {
+    color: #ffffff75;
+}
 
