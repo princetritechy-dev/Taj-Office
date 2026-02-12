@@ -301,7 +301,7 @@ export default async function HomePage() {
       <a href="#" class="view-plans-btn">View Plans</a>
     </div>
     <div class="right">
-      <img src="your-image-path.jpg" alt="Business Location">
+      <img src="/your-image-path.jpg" alt="Business Location">
     </div>
   </div>
 </section>
