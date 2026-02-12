@@ -78,6 +78,8 @@ export default function AboutUs() {
               </div>
             </div>
 
+          <div className={styles.whitemainCard}>
+
             <div className={styles.whiteCard}>
               <div className={styles.dotTitle}>
                 <span className={styles.dot} /> Approachable Team
@@ -93,6 +95,7 @@ export default function AboutUs() {
             <div className={styles.darkStat}>
               <div className={styles.statNum}>60+</div>
               <div className={styles.statSub}>YEARS EXPERIENCE</div>
+            </div>
             </div>
           </div>
         </div>
@@ -171,5 +174,3 @@ export default function AboutUs() {
     </main>
   );
 }
-
-
