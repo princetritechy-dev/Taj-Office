@@ -342,7 +342,7 @@ export default async function HomePage() {
         <p>Provide ID and proof of address for verification. Our team checks everything manually.</p>
       </div>
       <div className="step">
-        <span className="step-number">✔️</span>
+        <span className="step-number">✔</span>
           <h3>Start Using Your Address</h3>
         <p>Once approved, you receive your welcome email and can begin using your Mayfair address.</p>
       </div>
