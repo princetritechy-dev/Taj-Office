@@ -5,7 +5,7 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import styles from "./about.module.css";
 
-export default function AboutPage() {
+export default function Aboutus() {
   return (
     <main className={styles.page}>
       <Header />
@@ -216,3 +216,4 @@ export default function AboutPage() {
     </main>
   );
 }
+
