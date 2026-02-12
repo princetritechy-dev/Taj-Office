@@ -295,9 +295,24 @@ export default async function HomePage() {
   <section className="business-address">
   <div className="container">
     <div className="left">
+      <p  className="feature-location">Featured Location</p>
       <h2>Pick Your Perfect Business Address</h2>
       <p>Choose a professional location that supports the image you want for your business. Our Mayfair address is known for its reputation, stability, and high-quality surroundings.</p>
-      <p className="address">Mayfair, London W1</p>
+      <div className="mayfair"> 
+        <div> 
+          <Image
+                  src="/images/right.jpg"
+                  alt="Check icon"
+                  className="checkIcon"
+                />
+
+        </div>
+        <div className="mayfair-content"> 
+          <h3 className="address">Mayfair, London W1</h3>
+          <p className="address">Mayfair, London W1</p>
+        </div>
+
+      </div>
       <a href="#" className="view-plans-btn">View Plans</a>
     </div>
     <div className="right">
@@ -312,20 +327,24 @@ export default async function HomePage() {
 
 <section className="how-it-works">
   <div className="container">
+    <p className="simple">Simple Process</p>
     <h2>How It Works</h2>
     <p>A simple walk-through process at every step. We help the process clear so you know what comes next.</p>
     <div className="steps">
       <div className="step">
         <span className="step-number">1</span>
-        <p>Create Your Account</p>
+        <h3>Create Your Account</h3>
+          <p>Choose your address, complete checkout and open your client profile.</p>
       </div>
       <div className="step">
         <span className="step-number">2</span>
-        <p>Upload Your Documents</p>
+           <h3>Upload Your Documents</h3>
+        <p>Provide ID and proof of address for verification. Our team checks everything manually.</p>
       </div>
       <div className="step">
-        <span className="step-number">3</span>
-        <p>Start Using Your Address</p>
+        <span className="step-number">✔️</span>
+          <h3>Start Using Your Address</h3>
+        <p>Once approved, you receive your welcome email and can begin using your Mayfair address.</p>
       </div>
     </div>
   </div>
