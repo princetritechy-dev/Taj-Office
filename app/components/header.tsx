@@ -7,7 +7,7 @@ export default function Header(){
           <div className="brand">
             {/* Logo Image */}
             <Image
-              src="/logo.png"
+              src="/images/logo.png"
               alt="Virtual Office Anywhere Logo"
               width={150}
               height={50}
