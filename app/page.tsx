@@ -415,13 +415,13 @@ export default async function HomePage() {
               quote="Setting up our UK business address was quick and stress free. The team was incredibly helpful and the Mayfair location gives our company real presence."
               name="Daniel"
               role="Executive Owner"
-              avatar="/Daniel.png"
+              avatar="/images/Daniel.png"
             />
             <TestimonialCard
               quote="Mail handling has been smooth from the start. The dashboard makes everything easy to manage and support replies fast."
               name="Priya"
               role="Digital Consultant"
-              avatar="/Priya.png"
+              avatar="/images/Priya.png"
             />
           </div>
         </div>
