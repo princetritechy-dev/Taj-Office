@@ -7,7 +7,7 @@ export default function Footer(){
               <div className="brandText">
                 <div className="brand">
                 <img
-                  src="/images/logo.png" 
+                  src="/images/logo2.png" 
                   alt="Virtual Office Anywhere"
                   className="brandLogo"
                 />
