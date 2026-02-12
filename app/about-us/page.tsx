@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Header from "../components/header";
 import Footer from "../components/footer";
-import styles from "./about-us.module.css";
+import styles from "./about.module.css";
 
 export default function AboutUs() {
   return (
@@ -171,4 +171,5 @@ export default function AboutUs() {
     </main>
   );
 }
+
 
