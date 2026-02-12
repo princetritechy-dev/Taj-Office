@@ -312,21 +312,21 @@ export default async function HomePage() {
   </div>
 </section>
 
-<section class="how-it-works">
-  <div class="container">
+<section className="how-it-works">
+  <div className="container">
     <h2>How It Works</h2>
     <p>A simple walk-through process at every step. We help the process clear so you know what comes next.</p>
-    <div class="steps">
-      <div class="step">
-        <span class="step-number">1</span>
+    <div className="steps">
+      <div className="step">
+        <span className="step-number">1</span>
         <p>Create Your Account</p>
       </div>
-      <div class="step">
-        <span class="step-number">2</span>
+      <div className="step">
+        <span className="step-number">2</span>
         <p>Upload Your Documents</p>
       </div>
-      <div class="step">
-        <span class="step-number">3</span>
+      <div className="step">
+        <span className="step-number">3</span>
         <p>Start Using Your Address</p>
       </div>
     </div>
