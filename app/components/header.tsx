@@ -20,7 +20,7 @@ export default function Header(){
             <Link href="#">Plans</Link>
             <Link href="/Listing">Locations</Link>
             <Link href="#">Support</Link>
-            <Link href="/about">About Us</Link>
+            <Link href="/about-us">About Us</Link>
             <Link href="#">Contact Us</Link>
             <Link className="navLogin" href="#">
               Login
