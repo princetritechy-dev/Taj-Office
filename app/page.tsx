@@ -304,8 +304,8 @@ export default async function HomePage() {
     <Image
                   src="/images/right.jpg"
                   alt="Check icon"
-                  width={15}
-                  height={20}
+                  width={100%}
+                  height={auto}
                   className="checkIcon"
                 />
     </div>
