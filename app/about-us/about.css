@@ -124,9 +124,11 @@
 
 .about-page .h2 {
   margin: 0 0 10px;
-  font-size: 20px;
-  line-height: 1.25;
+  font-size: 18px;
+  line-height: 26px;
   letter-spacing: -0.02em;
+  font-weight: 500;
+  color: #2E3C5C;
 }
 
 .about-page .muted {
@@ -144,9 +146,7 @@
   color: #fff;
   box-shadow: var(--shadow-soft);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
+
 }
 
 .about-page .exp-icon {
@@ -159,24 +159,35 @@
   font-size: 18px;
   flex: 0 0 auto;
 }
+.about-page .exp-icon-box{
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 12px;
+padding-bottom:20px;
+}
 
 .about-page .exp-title {
-  font-weight: 900;
-  margin-bottom: 6px;
-  font-size: 14px;
+  font-weight: 700;
+  font-size: 17px;
+
 }
 
 .about-page .exp-text {
-  margin: 0 0 10px;
-  font-size: 12px;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.78);
+    color: #fff;
+    font-size: 15px;
+    line-height: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ffffff78 !important;
+    font-weight: 400;
 }
 
 .about-page .exp-text.small {
-  margin: 0;
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.62);
+    color: #D1D5DB;
+    margin: 0;
+    font-size: 12px;
+    border: none !important;
+    line-height: 18px;
 }
 
 /* ================= STANDARDS ================= */
@@ -220,13 +231,20 @@
 }
 
 .about-page .big-card {
-  background: linear-gradient(180deg, #2a3f5f, #1b2f49);
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 18px 55px rgba(13, 34, 61, 0.25);
-  width:30%;
+    color: #fff;
+    background: linear-gradient(#2a3f5f, #1b2f49);
+    border: 1px solid #ffffff14;
+    width: 30%;
+    box-shadow: 0 18px 55px #0d223d40;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-
+.about-page .card-bottom
+ {
+    padding-top: 20px;
+    border-top: 1px solid #9CA3AF;
+}
 .about-page .card-icon {
   width: 38px;
   height: 38px;
@@ -239,37 +257,32 @@
 }
 
 .about-page .card-title {
-  margin: 0 0 10px;
-  font-weight: 900;
-  font-size: 16px;
+    margin: 0 0 10px;
+    font-size: 21px;
+    font-weight: 700;
 }
 
 .about-page .card-text {
-  margin: 0 0 14px;
-  font-size: 12px;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.80);
+    color: #D1D5DB;
+    margin: 0 0 14px;
+    font-size: 13px;
+    line-height: 20px; 
 }
 
-.about-page .card-divider {
-  height: 1px;
-  background: rgba(255, 255, 255, 0.10);
-  margin: 16px 0;
-}
 
 .about-page .card-label {
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  font-weight: 900;
-  color: rgba(255, 255, 255, 0.60);
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #00A699;
+    font-size: 12px;
+    font-weight: 700;
 }
 
 .about-page .card-small {
-  margin-top: 8px;
-  font-size: 11px;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.72);
+    color: #9CA3AF;
+    margin-top: 8px;
+    font-size: 11px;
+    line-height: 18px;
 }
 
 /* right stack */
