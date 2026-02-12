@@ -611,10 +611,24 @@
   .about-page .big-card {width:100%;}
   .about-page .standards-grid { flex-direction: column; }
   .about-page .right-stack { width:100%; }
-  .about-page .pricing-card { grid-column: auto; }
+  .about-page .services-text{width:100%;}
   .about-page .services-grid { grid-template-columns: 1fr; }
   .about-page .cta { grid-template-columns: 1fr; }
   .about-page .cta-media { height: 240px; }
+  .about-page .pill-btn {
+    color: #ffffffeb;
+    background: #ffffff14;
+    border: 1px solid #ffffff1a;
+    border-radius: 12px;
+    justify-content: center;
+    align-items: center;
+    width: 31%;
+    padding: 21px 14px;
+    font-size: 13px;
+    font-weight: 700;
+    display: inline-flex;
+    text-align: center;
+}
 }
 
 @media (max-width: 520px) {
