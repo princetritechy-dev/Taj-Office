@@ -144,9 +144,14 @@
   color: #fff;
   box-shadow: var(--shadow-soft);
   border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.about-page .experience-card-icon {
   display: flex;
   gap: 14px;
   align-items: flex-start;
+}
+.divider{
+   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .about-page .exp-icon {
