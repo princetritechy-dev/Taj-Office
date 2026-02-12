@@ -333,18 +333,24 @@ export default async function HomePage() {
     <div className="steps">
       <div className="step">
         <span className="step-number">1</span>
-        <h3>Create Your Account</h3>
-          <p>Choose your address, complete checkout and open your client profile.</p>
+          <div className="step-inner">
+            <h3>Create Your Account</h3>
+              <p>Choose your address, complete checkout and open your client profile.</p>
+           </div>
       </div>
       <div className="step">
         <span className="step-number">2</span>
-           <h3>Upload Your Documents</h3>
-        <p>Provide ID and proof of address for verification. Our team checks everything manually.</p>
+          <div className="step-inner">
+               <h3>Upload Your Documents</h3>
+                <p>Provide ID and proof of address for verification. Our team checks everything manually.</p>
+             </div>
       </div>
       <div className="step">
         <span className="step-number">✔</span>
-          <h3>Start Using Your Address</h3>
-        <p>Once approved, you receive your welcome email and can begin using your Mayfair address.</p>
+       <div className="step-inner">
+            <h3>Start Using Your Address</h3>
+            <p>Once approved, you receive your welcome email and can begin using your Mayfair address.</p>
+        </div>
       </div>
     </div>
   </div>
