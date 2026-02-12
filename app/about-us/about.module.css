@@ -423,6 +423,14 @@
   color: rgba(255,255,255,.78);
 }
 
+
+
+.dotTitle .cardText {
+    color: #4B5563;
+    width: 80%;
+    font-size: 15px;
+}
+
 /* Responsive */
 @media (max-width: 980px){
   .standardsHead{ flex-direction: column; align-items: flex-start; }
