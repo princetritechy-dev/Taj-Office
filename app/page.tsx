@@ -292,16 +292,22 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section class="business-address">
-  <div class="container">
-    <div class="left">
+  <section className="business-address">
+  <div className="container">
+    <div className="left">
       <h2>Pick Your Perfect Business Address</h2>
       <p>Choose a professional location that supports the image you want for your business. Our Mayfair address is known for its reputation, stability, and high-quality surroundings.</p>
-      <p class="address">Mayfair, London W1</p>
-      <a href="#" class="view-plans-btn">View Plans</a>
+      <p className="address">Mayfair, London W1</p>
+      <a href="#" className="view-plans-btn">View Plans</a>
     </div>
-    <div class="right">
-      <img src="/your-image-path.jpg" alt="Business Location">
+    <div className="right">
+    <Image
+                  src="/images/icon.png"
+                  alt="Check icon"
+                  width={15}
+                  height={20}
+                  className="checkIcon"
+                />
     </div>
   </div>
 </section>
