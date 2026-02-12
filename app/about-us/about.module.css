@@ -139,7 +139,6 @@
 
 /* Right cards */
 .rightCards{
-  display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 18px;
 }
@@ -211,6 +210,12 @@
   box-shadow: 0 18px 44px rgba(10,35,55,.12);
   border: 1px solid rgba(220,230,242,.9);
 }
+.whitemainCard{
+  grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    display: grid;
+}
+
 
 .link{
   display: inline-flex;
