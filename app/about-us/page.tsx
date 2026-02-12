@@ -64,7 +64,7 @@ export default function AboutUs() {
                   <div className={styles.dotTitle}>
                     <span className={styles.dot} /> Clear Pricing
                   </div>
-                  <p className={styles.cardText}>
+                  <p className={styles.cardTextblack}>
                     Our pricing is fair and easy to understand. You won’t be charged inflated fees or unexpected extras.
                   </p>
 
