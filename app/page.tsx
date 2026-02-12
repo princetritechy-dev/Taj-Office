@@ -302,7 +302,7 @@ export default async function HomePage() {
     </div>
     <div className="right">
     <Image
-                  src="/images/icon.png"
+                  src="/images/right.jpg"
                   alt="Check icon"
                   width={15}
                   height={20}
