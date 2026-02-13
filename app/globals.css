@@ -1615,6 +1615,13 @@ p.simple {
         left: 0;
         margin-top:20px;
     }
+
+    .sectionWhy img.whyImg {
+    height: auto !important;
+}
+section.section.sectionWhy .imgWrap {
+    height: 222px !important;
+}
     .steps {
     justify-content: center;
     display: flex;
@@ -1625,8 +1632,9 @@ p.simple {
     display:none;
 }
 .business-address .container{
-    flex-direction:column;
-    padding: 30px 20px !important;
+        flex-direction: column;
+        padding: 30px 20px !important;
+        gap: 33px !important;
 }
 .business-address .left {
     border-radius: 25px 0 0 25px;
@@ -1646,8 +1654,7 @@ p.simple {
     flex-direction: column;
 }
 .section.dark .testCard{
-    width:100%;
+    width:100% !important;
 }
 
 }
-
