@@ -4,7 +4,7 @@ import Image from "next/image";
 import Header from "../components/header";
 import Footer from "../components/footer";
 
-import "./listing.css"; // ✅ only this page css
+import "./why-work.css"; // ✅ only this page css
 
 export default function ListingPage() {
   return (
@@ -311,3 +311,4 @@ export default function ListingPage() {
     </main>
   );
 }
+
