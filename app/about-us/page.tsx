@@ -3,8 +3,9 @@
 import Image from "next/image";
 import Header from "../components/header";
 import Footer from "../components/footer";
-import style  from "./about.css"; 
-export default function AboutUsPage() {
+import style from "./about.css";
+
+ export default function AboutUsPage() {
   return (
     <main className="about-page">
       <Header />
@@ -215,5 +216,6 @@ export default function AboutUsPage() {
     </main>
   );
 }
+
 
 
