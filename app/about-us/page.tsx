@@ -22,8 +22,12 @@ export default function AboutUsPage() {
           <h1 className="hero-title">ABOUT US</h1>
 
           <div className="scroll-hint">
-            SCROLL TO EXPLORE <span className="scroll-arrow" aria-hidden="true">↓</span>
+            SCROLL TO EXPLORE 
+            
           </div>
+          <div className="divider-img">
+              <img src="/images/Divider.png" alt="" srcset="" />
+            </div>
         </div>
       </section>
 
@@ -37,7 +41,6 @@ export default function AboutUsPage() {
               <div className="qm-line2">over</div>
               <div className="qm-line3">Quantity</div>
             </div>
-            <div className="divider"></div>
             <div className="quality-caption">OUR CORE PHILOSOPHY</div>
           </div>
 
@@ -51,13 +54,9 @@ export default function AboutUsPage() {
             </p>
 
             <div className="experience-card">
-              <div className="experience-card-icon">
-              <div className="exp-icon" aria-hidden="true">📍</div>
-                 <div className="exp-title">Real Experience</div>
-
-              </div>
+              <div className="exp-icon" aria-hidden="true"><img src="/images/loction.png" alt="" /></div>
               <div>
-              
+                <div className="exp-title">Real Experience</div>
                 <p className="exp-text">
                   We operate our own virtual office from Albemarle Street in Mayfair, so we understand how the service works in practice.
                 </p>
@@ -83,7 +82,7 @@ export default function AboutUsPage() {
         <div className="container standards-grid">
           {/* Big left card */}
           <div className="card big-card">
-            <div className="card-icon" aria-hidden="true">⚖️</div>
+            <div className="card-icon" aria-hidden="true"><img src="/images/compliance.png" alt="" srcset="" /></div>
             <h3 className="card-title">Compliance handled in house</h3>
             <p className="card-text">
               Using a business address comes with legal responsibilities. AML and KYC checks are carried out by our own team and reviewed properly.
@@ -94,7 +93,7 @@ export default function AboutUsPage() {
             <div className="card-bottom">
               <div className="card-label">OUR PROMISE</div>
               <div className="card-small">
-                We don’t outsource compliance or rush approvals. This protects the reputation of everyone involved.
+                We don't outsource compliance or rush approvals. This protects the reputation of everyone involved.
               </div>
             </div>
           </div>
@@ -103,12 +102,12 @@ export default function AboutUsPage() {
           <div className="right-stack">
             <div className="card pricing-card">
               <div className="pricing-top">
-                <div className="dot" aria-hidden="true" />
+                <div className="icon" aria-hidden="true"> <img src="/images/tag.png" alt=""/></div>
                 <div className="pricing-title">Clear Pricing</div>
               </div>
 
               <p className="card-text">
-                Our pricing is fair and easy to understand. You won’t be charged inflated fees or unexpected extras.
+                Our pricing is fair and easy to understand. You won't be charged inflated fees or unexpected extras.
               </p>
 
               <div className="tags">
@@ -116,7 +115,7 @@ export default function AboutUsPage() {
                 <span className="tag">Consistent</span>
               </div>
 
-              <div className="money-badge" aria-hidden="true">££</div>
+              <div className="money-badge" aria-hidden="true"><img src="/images/currency.png" alt=""/></div>
             </div>
 
             <div className="card team-card">
@@ -144,7 +143,6 @@ export default function AboutUsPage() {
             <h2 className="services-title">
               Our <span>Services</span>
             </h2>
-            <div className="divider"></div>
 
             <p className="services-text">
               Registered office and business address services suitable for Companies House, HMRC, and everyday business use.
@@ -160,30 +158,55 @@ export default function AboutUsPage() {
           <div className="services-right">
             <div className="service-card">
               <div className="service-card-top">
-                <div className="service-ic" aria-hidden="true">🏢</div>
+                <div className="service-ic" aria-hidden="true"><img src="/images/meeting.png" alt="" /></div>
                 <div className="service-card-title">Meeting Rooms</div>
               </div>
 
               <p className="service-card-text">
                 At selected locations, meeting rooms are available to book when you need a physical space for client meetings or internal sessions.
               </p>
-
               <a className="service-btn" href="#">
                 View Locations
               </a>
-
               <div className="service-bg" aria-hidden="true" />
             </div>
           </div>
         </div>
       </section>
 
-       
+      {/* ================= OPTIONAL CTA (IMAGE CARD) ================= */}
+      <section className="section cta-wrap">
+        <div className="container">
+          <div className="cta">
+            <div className="cta-media">
+              <Image
+                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1400&auto=format&fit=crop"
+                alt="Partner with us"
+                fill
+                style={{ objectFit: "cover" }}
+                priority
+              />
+            </div>
 
+            <div className="cta-content">
+              <h3 className="cta-title">Partner with us</h3>
+              <p className="cta-text">
+                If you operate an office building and would like to explore offering virtual office services without the operational overhead, we would be happy to talk.
+              </p>
+
+              <div className="cta-btns">
+                <a className="btn primary" href="#">Get in touch</a>
+                <a className="btn" href="#">Learn More</a>
+              </div>
+
+              <small className="cta-small">
+                We will walk you through how the partnership works and answer any questions.
+              </small>
+            </div>
+          </div>
+        </div>
+      </section>
       <Footer />
     </main>
   );
 }
-
-
-
