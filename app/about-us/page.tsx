@@ -50,7 +50,14 @@ export default function AboutUsPage() {
             </p>
 
             <div className="experience-card">
-              <div className="exp-icon" aria-hidden="true">📍</div>
+              <div className="exp-icon" aria-hidden="true"> <Image
+                src="/images/icon-top.png"
+                alt="Check icon"
+                width={8}
+                height={8}
+                className="dotIcon"
+              />
+              </div>
               <div>
                 <div className="exp-title">Real Experience</div>
                 <p className="exp-text">
@@ -209,4 +216,5 @@ export default function AboutUsPage() {
     </main>
   );
 }
+
 
