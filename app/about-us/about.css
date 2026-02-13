@@ -240,15 +240,9 @@
   width:30%;
 }
 
-.about-page .card-icon {
-  width: 38px;
-  height: 38px;
-  border-radius: 12px;
-  display: grid;
-  place-items: center;
-  background: rgba(19, 182, 166, 0.16);
-  color: #fff;
-  margin-bottom: 14px;
+.about-page .card-icon img {
+    width: 50px;
+    height: 50px;
 }
 
 .about-page .card-title {
@@ -482,19 +476,15 @@
   margin-bottom: 20px;
 }
 
-.about-page .service-ic {
-  width: 38px;
-  height: 38px;
-  border-radius: 12px;
-  display: grid;
-  place-items: center;
-  background: rgba(19, 182, 166, 0.18);
+.about-page .service-ic img.dotIcon {
+    width: 56px;
+    height: 56px;
 }
 
 .about-page .service-card-title {
     font-size: 17px;
     font-weight: 700;
-    padding-top: 25px;
+    padding-top: 7px;
 }
 
 .about-page .service-card-text {
