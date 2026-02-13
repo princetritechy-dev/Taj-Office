@@ -24,16 +24,7 @@
   overflow:hidden;
   padding:56px 0;
 }
-.hero::before{
-  content:"";
-  position:absolute; inset:-40px;
-  background:
-    linear-gradient(120deg, rgba(255,255,255,.06) 0 0),
-    url("") center/cover no-repeat;
-  opacity:.22;
-  transform:rotate(-8deg);
-  pointer-events:none;
-}
+ 
 .heroGrid{
   position:relative;
   display:grid;
