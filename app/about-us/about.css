@@ -123,10 +123,11 @@
 }
 
 .about-page .h2 {
-  margin: 0 0 10px;
-  font-size: 20px;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
+   letter-spacing: -.02em;
+    margin: 0 0 10px;
+    font-size: 18px;
+    line-height: 1.25;
+    font-weight: 500 !important;
 }
 
 .about-page .muted {
@@ -146,14 +147,19 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 .about-page .experience-card-icon {
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
+    align-items: center;
+    gap: 14px;
+    display: flex;
+    padding-bottom: 16px;
 }
-.divider{
-   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+.divider {
+    border-bottom: 1px solid #ffffff14;
+    background-color: #00A699;
+    height: 6px;
+    margin: 20px 0px;
+    width: 18%;
+    border-radius: 5px;
 }
-
 .about-page .exp-icon {
   width: 40px;
   height: 40px;
@@ -172,16 +178,18 @@
 }
 
 .about-page .exp-text {
-  margin: 0 0 10px;
+  margin: 0 0 17px;
   font-size: 12px;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.78);
 }
 
 .about-page .exp-text.small {
-  margin: 0;
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.62);
+    color: #D1D5DB !important;
+    margin: 0;
+    font-size: 11px;
+    padding-top: 20px;
+    border-top: 1px solid #ffffff40;
 }
 
 /* ================= STANDARDS ================= */
@@ -610,11 +618,30 @@
   .about-page .quality-grid { grid-template-columns: 1fr; gap: 24px; }
   .about-page .standards-head { flex-direction: column; align-items: flex-start; }
   .about-page .standards-grid { flex-direction: column; }
-  .about-page .right-stack { grid-template-columns: 1fr; }
   .about-page .pricing-card { grid-column: auto; }
   .about-page .services-grid { grid-template-columns: 1fr; }
   .about-page .cta { grid-template-columns: 1fr; }
   .about-page .cta-media { height: 240px; }
+}
+@media(max-width:980px){
+        .about-page .card {
+        padding: 18px;
+        width: 100% !important;
+    }
+        .about-page .right-stack {
+        grid-template-columns: 1fr;
+        align-content: start;
+        gap: 18px;
+        width: 100% !important;
+        display: grid;
+    }
+    .about-page .pill-btn
+ {
+    width: 31% !important;
+    text-align: center !important;
+    padding: 12px !important;
+    font-size: 10px !important;
+}
 }
 
 @media (max-width: 520px) {
