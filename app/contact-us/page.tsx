@@ -5,9 +5,9 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import "./about.css";
 
-export default function AboutUsPage() {
+export default function ContactUsPage() {
   return (
-    <main className="about-page">
+    <main className="contact-page">
       <Header />
 
 <section className="contact-hero">
@@ -130,3 +130,4 @@ export default function AboutUsPage() {
   );
 }
  
+
