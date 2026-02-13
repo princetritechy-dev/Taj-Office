@@ -178,12 +178,41 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-       
+      {/* ================= OPTIONAL CTA (IMAGE CARD) ================= */}
+      <section className="section cta-wrap">
+        <div className="container">
+          <div className="cta">
+            <div className="cta-media">
+              <Image
+                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1400&auto=format&fit=crop"
+                alt="Partner with us"
+                fill
+                style={{ objectFit: "cover" }}
+                priority
+              />
+            </div>
+
+            <div className="cta-content">
+              <h3 className="cta-title">Partner with us</h3>
+              <p className="cta-text">
+                If you operate an office building and would like to explore offering virtual office services without the operational overhead, we would be happy to talk.
+              </p>
+
+              <div className="cta-btns">
+                <a className="btn primary" href="#">Get in touch</a>
+                <a className="btn" href="#">Learn More</a>
+              </div>
+
+              <small className="cta-small">
+                We will walk you through how the partnership works and answer any questions.
+              </small>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </main>
   );
 }
-
-
 
