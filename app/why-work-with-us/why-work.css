@@ -2,7 +2,9 @@
 .listing-page{
   background:#f5f8fb;
 }
-
+.how-we-support .container {
+    max-width: 65%;
+}
 /* Global container (if already in globals, remove this block) */
 .container{
   width: min(1180px, calc(100% - 40px));
@@ -529,5 +531,6 @@
   .rev-numbers .big{ font-size: 44px; }
   .cta{ padding: 18px; }
 }
+
 
 
