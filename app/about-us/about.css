@@ -661,3 +661,16 @@
     font-size: 25px !important;
     font-weight: 700 !important;
 }
+
+.about-page .exp-icon img {
+    width: 70px;
+    height: 70px;
+}
+ 
+.about-page .exp-icon {
+    background: transparent !important;
+    height: auto;
+    width: 100%;
+    display: block;
+}
+ 
