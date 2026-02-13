@@ -651,3 +651,10 @@
   .about-page .years-card { min-height: 150px; }
   .about-page .services-title { font-size: 28px; }
 }
+
+
+
+section.section.section-light .h2 {
+    font-size: 25px !important;
+    font-weight: 700 !important;
+}
