@@ -51,7 +51,7 @@ export default function AboutUsPage() {
 
             <div className="experience-card">
               <div className="exp-icon" aria-hidden="true"> <Image
-                src="/images/icon-top.png"
+                src="/images/map.png"
                 alt="Check icon"
                 width={8}
                 height={8}
@@ -85,7 +85,15 @@ export default function AboutUsPage() {
         <div className="container standards-grid">
           {/* Big left card */}
           <div className="card big-card">
-            <div className="card-icon" aria-hidden="true">⚖️</div>
+            <div className="card-icon" aria-hidden="true"> 
+              <Image
+                src="/images/weight.png"
+                alt="Check icon"
+                width={8}
+                height={8}
+                className="dotIcon"
+              />
+            </div>
             <h3 className="card-title">Compliance handled in house</h3>
             <p className="card-text">
               Using a business address comes with legal responsibilities. AML and KYC checks are carried out by our own team and reviewed properly.
@@ -161,7 +169,15 @@ export default function AboutUsPage() {
           <div className="services-right">
             <div className="service-card">
               <div className="service-card-top">
-                <div className="service-ic" aria-hidden="true">🏢</div>
+                <div className="service-ic" aria-hidden="true"> 
+                 <Image
+                src="/images/meeting.png"
+                alt="Check icon"
+                width={15}
+                height={15}
+                className="dotIcon"
+              />
+                </div>
                 <div className="service-card-title">Meeting Rooms</div>
               </div>
 
@@ -216,5 +232,6 @@ export default function AboutUsPage() {
     </main>
   );
 }
+
 
 
