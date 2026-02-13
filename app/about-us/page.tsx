@@ -52,7 +52,15 @@ export default function AboutUsPage() {
 
             <div className="experience-card">
               <div className="experience-card-icon">
-              <div className="exp-icon" aria-hidden="true">📍</div>
+              <div className="exp-icon" aria-hidden="true">
+                <Image
+                src="/images/icon-top.png"
+                alt="Check icon"
+                width={8}
+                height={8}
+                className="dotIcon"
+              />
+              </div>
                  <div className="exp-title">Real Experience</div>
 
               </div>
@@ -184,5 +192,6 @@ export default function AboutUsPage() {
     </main>
   );
 }
+
 
 
