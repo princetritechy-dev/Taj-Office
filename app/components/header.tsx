@@ -24,7 +24,7 @@ export default function Header(){
             <Link href="/about-us">About Us</Link>
             <Link href="#">Why work with us</Link>
             <Link href="/Listing">Locations</Link>
-            <Link href="#">Contact Us</Link>
+            <Link href="/contact-us">Contact Us</Link>
             {/* <Link className="navLogin" href="#">
               Login
             </Link> */}
