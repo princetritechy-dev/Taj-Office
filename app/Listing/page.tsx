@@ -2,7 +2,7 @@
 
 import Header from "../components/header";
 import Footer from "../components/footer";
-import "./location.css";
+import "./listing.css";
 
 export default function LocationPage() {
   return (
@@ -215,3 +215,4 @@ export default function LocationPage() {
     </main>
   );
 }
+
