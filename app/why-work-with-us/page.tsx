@@ -159,7 +159,7 @@ export default function ListingPage() {
       </section>
 
       {/* SUPPORT */}
-      <section className="section">
+      <section className="section how-we-support">
         <div className="container">
           <div className="title-center">
             <h2>How we support you</h2>
@@ -311,4 +311,5 @@ export default function ListingPage() {
     </main>
   );
 }
+
 
