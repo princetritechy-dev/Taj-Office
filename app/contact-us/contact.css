@@ -63,8 +63,9 @@
     align-items: center;
     gap: 18px;
 }
-.info-svg svg path, circle {
-    stroke: #00A699;
+.info-svg svg path,
+.info-svg svg circle {
+  stroke: #00A699;
 }
 .svg-group {
     display: flex;
@@ -196,4 +197,5 @@ button:hover{
         flex-direction:column;
     }
 }
+
  
