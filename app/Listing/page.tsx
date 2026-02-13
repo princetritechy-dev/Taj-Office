@@ -1,80 +1,77 @@
-"use client";
+ "use client";
 
-import Image from "next/image";
 import Header from "../components/header";
 import Footer from "../components/footer";
+import "./location.css";
 
-import "./listing.css"; // ✅ only this page css
-
-export default function ListingPage() {
+export default function LocationPage() {
   return (
-    <main className="listing-page">
+    <main>
       <Header />
 
       {/* HERO */}
       <section className="hero">
-        <div className="container hero-inner">
-          <div className="pill">PARTNERSHIP PROGRAM</div>
-
-          <h1>
-            Why work with <br /> Virtual Office Anywhere
-          </h1>
-
-          <div className="hero-divider" />
-
-          <p>
-            Generate additional revenue from virtual office services, without the
-            hassle that usually comes with running them.
-          </p>
-
-          <div className="hero-down" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M12 16l-6-6m6 6l6-6"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-        </div>
-
-        {/* Curved white bottom */}
-        <div className="hero-curve" aria-hidden="true" />
-      </section>
-
-      {/* FLOATING CARD */}
-      <section className="float-wrap">
-        <div className="container">
-          <div className="float-card">
-            <h3>
-              Virtual Office Anywhere partners with office buildings and <br />
-              virtual office providers.
-            </h3>
-
-            <p>
-              We operate deliberately. We don’t aim to list hundreds of buildings
-              or flood a single address with large volumes of companies.
-            </p>
-
-            <div className="promise">
-              <div className="promise-icon" aria-hidden="true">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z"
-                    stroke="#13b6a6"
-                    strokeWidth="2"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+        <div className="wrap">
+          <div className="heroGrid">
+            <div>
+              <div className="badge">
+                <span className="dot" /> Available Now
               </div>
 
-              <div>
-                <div className="promise-small">OUR PROMISE</div>
-                <div className="promise-text">
-                  We work with a small number of office partners so each location
-                  stays credible and well managed.
+              <h1 className="h1">
+                45 Albemarle Street,
+                <br />
+                Mayfair
+              </h1>
+
+              <div className="priceRow">
+                <div className="price">£25</div>
+                <div className="per">/pcm + VAT</div>
+              </div>
+
+              <p className="discount">10% discount on annual subscriptions</p>
+
+              <nav className="tabs" aria-label="tabs">
+                <a className="tab active" href="#">
+                  Services
+                </a>
+                <a className="tab" href="#">
+                  Location
+                </a>
+                <a className="tab" href="#">
+                  Compliance
+                </a>
+              </nav>
+
+              <p className="desc">
+                <b>Prestigious Mayfair</b> virtual office address.
+                <br />
+                Give your business the credibility of a prestigious Mayfair address in London’s most exclusive district, without the cost of physical office space.
+                Our virtual office service at 45 Albemarle Street offers a professional mailing address with comprehensive mail handling options.
+              </p>
+
+              <button className="cta" type="button">
+                Add to Cart
+              </button>
+            </div>
+
+            <div className="heroCard">
+              <div className="heroMedia">
+                <img
+                  src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=70"
+                  alt="Buildings"
+                />
+                <div className="locPill">
+                  <svg className="locIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M12 22s7-5.2 7-12a7 7 0 1 0-14 0c0 6.8 7 12 7 12Z"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinejoin="round"
+                    />
+                    <circle cx="12" cy="10" r="2.5" stroke="currentColor" strokeWidth="2" />
+                  </svg>
+                  London, W1
                 </div>
               </div>
             </div>
@@ -82,227 +79,134 @@ export default function ListingPage() {
         </div>
       </section>
 
-      {/* REVENUE SPLIT */}
-      <section className="section">
-        <div className="container split">
-          <div className="rev-card">
-            <div className="rev-top">REVENUE SPLIT</div>
-
-            <div className="rev-numbers">
-              <div className="big">60</div>
-              <div className="slash">/</div>
-              <div className="small">40</div>
-            </div>
-
-            <div className="rev-bar">
-              <span />
-            </div>
-
-            <div className="rev-note">
-              The larger share goes to the <strong>building partner</strong>.
-            </div>
-          </div>
-
-          <div className="split-text">
-            <h2>A fair and transparent split</h2>
-            <p>
-              We believe the building should benefit properly from the address it
-              provides, and we structure our partnerships to reflect that.
-            </p>
-
-            <ul className="ticks">
-              <li>
-                <span className="tick">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M20 6L9 17l-5-5"
-                      stroke="currentColor"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
-                No hidden fees
-              </li>
-              <li>
-                <span className="tick">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M20 6L9 17l-5-5"
-                      stroke="currentColor"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
-                No complex pricing models
-              </li>
-              <li>
-                <span className="tick">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M20 6L9 17l-5-5"
-                      stroke="currentColor"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
-                See exactly what is generated from your address
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* SUPPORT */}
-      <section className="section">
-        <div className="container">
-          <div className="title-center">
-            <h2>How we support you</h2>
-            <div className="underline" />
-          </div>
-
-          <div className="cards">
-            <div className="info-card">
-              <div className="ic" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M12 21s-7-4.4-7-11V6l7-3 7 3v4c0 6.6-7 11-7 11z"
-                    stroke="#13b6a6"
-                    strokeWidth="2"
-                  />
-                  <path
-                    d="M9 12l2 2 4-5"
-                    stroke="#13b6a6"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
+      {/* CONTENT */}
+      <section className="content">
+        <div className="wrap">
+          <div className="contentGrid">
+            {/* Left: Services Card */}
+            <div className="whiteCard">
+              <h2 className="cardTitle">
+                <svg className="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 3 3 8l9 5 9-5-9-5Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+                  <path d="M3 12l9 5 9-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M3 16l9 5 9-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-              </div>
-              <h3>We handle the work</h3>
-              <p>
-                We manage client onboarding, including KYC and AML checks,
-                handled thoroughly in-house.
-              </p>
+                Virtual Office Services
+              </h2>
+
+              <ul className="list">
+                {[
+                  { text: "Registered office address" },
+                  { text: "Director service address" },
+                  { text: "Secure mail handling" },
+                  { text: "Free – Mail collection" },
+                  { text: "Telephone line and divert", small: "+ £10.99 per month" },
+                  { text: "“Pay-as-you-go” meeting rooms" },
+                ].map((item, idx) => (
+                  <li className="li" key={idx}>
+                    <svg className="check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                      <path d="M20 6 9 17l-5-5" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    <div>
+                      {item.text}
+                      {item.small ? <small>{item.small}</small> : null}
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <div className="info-card">
-              <div className="ic" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                  <path d="M4 14h16v6H4v-6z" stroke="#13b6a6" strokeWidth="2" />
-                  <path
-                    d="M7 14V7a5 5 0 0 1 10 0v7"
-                    stroke="#13b6a6"
-                    strokeWidth="2"
-                  />
-                </svg>
-              </div>
-              <h3>Low effort for your team</h3>
-              <p>
-                Your role is simple. Mail is received and stored securely. You
-                take care of the basics.
-              </p>
-            </div>
+            {/* Right: Transport + Map */}
+            <div className="rightCol">
+              <h3>Transport Links</h3>
 
-            <div className="info-card">
-              <div className="ic" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M11 21a9 9 0 1 1 6.36-2.64L21 22"
-                    stroke="#13b6a6"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M8 11h6"
-                    stroke="#13b6a6"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                </svg>
+              <div className="transport">
+                {[
+                  { title: "Green Park Station", time: "~ 3 mins walk" },
+                  { title: "Victoria Station", time: "~ 12 mins walk" },
+                ].map((t, i) => (
+                  <div className="tItem" key={i}>
+                    <div className="tIcon">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 17h12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                        <path d="M7 3h10a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+                        <path d="M8 7h8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                        <path d="M8 11h8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                        <path d="M8.5 20.5 7 22m9.5-1.5L18 22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                      </svg>
+                    </div>
+                    <div className="tText">
+                      <b>{t.title}</b>
+                      <span>{t.time}</span>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <h3>Strong listings</h3>
-              <p>
-                We create high quality, SEO optimised listings to protect the
-                location and attract legitimate businesses.
-              </p>
+
+              <div className="mapCard">
+                <img
+                  src="https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&w=1400&q=60"
+                  alt="Map"
+                />
+                <div className="mapBar">
+                  <div className="mapLeft">
+                    <svg className="pinMini" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M12 22s7-5.2 7-12a7 7 0 1 0-14 0c0 6.8 7 12 7 12Z"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinejoin="round"
+                      />
+                      <circle cx="12" cy="10" r="2.5" stroke="currentColor" strokeWidth="2" />
+                    </svg>
+                    <div className="mapTxt">
+                      <b>45 Albemarle Street</b>
+                      <span>W1S 4JL, London</span>
+                    </div>
+                  </div>
+                  <div className="tag">Mayfair</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* DARK */}
-      <section className="dark">
-        <div className="container dark-inner">
-          <h2>
-            Built by people who use <br />
-            <span>virtual offices themselves</span>
-          </h2>
-
-          <p>
-            We operate our own virtual office, so we understand how these
-            services work day to day.
-          </p>
-
-          <div className="quote">
-            <em>
-              “We have seen the other side of the industry: unfair revenue splits,
-              poor marketing, and compliance checks not carried out to standard.”
-            </em>
-            <strong>
-              Those experiences are exactly why we built Virtual Office Anywhere
-              differently.
-            </strong>
-          </div>
-
-          <div className="footer-line">
-            We care about long term partnerships, not quick wins.
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="cta-wrap">
-        <div className="container">
-          <div className="cta">
-            {/* ✅ Next/Image fill: parent must be relative + height */}
-            <div className="cta-media">
-              <Image
-                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1400&auto=format&fit=crop"
-                alt="Partner with us"
-                fill
-                style={{ objectFit: "cover" }}
-                priority
-              />
-            </div>
-
-            <div>
-              <h3>Partner with us</h3>
-              <p>
-                If you operate an office building and would like to explore
-                offering virtual office services without the operational overhead,
-                we would be happy to talk.
-              </p>
-
-              <div className="btns">
-                <a className="btn primary" href="#">
-                  Get in touch
-                </a>
-                <a className="btn" href="#">
-                  Learn More
-                </a>
+      {/* BOTTOM STRIP */}
+      <section className="featureStrip">
+        <div className="wrap">
+          <div className="features">
+            {[
+              { title: "Verified Clients Only", desc: "Strict compliance checks for safety", icon: "usercheck" },
+              { title: "Protecting your address", desc: "Keep your home address private", icon: "shield" },
+              { title: "Trusted Management", desc: "Professional on-site team", icon: "users" },
+            ].map((f, i) => (
+              <div className="featureItem" key={i}>
+                <div className="fIconWrap">
+                  {f.icon === "usercheck" ? (
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                      <path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke="currentColor" strokeWidth="2" />
+                      <path d="M17 11l1.5 1.5L22 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  ) : f.icon === "shield" ? (
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+                      <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  ) : (
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                      <path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke="currentColor" strokeWidth="2" />
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    </svg>
+                  )}
+                </div>
+                <p className="fTitle">{f.title}</p>
+                <p className="fDesc">{f.desc}</p>
               </div>
-
-              <small>
-                We will walk you through how the partnership works and answer any
-                questions.
-              </small>
-            </div>
+            ))}
           </div>
         </div>
       </section>
