@@ -82,7 +82,6 @@
   position:absolute;
   left:0; right:0; bottom:-120px;
   height: 240px;
-  background:#f5f8fb;
   border-top-left-radius: 140px;
   border-top-right-radius: 140px;
   filter: drop-shadow(0 -20px 40px rgba(10,24,42,.10));
@@ -530,4 +529,5 @@
   .rev-numbers .big{ font-size: 44px; }
   .cta{ padding: 18px; }
 }
+
 
