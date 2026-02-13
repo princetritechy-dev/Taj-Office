@@ -20,10 +20,10 @@ export default function Header(){
 
 
           <nav className="navLinks" aria-label="Primary">
-            <Link href="#">Plans</Link>
-            <Link href="/Listing">Locations</Link>
-            <Link href="#">Support</Link>
+            <Link href="#">Home</Link>
             <Link href="/about-us">About Us</Link>
+            <Link href="#">Why work with us</Link>
+            <Link href="/Listing">Locations</Link>
             <Link href="#">Contact Us</Link>
             <Link className="navLogin" href="#">
               Login
