@@ -1,4 +1,14 @@
+ "use client";
 
+import Image from "next/image";
+import Header from "../components/header";
+import Footer from "../components/footer";
+import "./about.css";
+
+export default function AboutUsPage() {
+  return (
+    <main className="about-page">
+      <Header />
 
 <section className="contact-hero">
     <h5>GET IN TOUCH</h5>
@@ -114,4 +124,9 @@
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
     <a href="#">View Frequently Asked Questions →</a>
 </section>
+
+       <Footer />
+    </main>
+  );
+}
  
