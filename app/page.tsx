@@ -19,7 +19,17 @@ async function getHomePage() {
 
 export default async function HomePage() {
   const page = await getHomePage();
-  const h1 = page?.acf?.main_heading || "Your UK Business Address. Anywhere.";
+
+  console.log("WP PAGE DATA:", {
+    title: page?.title?.rendered,
+    hasACF: !!page?.acf,
+    acfKeys: page?.acf ? Object.keys(page.acf) : [],
+  });
+
+  console.log(page?.acf?.benefits_section); 
+
+  const h1 = page?.acf?.banner?.main_heading;
+  const benefits = page?.acf?.benefits_section ?? [];
 
   return (
     <div className="page">
