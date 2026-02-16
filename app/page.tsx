@@ -204,42 +204,44 @@ const rightBenefits = benefits.slice(mid);
         </div>
 
         <div className="container benefitsCard">
-  <div className="benefitsTitle">
-    Benefits of choosing a virtual office with us
-  </div>
+          <div className="benefitsTitle">
+            Benefits of choosing a virtual office with us
+          </div>
+        
+          <div className="benefitsGrid">
+            <ul className="checkList">
+              {leftColumn.map((text: string, index: number) => (
+                <li key={`left-${index}`}>
+                  <Image
+                    src="/images/icon.png"
+                    alt="Check icon"
+                    width={15}
+                    height={20}
+                    className="checkIcon"
+                  />
+                  <span>{text}</span>
+                </li>
+              ))}
+            </ul>
+        
+            <ul className="checkList">
+              {rightColumn.map((text: string, index: number) => (
+                <li key={`right-${index}`}>
+                  <Image
+                    src="/images/icon.png"
+                    alt="Check icon"
+                    width={15}
+                    height={20}
+                    className="checkIcon"
+                  />
+                  <span>{text}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
 
-  <div className="benefitsGrid">
-    <ul className="checkList">
-      {leftBenefits.map((text, i) => (
-        <li key={`b-left-${i}`}>
-          <Image
-            src="/images/icon.png"
-            alt="Check icon"
-            width={15}
-            height={20}
-            className="checkIcon"
-          />
-          <span>{text}</span>
-        </li>
-      ))}
-    </ul>
-
-    <ul className="checkList">
-      {rightBenefits.map((text, i) => (
-        <li key={`b-right-${i}`}>
-          <Image
-            src="/images/icon.png"
-            alt="Check icon"
-            width={15}
-            height={20}
-            className="checkIcon"
-          />
-          <span>{text}</span>
-        </li>
-      ))}
-    </ul>
-  </div>
-</div>
+      </section>
 
 
       {/* ================= WHAT YOU RECEIVE ================= */}
