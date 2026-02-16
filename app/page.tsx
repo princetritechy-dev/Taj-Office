@@ -29,7 +29,11 @@ export default async function HomePage() {
   console.log(page?.acf?.benefits_section); 
 
   const h1 = page?.acf?.banner?.main_heading;
-  const benefits = page?.acf?.benefits_section ?? [];
+  const subheading = page?.acf?.banner?.sub_heading;
+  const hero_para = page?.acf?.banner?.bottom_content;
+  const heroButtons = page?.acf?.banner?.hero_buttons || [];
+
+  const hero_note = page?.acf?.banner?.address_content;
 
   return (
     <div className="page">
@@ -51,28 +55,31 @@ export default async function HomePage() {
               <span>Live in 24 HOURS</span>
             </div>
 
-            <h1 className="h1">{h1}</h1>
+            <h1 className="h1">{h1} <br /> {subheading}</h1>
 
             <p className="lead">
-              A trusted UK business address from £20 a month. Choose a
-              professional location for your company and enjoy simple pricing,
-              friendly support and a service that helps you present your
-              business well from day one.
+              {hero_para}
             </p>
 
             <div className="heroCtas">
-              <button className="btn btnPrimary">Get Started</button>
-              <button className="btn btnGhost">Choose Your Address</button>
+              {heroButtons.map((btn: any, index: number) => {
+                const label = btn?.button_text;
+                const link = btn?.button_link || "#";
+            
+                return (
+                  <a
+                    key={index}
+                    href={link}
+                    className={`btn ${index === 0 ? "btnPrimary" : "btnGhost"}`}
+                  >
+                    {label}
+                  </a>
+                );
+              })}
             </div>
-
             <div className="heroNote">
               <p>
-                A virtual office gives you the freedom to work from anywhere
-                while keeping your company linked to a respected UK location.
-                Our virtual office addresses help you build trust with clients,
-                protect your privacy and strengthen your online presence. Setup
-                is quick and there are no setup fees or hidden extras—just
-                honest support.
+                {hero_note}
               </p>
             </div>
           </div>
