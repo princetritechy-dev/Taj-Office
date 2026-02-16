@@ -7,7 +7,7 @@ export default function Header(){
           <div className="brand">
             
             {/* Logo Image */}
-            <a href="https://taj-office.vercel.app/">
+            <a href="/">
             <Image
               src="/images/logo.png"
               alt="Virtual Office Anywhere Logo"
