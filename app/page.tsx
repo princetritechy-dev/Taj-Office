@@ -92,6 +92,10 @@ const receiveIcons = await Promise.all(
   })
 );
 
+const howSteps = Array.isArray(page?.acf?.how_it_work_section)
+  ? page.acf.how_it_work_section
+  : [];
+
 
   
   return (
@@ -301,32 +305,28 @@ const receiveIcons = await Promise.all(
   <div className="container">
     <p className="simple">Simple Process</p>
     <h2>How It Works</h2>
-    <p>A simple walk-through process at every step. We help the process clear so you know what comes next.</p>
+    <p>
+      A simple walk-through process at every step. We help the process clear so
+      you know what comes next.
+    </p>
+
     <div className="steps">
-      <div className="step">
-        <span className="step-number">1</span>
+      {howSteps.map((step: any, index: number) => (
+        <div className="step" key={index}>
+          <span className="step-number">
+            {index === howSteps.length - 1 ? "✔" : index + 1}
+          </span>
+
           <div className="step-inner">
-            <h3>Create Your Account</h3>
-              <p>Choose your address, complete checkout and open your client profile.</p>
-           </div>
-      </div>
-      <div className="step">
-        <span className="step-number">2</span>
-          <div className="step-inner">
-               <h3>Upload Your Documents</h3>
-                <p>Provide ID and proof of address for verification. Our team checks everything manually.</p>
-             </div>
-      </div>
-      <div className="step">
-        <span className="step-number">✔</span>
-       <div className="step-inner">
-            <h3>Start Using Your Address</h3>
-            <p>Once approved, you receive your welcome email and can begin using your Mayfair address.</p>
+            <h3>{step?.title || ""}</h3>
+            <p>{step?.description || ""}</p>
+          </div>
         </div>
-      </div>
+      ))}
     </div>
   </div>
 </section>
+
 
       {/* ================= PLATFORM FEATURES ================= */}
       <section className="section-platform">
