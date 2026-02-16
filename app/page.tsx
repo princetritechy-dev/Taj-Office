@@ -3,67 +3,23 @@ import PlatformCard from "./PlatformCard";
 import Header from "./components/header";
 import Footer from "./components/footer";
 
-const WP_BASE =
-  "https://lavender-alligator-176962.hostingersite.com/index.php/wp-json/wp/v2";
-
-/** ----------------- helpers ----------------- */
-async function wpFetch<T>(url: string): Promise<T | null> {
-  const res = await fetch(url, { cache: "no-store" });
-  if (!res.ok) return null;
-  return (await res.json()) as T;
-}
+export const dynamic = "force-dynamic"; // ✅ IMPORTANT for Vercel
 
 async function getHomePage() {
-  return await wpFetch<any>(`${WP_BASE}/pages?slug=home`);
+  const res = await fetch(
+    "https://lavender-alligator-176962.hostingersite.com/index.php/wp-json/wp/v2/pages?slug=home",
+    { cache: "no-store" }
+  );
+
+  if (!res.ok) return null;
+
+  const data = await res.json();
+  return data?.[0] ?? null;
 }
-
-async function getMediaUrlById(id: number): Promise<{ src: string; alt: string } | null> {
-  const media = await wpFetch<any>(`${WP_BASE}/media/${id}`);
-  if (!media) return null;
-
-  const src =
-    media?.source_url ||
-    media?.media_details?.sizes?.large?.source_url ||
-    media?.media_details?.sizes?.full?.source_url ||
-    "";
-
-  const alt = media?.alt_text || media?.title?.rendered || "";
-
-  if (!src) return null;
-  return { src, alt };
-}
-
-function safeHtml(html?: string) {
-  if (!html) return "";
-  return html;
-}
-
 
 export default async function HomePage() {
-  const data = await getHomePage();
-  const page = data?.[0] ?? null;
-
-  // ✅ IMPORTANT: your structure is acf.banner.*
-  const banner = page?.acf?.banner || {};
-
-  const mainHeading = banner?.main_heading";
-  const subHeading = banner?.sub_heading;
-
-  // bottom_content is HTML in your json
-  const bottomContentHtml = banner?.bottom_content || "";
-
-  // address_content is plain text in your json
-  const addressContent = banner?.address_content || "";
-
-  const heroButtons = Array.isArray(banner?.hero_buttons) ? banner.hero_buttons : [];
-
-  // hero_image is ID = 59 in your json
-  const heroImageId = typeof banner?.hero_image === "number" ? banner.hero_image : null;
-  const heroImage = heroImageId ? await getMediaUrlById(heroImageId) : null;
-
-  // fallback image if not found
-  const heroImgSrc = heroImage?.src";
-  const heroImgAlt = heroImage?.alt;
+  const page = await getHomePage();
+  const h1 = page?.acf?.main_heading || "Your UK Business Address. Anywhere.";
 
   return (
     <div className="page">
@@ -85,7 +41,7 @@ export default async function HomePage() {
               <span>Live in 24 HOURS</span>
             </div>
 
-            <h1 className="h1">{mainHeading} {subHeading}</h1>
+            <h1 className="h1">{h1}</h1>
 
             <p className="lead">
               A trusted UK business address from £20 a month. Choose a
