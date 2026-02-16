@@ -78,19 +78,6 @@ if (whySection?.why_image_second) {
 }
 
 
-  const benefitsRaw = Array.isArray(page?.acf?.benefits_section)
-  ? page.acf.benefits_section
-  : [];
-
-const benefits = benefitsRaw
-  .map((b: any) => b?.benefit_content)
-  .filter(Boolean) as string[];
-
-const mid = Math.ceil(benefits.length / 2);
-const leftBenefits = benefits.slice(0, mid);
-const rightBenefits = benefits.slice(mid);
-
-
   return (
     <div className="page">
       <Header />
@@ -290,7 +277,6 @@ const rightBenefits = benefits.slice(mid);
           </div>
         </div>
       </section>
-
 
       {/* ================= WHAT YOU RECEIVE ================= */}
       <section className="section">
