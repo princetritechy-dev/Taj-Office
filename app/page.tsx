@@ -5,6 +5,23 @@ import Footer from "./components/footer";
 
 export const dynamic = "force-dynamic"; // ✅ IMPORTANT for Vercel
 
+
+async function getMediaById(id: number) {
+  const res = await fetch(
+    `https://lavender-alligator-176962.hostingersite.com/index.php/wp-json/wp/v2/media/${id}`,
+    { cache: "no-store" }
+  );
+
+  if (!res.ok) return null;
+
+  const data = await res.json();
+
+  return {
+    src: data?.source_url,
+    alt: data?.alt_text || data?.title?.rendered || "",
+  };
+}
+
 async function getHomePage() {
   const res = await fetch(
     "https://lavender-alligator-176962.hostingersite.com/index.php/wp-json/wp/v2/pages?slug=home",
@@ -32,6 +49,11 @@ export default async function HomePage() {
   const subheading = page?.acf?.banner?.sub_heading;
   const hero_para = page?.acf?.banner?.bottom_content;
   const heroButtons = page?.acf?.banner?.hero_buttons || [];
+  const heroImageId = page?.acf?.banner?.hero_image;
+  let heroImage = null;
+  if (heroImageId) {
+    heroImage = await getMediaById(heroImageId);
+  }
 
   const hero_note = page?.acf?.banner?.address_content;
 
@@ -89,13 +111,13 @@ export default async function HomePage() {
               <div className="collage">
                 <div className="collageTop">
                   <div className="imgWrap">
-                    <Image
-                      src="/images/View.png"
-                      alt="Office"
-                      fill
-                      className="collageImg"
-                      priority
-                    />
+                  <Image
+                    src={heroImage?.src}
+                    alt={heroImage?.alt}
+                    fill
+                    className="collageImg"
+                    priority
+                  />
                   </div>
                 </div>
               </div>
