@@ -78,16 +78,16 @@ const pageName =
             <div className="quality-mark">
               <div className="qm-line1">{section2?.heading}</div>
             </div>
-            <div className="quality-caption">OUR CORE PHILOSOPHY</div>
+            <div className="quality-caption">{section2?.sub_heading}</div>
           </div>
 
           {/* Right content */}
           <div className="quality-right">
             <h2 className="h2">
-              We don’t run a large network of offices. We work with a small number of locations that we know well and manage carefully.
+              {section2?.right_heading}
             </h2>
             <p className="muted">
-              This means you aren’t sharing your business address with an unlimited number of companies, and we have a clear understanding of who is using each address.
+              {section2?.right_content}
             </p>
 
             <div className="experience-card">
@@ -100,12 +100,12 @@ const pageName =
               />
               </div>
               <div>
-                <div className="exp-title">Real Experience</div>
+                <div className="exp-title">{section2?.box_heading}</div>
                 <p className="exp-text">
-                  We operate our own virtual office from Albemarle Street in Mayfair, so we understand how the service works in practice.
+                 {section2?.box_sub_heading}
                 </p>
                 <p className="exp-text small">
-                  We deal with post arriving every day, client requests, compliance checks, and the practical details that matter when you are using a virtual office as part of a real business.
+                 {section2?.box_content}
                 </p>
               </div>
             </div>
@@ -273,6 +273,7 @@ const pageName =
     </main>
   );
 }
+
 
 
 
