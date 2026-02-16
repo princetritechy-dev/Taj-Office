@@ -5,23 +5,6 @@ import Footer from "./components/footer";
 
 export const dynamic = "force-dynamic"; // ✅ IMPORTANT for Vercel
 
-
-async function getMediaById(id: number) {
-  const res = await fetch(
-    `https://lavender-alligator-176962.hostingersite.com/index.php/wp-json/wp/v2/media/${id}`,
-    { cache: "no-store" }
-  );
-
-  if (!res.ok) return null;
-
-  const data = await res.json();
-
-  return {
-    src: data?.source_url,
-    alt: data?.alt_text || data?.title?.rendered || "",
-  };
-}
-
 async function getHomePage() {
   const res = await fetch(
     "https://lavender-alligator-176962.hostingersite.com/index.php/wp-json/wp/v2/pages?slug=home",
@@ -36,47 +19,7 @@ async function getHomePage() {
 
 export default async function HomePage() {
   const page = await getHomePage();
-
-  console.log("WP PAGE DATA:", {
-    title: page?.title?.rendered,
-    hasACF: !!page?.acf,
-    acfKeys: page?.acf ? Object.keys(page.acf) : [],
-  });
-
-  console.log(page?.acf?.benefits_section); 
-
-  const h1 = page?.acf?.banner?.main_heading;
-  const subheading = page?.acf?.banner?.sub_heading;
-  const hero_para = page?.acf?.banner?.bottom_content;
-  const heroButtons = page?.acf?.banner?.hero_buttons || [];
-  const heroImageId = page?.acf?.banner?.hero_image;
-  let heroImage = null;
-  if (heroImageId) {
-    heroImage = await getMediaById(heroImageId);
-  }
-  const hero_note = page?.acf?.banner?.address_content;
-
-
-
-
-const whySection = page?.acf?.why_section || {};
-
-const whyHeading = whySection?.why_heading || "";
-const whySubHeading = whySection?.why_sub_heading || "";
-const whyP1 = whySection?.why_paragraph_one || "";
-const whyP2 = whySection?.why_paragraph_two || "";
-
-let whyImage1 = null;
-let whyImage2 = null;
-
-if (whySection?.why_image_first) {
-  whyImage1 = await getMediaById(whySection.why_image_first);
-}
-
-if (whySection?.why_image_second) {
-  whyImage2 = await getMediaById(whySection.why_image_second);
-}
-
+  const h1 = page?.acf?.main_heading || "Your UK Business Address. Anywhere.";
 
   return (
     <div className="page">
@@ -98,31 +41,28 @@ if (whySection?.why_image_second) {
               <span>Live in 24 HOURS</span>
             </div>
 
-            <h1 className="h1">{h1} <br /> {subheading}</h1>
+            <h1 className="h1">{h1}</h1>
 
             <p className="lead">
-              {hero_para}
+              A trusted UK business address from £20 a month. Choose a
+              professional location for your company and enjoy simple pricing,
+              friendly support and a service that helps you present your
+              business well from day one.
             </p>
 
             <div className="heroCtas">
-              {heroButtons.map((btn: any, index: number) => {
-                const label = btn?.button_text;
-                const link = btn?.button_link || "#";
-            
-                return (
-                  <a
-                    key={index}
-                    href={link}
-                    className={`btn ${index === 0 ? "btnPrimary" : "btnGhost"}`}
-                  >
-                    {label}
-                  </a>
-                );
-              })}
+              <button className="btn btnPrimary">Get Started</button>
+              <button className="btn btnGhost">Choose Your Address</button>
             </div>
+
             <div className="heroNote">
               <p>
-                {hero_note}
+                A virtual office gives you the freedom to work from anywhere
+                while keeping your company linked to a respected UK location.
+                Our virtual office addresses help you build trust with clients,
+                protect your privacy and strengthen your online presence. Setup
+                is quick and there are no setup fees or hidden extras—just
+                honest support.
               </p>
             </div>
           </div>
@@ -132,13 +72,13 @@ if (whySection?.why_image_second) {
               <div className="collage">
                 <div className="collageTop">
                   <div className="imgWrap">
-                  <Image
-                    src={heroImage?.src}
-                    alt={heroImage?.alt}
-                    fill
-                    className="collageImg"
-                    priority
-                  />
+                    <Image
+                      src="/images/View.png"
+                      alt="Office"
+                      fill
+                      className="collageImg"
+                      priority
+                    />
                   </div>
                 </div>
               </div>
@@ -162,19 +102,19 @@ if (whySection?.why_image_second) {
             <div className="whyCard whyCardTall">
               <div className="imgWrap">
                 <Image
-                src={whyImage1?.src || ""}
-                alt={whyImage1?.alt || ""}
-                fill
-                className="whyImg"
-              />
+                  src="/images/why1.png"
+                  alt="Office workspace"
+                  fill
+                  className="whyImg"
+                />
               </div>
             </div>
 
             <div className="whyCard whyCardTop">
               <div className="imgWrap">
                 <Image
-                  src={whyImage2?.src}
-                  alt={whyImage2?.alt}
+                  src="/images/why2.png"
+                  alt="Business team"
                   fill
                   className="whyImg"
                 />
@@ -183,10 +123,23 @@ if (whySection?.why_image_second) {
           </div>
 
           <div className="whyText">
-            <h2 className="h2">{whyHeading}</h2>
-            <h3 className="subhead">{whySubHeading}</h3>
-            <p className="muted">{whyP1}</p>
-            <p className="muted-two">{whyP2}</p>
+            <h2 className="h2">
+              Why Choose Virtual Office <span className="accent">Anywhere</span>
+            </h2>
+            <h3 className="subhead">
+              A virtual office service designed to support your business
+            </h3>
+            <p className="muted">
+              Not all virtual office providers work in the same way. We keep
+              things small, personal and professional, offering a premium UK
+              address with a service that is friendly, reliable and easy to
+              understand.
+            </p>
+            <p className="muted-two">
+              A UK virtual office is more than a postcode. It helps improve
+              client confidence, meet UK trading expectations and strengthen
+              your brand so you're seen as a real business from day one.
+            </p>
           </div>
         </div>
 
