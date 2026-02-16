@@ -39,7 +39,7 @@ export default function AboutUsPage() {
           <div className="hero-top">
             <div className="hero-kicker">{kicker}</div>
             <p className="hero-sub">
-              {subText
+              {subText}
             </p>
           </div>
 
@@ -256,6 +256,7 @@ export default function AboutUsPage() {
     </main>
   );
 }
+
 
 
 
