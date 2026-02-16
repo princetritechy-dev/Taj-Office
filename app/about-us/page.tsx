@@ -222,8 +222,7 @@ const rightIconUrl = await getMediaUrl(section3?.right_side_upper_section_icon);
         <div className="container services-grid">
           <div className="services-left">
             <h2 className="services-title">
-              {services?.our_services_heading?.split(" ")[0] || "Our"}{" "}
-              <span>{services?.our_services_heading?.split(" ")[1] || "Services"}</span>
+              {services?.our_services_heading || "Our Services"}
             </h2>
 
             <p className="services-text">
@@ -339,6 +338,7 @@ const rightIconUrl = await getMediaUrl(section3?.right_side_upper_section_icon);
     </main>
   );
 }
+
 
 
 
