@@ -282,7 +282,7 @@ const platformIcons = await Promise.all(
       <h2>Pick Your Perfect Business Address</h2>
       <p>Choose a professional location that supports the image you want for your business. Our Mayfair address is known for its reputation, stability, and high-quality surroundings.</p>
       <div className="mayfair"> 
-        <div> 
+        <div className="mygairimage"> 
           <Image
   src="/images/map.png"
   alt="Map icon"
