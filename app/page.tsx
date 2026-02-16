@@ -19,7 +19,7 @@ async function getHomePage() {
 
 export default async function HomePage() {
   const page = await getHomePage();
-  const h1 = page?.acf?.main_heading || "Your UK Business Address. Anywhere.";
+  const h1 = page?.acf?.main_heading;
 
   return (
     <div className="page">
