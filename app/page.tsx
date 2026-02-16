@@ -55,7 +55,7 @@ export default async function HomePage() {
 
     load();
   }, []);
-   const heroTitleFull = page?.acf?.main_heading || "Your UK Business Address. Anywhere.";
+   const heroTitleFull = page?.acf?.main_heading;
 
   const [heroTitle1, heroTitle2] = useMemo(() => {
     const parts = heroTitleFull.split(" Address.");
