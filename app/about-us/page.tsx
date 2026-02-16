@@ -1,10 +1,34 @@
 "use client";
 
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import "./about.css"; 
+
+
+const WP_ENDPOINT = "https://lavender-alligator-176962.hostingersite.com/index.php/wp-json/wp/v2/pages/24";
+
 export default function AboutUsPage() {
+  const [page, setPage] = useState<any>(null);
+
+  useEffect(() => {
+    async function fetchPage() {
+      const res = await fetch(WP_ENDPOINT);
+      const data = await res.json();
+      setPage(data);
+    }
+
+    fetchPage();
+  }, []);
+
+  // If ACF exists
+  const kicker = page?.acf?.banner?.heading;
+  const subText =
+    page?.acf?.banner?.sub_heading;
+  const pageName =
+    page?.acf?.banner?.page_name;
   return (
     <main className="about-page">
       <Header />
@@ -13,13 +37,13 @@ export default function AboutUsPage() {
       <section className="hero">
         <div className="container hero-inner">
           <div className="hero-top">
-            <div className="hero-kicker">MORE THAN JUST AN ADDRESS</div>
+            <div className="hero-kicker">{kicker}</div>
             <p className="hero-sub">
-              Anywhere is a virtual office provider for businesses that want a reliable UK address and a service that is properly looked after.
+              {subText
             </p>
           </div>
 
-          <h1 className="hero-title">ABOUT US</h1>
+          <h1 className="hero-title">{pageName}</h1>
 
           <div className="scroll-hint">
             SCROLL TO EXPLORE <span className="scroll-arrow" aria-hidden="true">↓</span>
@@ -232,5 +256,6 @@ export default function AboutUsPage() {
     </main>
   );
 }
+
 
 
