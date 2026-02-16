@@ -97,6 +97,19 @@ const howSteps = Array.isArray(page?.acf?.how_it_work_section)
   : [];
 
 
+
+const platformItems = Array.isArray(page?.acf?.platform_features_section)
+  ? page.acf.platform_features_section
+  : [];
+
+const platformIcons = await Promise.all(
+  platformItems.map(async (item: any) => {
+    const id = item?.icon_image;
+    if (!id) return null;
+    return await getMediaById(id);
+  })
+);
+
   
   return (
     <div className="page">
@@ -330,50 +343,39 @@ const howSteps = Array.isArray(page?.acf?.how_it_work_section)
 
       {/* ================= PLATFORM FEATURES ================= */}
       <section className="section-platform">
-        <div className="container platform">
-          <div className="platformTitle">
-            <h2 className="h2">Platform Features</h2>
-            <p className="muted">
-              Everything you need in one place. Your client dashboard gives you
-              access to tools that make managing your virtual office simple.
-            </p>
-          </div>
+  <div className="container platform">
+    <div className="platformTitle">
+      <h2 className="h2">Platform Features</h2>
+      <p className="muted">
+        Everything you need in one place. Your client dashboard gives you
+        access to tools that make managing your virtual office simple.
+      </p>
+    </div>
 
-          <div className="platformGrid">
-            <PlatformCard
-              icon={<Image src="/images/1.png" alt="" width={30} height={36} />}
-              title="Mail Dashboard"
-              subtitle="View mail received and track delivery requests."
-            />
-            <PlatformCard
-              icon={<Image src="/images/2.png" alt="" width={30} height={36} />}
-              title="Automatic Billing"
-              subtitle="Manage subscriptions with clear monthly billing."
-            />
-            <PlatformCard
-              icon={<Image src="/images/3.png" alt="" width={30} height={36} />}
-              title="Document Vault"
-              subtitle="Store important files securely."
-            />
-            <PlatformCard
-              icon={<Image src="/images/4.png" alt="" width={30} height={36} />}
-              title="ID Upload Portal"
-              subtitle="Easy compliance document upload."
-            />
-            <PlatformCard
-              icon={<Image src="/images/5.png" alt="" width={30} height={36} />}
-              title="AI Chat Support"
-              subtitle="Quick answers and helpful guidance."
-            />
-            <PlatformCard
-              icon={<Image src="/images/6.png" alt="" width={30} height={36} />}
-              title="Future Integrations"
-              subtitle="More tools coming soon."
-              ghost
-            />
-          </div>
-        </div>
-      </section>
+    <div className="platformGrid">
+      {platformItems.map((item: any, idx: number) => {
+        const icon = platformIcons[idx];
+
+        return (
+          <PlatformCard
+            key={idx}
+            icon={
+              <Image
+                src={icon?.src || `/images/${idx + 1}.png`}
+                alt={icon?.alt || ""}
+                width={30}
+                height={36}
+              />
+            }
+            title={item?.feature_title || ""}
+            subtitle={item?.feature_subtitle || ""}
+            ghost={idx === platformItems.length - 1}
+          />
+        );
+      })}
+    </div>
+  </div>
+</section>
 
       {/* ================= TESTIMONIALS ================= */}
       <section className="section dark">
