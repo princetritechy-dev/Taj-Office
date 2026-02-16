@@ -23,6 +23,8 @@ export default function AboutUsPage() {
     fetchPage();
   }, []);
 
+
+  const banner = page?.acf?.[""] || {};
   // If ACF exists
   const kicker = page?.acf?.banner?.heading;
   const subText =
@@ -256,3 +258,4 @@ export default function AboutUsPage() {
     </main>
   );
 }
+
