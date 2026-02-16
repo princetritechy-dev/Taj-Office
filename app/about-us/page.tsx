@@ -22,7 +22,7 @@ async function getMediaById(id: number) {
   };
 }
 async function getAboutPage() {
-  const res = await fetch(WP_PAGE_ENDPOINT, { cache: "no-store" });
+  const res = await fetch(WP_ENDPOINT, { cache: "no-store" });
   if (!res.ok) return null;
 
   return await res.json();
@@ -269,6 +269,7 @@ export default async function AboutUsPage() {
     </main>
   );
 }
+
 
 
 
