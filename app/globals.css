@@ -358,25 +358,36 @@ p.muted-two {
     margin: 20px;
 }
 .benefitsGrid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
+  display:flex;
 }
 .picksection{
   background: #ffffff;
   padding: 60px 20px;
 }
-.checkList{margin:0;padding:0; list-style:none; display:flex; flex-direction:column; gap:10px}
-.checkList li{
-  display:flex !important; 
-  gap:10px; 
-  align-items:flex-start; 
-  color:rgba(37,50,77,.82); 
-  font-size:12px; 
-  line-height:1.6; 
-  font-weight:600;
-  margin: 10px;
+.checkList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
 }
+.checkList li {
+    color: #25324dd1;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 10px 5px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex! Important;
+    width: 47%;
+}
+.checkList li::before {
+  content: url('https://taj-office.vercel.app/images/icon.png');
+  vertical-align: middle;
+}
+ 
 .check{
   width:16px;height:16px;border-radius:999px; flex:0 0 auto;
   background:linear-gradient(180deg,var(--teal),#00a79a);
@@ -1591,9 +1602,20 @@ p.simple {
 
 
 @media(max-width:980px){
+
+
+  .checkList {
+    flex-direction: column;
+}
+.checkList li {
+    align-items: self-start;
+    line-height: 20px;
+    width: 100%;
+}
     .benefitsCard{
         height:auto;
     }
+  
     .heroGrid{
             display: flex;
     position: relative;
