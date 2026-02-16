@@ -147,7 +147,7 @@ const rightIconUrl = await getMediaUrl(section3?.right_side_upper_section_icon);
           <div className="card big-card">
             <div className="card-icon" aria-hidden="true"> 
               <Image
-                src={leftIconUrl}
+                src={leftIconUrl ?? "/images/weight.png"}
                 alt="Check icon"
                 width={8}
                 height={8}
@@ -301,6 +301,7 @@ const rightIconUrl = await getMediaUrl(section3?.right_side_upper_section_icon);
     </main>
   );
 }
+
 
 
 
