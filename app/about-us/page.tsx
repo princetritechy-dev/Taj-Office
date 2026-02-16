@@ -282,8 +282,8 @@ const rightIconUrl = await getMediaUrl(section3?.right_side_upper_section_icon);
           <div className="cta">
             <div className="cta-media">
               <Image
-                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1400&auto=format&fit=crop"
-                alt="Partner with us"
+                src={partnerImageUrl ?? "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1400&auto=format&fit=crop"}
+                alt={page?.acf?.partner_with_us_heading || "Partner with us"}
                 fill
                 style={{ objectFit: "cover" }}
                 priority
@@ -291,18 +291,43 @@ const rightIconUrl = await getMediaUrl(section3?.right_side_upper_section_icon);
             </div>
 
             <div className="cta-content">
-              <h3 className="cta-title">Partner with us</h3>
+              <h3 className="cta-title">{page?.acf?.partner_with_us_heading}</h3>
               <p className="cta-text">
-                If you operate an office building and would like to explore offering virtual office services without the operational overhead, we would be happy to talk.
+                dangerouslySetInnerHTML={{
+                  __html: page?.acf?.partner_with_us_paragraph,
+                }}
               </p>
 
               <div className="cta-btns">
-                <a className="btn primary" href="#">Get in touch</a>
-                <a className="btn" href="#">Learn More</a>
+                 <a
+                    className="btn primary"
+                    href={page?.acf?.partner_with_us_button_one_link?.url}
+                    target={page?.acf?.partner_with_us_button_one_link?.target }
+                    rel={
+                      page?.acf?.partner_with_us_button_one_link?.target === "_blank"
+                        ? "noreferrer"
+                        : undefined
+                    }
+                  >
+                    {page?.acf?.partner_with_us_button_one }
+                  </a>
+
+                  <a
+                    className="btn"
+                    href={page?.acf?.partner_with_us_button_two_link?.url}
+                    target={page?.acf?.partner_with_us_button_two_link?.target}
+                    rel={
+                      page?.acf?.partner_with_us_button_two_link?.target === "_blank"
+                        ? "noreferrer"
+                        : undefined
+                    }
+                  >
+                    {page?.acf?.partner_with_us_button_two}
+                  </a>
               </div>
 
               <small className="cta-small">
-                We will walk you through how the partnership works and answer any questions.
+                 {page?.acf?.partner_with_us_lower_description}
               </small>
             </div>
           </div>
@@ -313,6 +338,7 @@ const rightIconUrl = await getMediaUrl(section3?.right_side_upper_section_icon);
     </main>
   );
 }
+
 
 
 
