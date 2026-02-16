@@ -14,17 +14,20 @@ async function getPageBySlug(slug: string) {
   return data?.[0] ?? null;
 }
 
+
 export default function AboutUsPage() {
-    const page = await getPageBySlug("about-us");
+const [page, setPage] = useState<any>(null);
 
-  const kicker =
-    page?.acf?.banner?.heading;
+  useEffect(() => {
+    (async () => {
+      const p = await getPageBySlug("about-us");
+      setPage(p);
+    })();
+  }, []);
 
-  const subText =
-    page?.acf?.banner?.sub_heading;
-
-  const pageName =
-    page?.acf?.banner?.page_name;
+  const kicker = page?.acf?.banner?.heading;
+  const subText = page?.acf?.banner?.sub_heading;
+  const pageName = page?.acf?.banner?.page_name || page?.title?.rendered;
   return (
     <main className="about-page">
       <Header />
@@ -39,7 +42,7 @@ export default function AboutUsPage() {
             </p>
           </div>
 
-          <h1 className="hero-title">{page-name}</h1>
+          <h1 className="hero-title">{pageName}</h1>
 
           <div className="scroll-hint">
             SCROLL TO EXPLORE <span className="scroll-arrow" aria-hidden="true">↓</span>
@@ -252,6 +255,7 @@ export default function AboutUsPage() {
     </main>
   );
 }
+
 
 
 
