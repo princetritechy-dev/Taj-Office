@@ -48,6 +48,21 @@ const pageName =
   page?.title?.rendered ||
   "ABOUT US";
   const section2 = page?.acf?.secound_section__content || {};
+  const section3 = page?.acf?.third_section_content || {};
+
+const leftIconUrl = await getMediaUrl(section3?.left_section_icon_image);
+const rightIconUrl = await getMediaUrl(section3?.right_side_upper_section_icon);
+
+  async function getMediaUrl(id) {
+  if (!id) return null;
+  const res = await fetch(
+    `https://lavender-alligator-176962.hostingersite.com/index.php/wp-json/wp/v2/media/${id}`,
+    { cache: "no-store" }
+  );
+  if (!res.ok) return null;
+  const media = await res.json();
+  return media?.source_url || null;
+}
   return (
     <main className="about-page">
       <Header />
@@ -128,24 +143,24 @@ const pageName =
           <div className="card big-card">
             <div className="card-icon" aria-hidden="true"> 
               <Image
-                src="/images/weight.png"
+                src={leftIconUrl}
                 alt="Check icon"
                 width={8}
                 height={8}
                 className="dotIcon"
               />
             </div>
-            <h3 className="card-title">Compliance handled in house</h3>
+            <h3 className="card-title">{section3?.left_section_heading}</h3>
             <p className="card-text">
-              Using a business address comes with legal responsibilities. AML and KYC checks are carried out by our own team and reviewed properly.
+              {section3?.left_section_summary}
             </p>
 
             <div className="card-divider" />
 
             <div className="card-bottom">
-              <div className="card-label">OUR PROMISE</div>
+              <div className="card-label">{(section3?.left_section_lower_heading).toUpperCase()}</div>
               <div className="card-small">
-                We don’t outsource compliance or rush approvals. This protects the reputation of everyone involved.
+                {section3?.left_section_lower_paragraph}
               </div>
             </div>
           </div>
@@ -155,33 +170,42 @@ const pageName =
             <div className="card pricing-card">
               <div className="pricing-top">
                 <div className="dot" aria-hidden="true" />
-                <div className="pricing-title">Clear Pricing</div>
+                <div className="pricing-title">{section3?.right_side_upper_section_heading}</div>
               </div>
 
               <p className="card-text">
-                Our pricing is fair and easy to understand. You won’t be charged inflated fees or unexpected extras.
+                {section3?.right_side_upper_section_paragraph}
               </p>
 
               <div className="tags">
-                <span className="tag">Sensible</span>
-                <span className="tag">Consistent</span>
+                {section3?.clear_pricing_button_text ? (
+                      <span className="tag">{section3.clear_pricing_button_text}</span>
+                    ) : null}
+                    {section3?.clear_pricing_button_two ? (
+                      <span className="tag">{section3.clear_pricing_button_two}</span>
+                    ) : null}
               </div>
 
               <div className="money-badge" aria-hidden="true">££</div>
             </div>
 
             <div className="card team-card">
-              <div className="team-title">Approachable Team</div>
+              <div className="team-title">{section3?.right_side_lower_left_section_heading}</div>
               <p className="card-text">
-                We are a small team by choice. That allows us to stay responsive and deal with queries quickly. Support feels personal, not informal.
+                {section3?.approachable_team_paragraph}
               </p>
-              <a className="text-link" href="#">
-                MEET THE TEAM →
+              <a
+                className="text-link"
+                href={section3?.approachable_team_link?.url || "#"}
+                target={section3?.approachable_team_link?.target || undefined}
+                rel={section3?.approachable_team_link?.target === "_blank" ? "noreferrer" : undefined}
+              >
+                {(section3?.approachable_team_link_text || "Meet the team").toUpperCase()} →
               </a>
             </div>
 
             <div className="card years-card">
-              <div className="years-num">60</div>
+              <div className="years-num">{section3?.years_experience ?? ""}</div>
               <div className="years-sub">YEARS EXPERIENCE</div>
             </div>
           </div>
@@ -273,6 +297,7 @@ const pageName =
     </main>
   );
 }
+
 
 
 
