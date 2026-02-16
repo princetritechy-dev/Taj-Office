@@ -40,8 +40,30 @@ function safeHtml(html?: string) {
 
 
 export default async function HomePage() {
-  const page = await getHomePage();
-  const h1 = page?.acf?.main_heading;
+  const data = await getHomePage();
+  const page = data?.[0] ?? null;
+
+  // ✅ IMPORTANT: your structure is acf.banner.*
+  const banner = page?.acf?.banner || {};
+
+  const mainHeading = banner?.main_heading";
+  const subHeading = banner?.sub_heading;
+
+  // bottom_content is HTML in your json
+  const bottomContentHtml = banner?.bottom_content || "";
+
+  // address_content is plain text in your json
+  const addressContent = banner?.address_content || "";
+
+  const heroButtons = Array.isArray(banner?.hero_buttons) ? banner.hero_buttons : [];
+
+  // hero_image is ID = 59 in your json
+  const heroImageId = typeof banner?.hero_image === "number" ? banner.hero_image : null;
+  const heroImage = heroImageId ? await getMediaUrlById(heroImageId) : null;
+
+  // fallback image if not found
+  const heroImgSrc = heroImage?.src";
+  const heroImgAlt = heroImage?.alt;
 
   return (
     <div className="page">
@@ -63,7 +85,7 @@ export default async function HomePage() {
               <span>Live in 24 HOURS</span>
             </div>
 
-            <h1 className="h1">{h1}</h1>
+            <h1 className="h1">{mainHeading} {subHeading}</h1>
 
             <p className="lead">
               A trusted UK business address from £20 a month. Choose a
