@@ -14,8 +14,8 @@ async function getPageBySlug(slug: string) {
   return data?.[0] ?? null;
 }
 
-export default async function AboutUsPage() {
-  const page = await getPageBySlug("about-us");
+export default function AboutUsPage() {
+    const page = await getPageBySlug("about-us");
 
   const kicker =
     page?.acf?.banner?.heading;
@@ -25,7 +25,6 @@ export default async function AboutUsPage() {
 
   const pageName =
     page?.acf?.banner?.page_name;
-export default function AboutUsPage() {
   return (
     <main className="about-page">
       <Header />
@@ -253,6 +252,7 @@ export default function AboutUsPage() {
     </main>
   );
 }
+
 
 
 
