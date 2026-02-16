@@ -30,7 +30,7 @@ export default async function HomePage() {
 
         if (!base) {
           throw new Error(
-            "Missing NEXT_PUBLIC_WP_API. Add it in .env.local and restart `npm run dev`."
+            "Missing WP_API. Add it in .env.local and restart `npm run dev`."
           );
         }
 
