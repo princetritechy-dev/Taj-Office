@@ -341,8 +341,8 @@ p.muted-two {
 .benefitsCard{
     background: #F8FAFC;
     margin-top: 30px;
-    padding: 20px;
-    height: 346px;
+    padding: 40px;
+    /* height: 346px; */
     max-width: 1180px !important;
     border-radius: 24px;
 }
