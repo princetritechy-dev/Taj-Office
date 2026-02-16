@@ -1,47 +1,52 @@
 "use client";
 
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import "./about.css"; 
 
-export const dynamic = "force-dynamic";
-const WP_ENDPOINT = "https://lavender-alligator-176962.hostingersite.com/index.php/wp-json/wp/v2/pages/24";
+export const dynamic = "force-dynamic"; 
 
-async function getMediaById(id: number) {
+
+async function getAboutPage() {
   const res = await fetch(
-    `https://lavender-alligator-176962.hostingersite.com/index.php/wp-json/wp/v2/media/${id}`,
+    "https://lavender-alligator-176962.hostingersite.com/index.php/wp-json/wp/v2/pages/24",
     { cache: "no-store" }
   );
-  if (!res.ok) return null;
 
-  const data = await res.json();
-  return {
-    src: data?.source_url as string,
-    alt: (data?.alt_text || data?.title?.rendered || "") as string,
-  };
-}
-async function getAboutPage() {
-  const res = await fetch(WP_ENDPOINT, { cache: "no-store" });
-  if (!res.ok) return null;
+  if (!res.ok) {
+    console.log("❌ API failed");
+    return null;
+  }
 
-  return await res.json();
+  return res.json();
+
 }
 
 
 export default async function AboutUsPage() {
   const page = await getAboutPage();
 
+
+   console.log("ABOUT PAGE DATA---:", page.acf.secound_section__content.heading);
+
+
+  const h1 = page?.acf?.banner?.main_heading || "Your UK Business Address. Anywhere......";
+  const benefits = page?.acf?.benefits_section ?? [];
+
+
+
+  
   const banner = page?.acf?.[""] || {};
-
-  const kicker = banner?.heading;
-  const subText =
-    banner?.subheading;
-  const pageName = banner?.page_name;
-
-  // background image (ID)
-  const bgId = banner?.background_image;
-  const bgMedia = bgId ? await getMediaById(bgId) : null
+ const kicker = banner?.heading;
+const subText =
+  banner?.subheading;
+const pageName =
+  banner?.page_name ||
+  page?.title?.rendered ||
+  "ABOUT US";
   return (
     <main className="about-page">
       <Header />
@@ -269,8 +274,5 @@ export default async function AboutUsPage() {
     </main>
   );
 }
-
-
-
 
 
