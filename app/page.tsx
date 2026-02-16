@@ -207,40 +207,88 @@ const rightBenefits = benefits.slice(mid);
           <div className="benefitsTitle">
             Benefits of choosing a virtual office with us
           </div>
-        
+
           <div className="benefitsGrid">
             <ul className="checkList">
-              {leftColumn.map((text: string, index: number) => (
-                <li key={`left-${index}`}>
-                  <Image
-                    src="/images/icon.png"
-                    alt="Check icon"
-                    width={15}
-                    height={20}
-                    className="checkIcon"
-                  />
-                  <span>{text}</span>
-                </li>
-              ))}
+              <li>
+                <Image
+                  src="/images/icon.png"
+                  alt="Check icon"
+                  width={15}
+                  height={20}
+                  className="checkIcon"
+                />
+                <span>
+                  A recognised business address that helps your company look
+                  credible
+                </span>
+              </li>
+              <li>
+                <Image
+                  src="/images/icon.png"
+                  alt="Check icon"
+                  width={15}
+                  height={20}
+                  className="checkIcon"
+                />
+                <span>Stronger SEO signals for customers searching in your sector</span>
+              </li>
+              <li>
+                <Image
+                  src="/images/icon.png"
+                  alt="Check icon"
+                  width={15}
+                  height={20}
+                  className="checkIcon"
+                />
+                <span>Secure mail handling and friendly support</span>
+              </li>
+              <li>
+                <Image
+                  src="/images/icon.png"
+                  alt="Check icon"
+                  width={15}
+                  height={20}
+                  className="checkIcon"
+                />
+                <span>Two clear packages with everything included</span>
+              </li>
             </ul>
-        
+
             <ul className="checkList">
-              {rightColumn.map((text: string, index: number) => (
-                <li key={`right-${index}`}>
-                  <Image
-                    src="/images/icon.png"
-                    alt="Check icon"
-                    width={15}
-                    height={20}
-                    className="checkIcon"
-                  />
-                  <span>{text}</span>
-                </li>
-              ))}
+              <li>
+                <Image
+                  src="/images/icon.png"
+                  alt="Check icon"
+                  width={15}
+                  height={20}
+                  className="checkIcon"
+                />
+                <span>Privacy for your home address on public records</span>
+              </li>
+              <li>
+                <Image
+                  src="/images/icon.png"
+                  alt="Check icon"
+                  width={15}
+                  height={20}
+                  className="checkIcon"
+                />
+                <span>A place to host clients with meeting rooms available to book</span>
+              </li>
+              <li>
+                <Image
+                  src="/images/icon.png"
+                  alt="Check icon"
+                  width={15}
+                  height={20}
+                  className="checkIcon"
+                />
+                <span>Straightforward monthly pricing with no setup fees or surprise charges</span>
+              </li>
             </ul>
           </div>
         </div>
-
       </section>
 
 
