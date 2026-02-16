@@ -47,6 +47,7 @@ const pageName =
   banner?.page_name ||
   page?.title?.rendered ||
   "ABOUT US";
+  const section2 = page?.acf?.secound_section__content || {};
   return (
     <main className="about-page">
       <Header />
@@ -75,9 +76,7 @@ const pageName =
           {/* Left logo/heading */}
           <div className="quality-left">
             <div className="quality-mark">
-              <div className="qm-line1">Quality</div>
-              <div className="qm-line2">over</div>
-              <div className="qm-line3">Quantity</div>
+              <div className="qm-line1">{section2?.heading}</div>
             </div>
             <div className="quality-caption">OUR CORE PHILOSOPHY</div>
           </div>
@@ -274,5 +273,6 @@ const pageName =
     </main>
   );
 }
+
 
 
