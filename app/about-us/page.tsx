@@ -53,16 +53,20 @@ const pageName =
 const leftIconUrl = await getMediaUrl(section3?.left_section_icon_image);
 const rightIconUrl = await getMediaUrl(section3?.right_side_upper_section_icon);
 
-  async function getMediaUrl(id) {
+  async function getMediaUrl(id: number | null | undefined): Promise<string | null> {
   if (!id) return null;
+
   const res = await fetch(
     `https://lavender-alligator-176962.hostingersite.com/index.php/wp-json/wp/v2/media/${id}`,
     { cache: "no-store" }
   );
+
   if (!res.ok) return null;
-  const media = await res.json();
-  return media?.source_url || null;
+
+  const media: { source_url?: string } = await res.json();
+  return media?.source_url ?? null;
 }
+
   return (
     <main className="about-page">
       <Header />
@@ -297,6 +301,7 @@ const rightIconUrl = await getMediaUrl(section3?.right_side_upper_section_icon);
     </main>
   );
 }
+
 
 
 
