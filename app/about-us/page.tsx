@@ -52,7 +52,7 @@ const pageName =
 
 const leftIconUrl = await getMediaUrl(section3?.left_section_icon_image);
 const rightIconUrl = await getMediaUrl(section3?.right_side_upper_section_icon);
-   const services = page?.acf || {};
+
 
   async function getMediaUrl(id: number | null | undefined): Promise<string | null> {
   if (!id) return null;
@@ -67,7 +67,7 @@ const rightIconUrl = await getMediaUrl(section3?.right_side_upper_section_icon);
   const media: { source_url?: string } = await res.json();
   return media?.source_url ?? null;
 }
-
+   const services = page?.acf || {};
   return (
     <main className="about-page">
       <Header />
@@ -339,6 +339,7 @@ const rightIconUrl = await getMediaUrl(section3?.right_side_upper_section_icon);
     </main>
   );
 }
+
 
 
 
