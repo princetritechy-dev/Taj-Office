@@ -25,11 +25,9 @@ export default function AboutUsPage() {
 
 
   const banner = page?.acf?.[""] || {};
-  // If ACF exists
- const kicker = banner?.heading || "MORE THAN JUST AN ADDRESS";
+ const kicker = banner?.heading;
 const subText =
-  banner?.subheading ||
-  "Anywhere is a virtual office provider for businesses that want a reliable UK address and a service that is properly looked after.";
+  banner?.subheading;
 const pageName =
   banner?.page_name ||
   page?.title?.rendered ||
@@ -261,5 +259,6 @@ const pageName =
     </main>
   );
 }
+
 
 
