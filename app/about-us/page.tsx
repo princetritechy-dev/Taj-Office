@@ -221,17 +221,20 @@ const rightIconUrl = await getMediaUrl(section3?.right_side_upper_section_icon);
         <div className="container services-grid">
           <div className="services-left">
             <h2 className="services-title">
-              Our <span>Services</span>
+              {services?.our_services_heading?.split(" ")[0] || "Our"}{" "}
+              <span>{services?.our_services_heading?.split(" ")[1] || "Services"}</span>
             </h2>
 
             <p className="services-text">
-              Registered office and business address services suitable for Companies House, HMRC, and everyday business use.
+              {services?.our_services_heading_subheading}
             </p>
 
             <div className="service-pills">
-              <span className="pill-btn">Mail Collection</span>
-              <span className="pill-btn">Forwarding</span>
-              <span className="pill-btn">Scan &amp; Email</span>
+              {services?.our_services_button?.map((btn: any, index: number) => (
+                <span key={index} className="pill-btn">
+                {btn?.our_services_button_label}
+                </span>
+                ))}
             </div>
           </div>
 
@@ -247,15 +250,24 @@ const rightIconUrl = await getMediaUrl(section3?.right_side_upper_section_icon);
                 className="dotIcon"
               />
                 </div>
-                <div className="service-card-title">Meeting Rooms</div>
+                <div className="service-card-title">{services?.our_services_right_title}</div>
               </div>
 
               <p className="service-card-text">
-                At selected locations, meeting rooms are available to book when you need a physical space for client meetings or internal sessions.
+                {services?.our_services_right_paragraph}
               </p>
 
-              <a className="service-btn" href="#">
-                View Locations
+              <a
+                className="service-btn"
+                href={services?.our_services_button_link?.url}
+                target={services?.our_services_button_link?.target}
+                rel={
+                  services?.our_services_button_link?.target === "_blank"
+                    ? "noreferrer"
+                    : undefined
+                }
+              >
+                {services?.our_services_right_button}
               </a>
 
               <div className="service-bg" aria-hidden="true" />
@@ -301,6 +313,7 @@ const rightIconUrl = await getMediaUrl(section3?.right_side_upper_section_icon);
     </main>
   );
 }
+
 
 
 
