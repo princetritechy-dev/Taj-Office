@@ -54,8 +54,29 @@ export default async function HomePage() {
   if (heroImageId) {
     heroImage = await getMediaById(heroImageId);
   }
-
   const hero_note = page?.acf?.banner?.address_content;
+
+
+
+
+const whySection = page?.acf?.why_section || {};
+
+const whyHeading = whySection?.why_heading || "";
+const whySubHeading = whySection?.why_sub_heading || "";
+const whyP1 = whySection?.why_paragraph_one || "";
+const whyP2 = whySection?.why_paragraph_two || "";
+
+let whyImage1 = null;
+let whyImage2 = null;
+
+if (whySection?.why_image_first) {
+  whyImage1 = await getMediaById(whySection.why_image_first);
+}
+
+if (whySection?.why_image_second) {
+  whyImage2 = await getMediaById(whySection.why_image_second);
+}
+
 
   return (
     <div className="page">
@@ -141,19 +162,19 @@ export default async function HomePage() {
             <div className="whyCard whyCardTall">
               <div className="imgWrap">
                 <Image
-                  src="/images/why1.png"
-                  alt="Office workspace"
-                  fill
-                  className="whyImg"
-                />
+                src={whyImage1?.src || ""}
+                alt={whyImage1?.alt || ""}
+                fill
+                className="whyImg"
+              />
               </div>
             </div>
 
             <div className="whyCard whyCardTop">
               <div className="imgWrap">
                 <Image
-                  src="/images/why2.png"
-                  alt="Business team"
+                  src={whyImage2?.src}
+                  alt={whyImage2?.alt}
                   fill
                   className="whyImg"
                 />
@@ -162,23 +183,10 @@ export default async function HomePage() {
           </div>
 
           <div className="whyText">
-            <h2 className="h2">
-              Why Choose Virtual Office <span className="accent">Anywhere</span>
-            </h2>
-            <h3 className="subhead">
-              A virtual office service designed to support your business
-            </h3>
-            <p className="muted">
-              Not all virtual office providers work in the same way. We keep
-              things small, personal and professional, offering a premium UK
-              address with a service that is friendly, reliable and easy to
-              understand.
-            </p>
-            <p className="muted-two">
-              A UK virtual office is more than a postcode. It helps improve
-              client confidence, meet UK trading expectations and strengthen
-              your brand so you're seen as a real business from day one.
-            </p>
+            <h2 className="h2">{whyHeading}</h2>
+            <h3 className="subhead">{whySubHeading}</h3>
+            <p className="muted">{whyP1}</p>
+            <p className="muted-two">{whyP2}</p>
           </div>
         </div>
 
