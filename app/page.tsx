@@ -79,6 +79,21 @@ if (whySection?.why_image_second) {
 
 const benefits = page?.acf?.benefits_section ?? [];
 
+
+
+const receiveItems = Array.isArray(page?.acf?.what_you_recieve_section)
+  ? page.acf.what_you_recieve_section
+  : [];
+const receiveIcons = await Promise.all(
+  receiveItems.map(async (item: any) => {
+    const id = item?.icon_image;
+    if (!id) return null;
+    return await getMediaById(id);
+  })
+);
+
+
+  
   return (
     <div className="page">
       <Header />
@@ -210,64 +225,38 @@ const benefits = page?.acf?.benefits_section ?? [];
 
       {/* ================= WHAT YOU RECEIVE ================= */}
       <section className="section">
-        <div className="container">
-          <div className="centerTitle">
-            <h2 className="h2">What You Receive</h2>
-            <div className="titleUnderline" aria-hidden="true" />
-          </div>
+  <div className="container">
+    <div className="centerTitle">
+      <h2 className="h2">What You Receive</h2>
+      <div className="titleUnderline" aria-hidden="true" />
+    </div>
 
-          <div className="cardsGrid">
-            <FeatureCard
-              icon={<Image src="/images/symb1.png" alt="" width={40} height={40} />}
-              title="Premium UK Address"
-              q2="What This Means"
-              desc="Use your address for business documents, websites and registrations."
-              note="Why it helps"
-              noteText="Builds trust and strengthens your company image."
-            />
-            <FeatureCard
-              icon={<Image src="/images/symb2.png" alt="" width={40} height={40} />}
-              title="Friendly Support"
-              q2="What This Means"
-              desc="Real people who help with updates and questions."
-              note="Why it helps"
-              noteText="A smoother experience without delays."
-            />
-            <FeatureCard
-              icon={<Image src="/images/symb3.png" alt="" width={40} height={40} />}
-              title="Thoughtful Mail Handling"
-              q2="What This Means"
-              desc="Mail is received, safely managed by our team."
-              note="Why it helps"
-              noteText="Peace of mind and better organisation."
-            />
-            <FeatureCard
-              icon={<Image src="/images/symb4.png" alt="" width={40} height={40} />}
-              title="Clear, Simple Pricing"
-              q2="What This Means"
-              desc="Two packages with no setup fees and no hidden extras."
-              note="Why it helps"
-              noteText="Easy budgeting and no surprise bills."
-            />
-            <FeatureCard
-              icon={<Image src="/images/symb5.png" alt="" width={40} height={40} />}
-              title="Meeting Rooms Available"
-              q2="What This Means"
-              desc="Book rooms at select locations when you need them."
-              note="Why it helps"
-              noteText="A more polished and professional presence."
-            />
-            <FeatureCard
-              icon={<Image src="/images/symb6.png" alt="" width={40} height={40} />}
-              title="Proper Compliance Checks"
-              q2="What This Means"
-              desc="We meet basic requirements and keep things secure."
-              note="Why it helps"
-              noteText="Helps you stay protected and meet UK requirements."
-            />
-          </div>
-        </div>
-      </section>
+    <div className="cardsGrid">
+      {receiveItems.map((item: any, idx: number) => {
+        const icon = receiveIcons[idx];
+
+        return (
+          <FeatureCard
+            key={idx}
+            icon={
+              <Image
+                src={icon?.src }
+                alt={icon?.alt || ""}
+                width={40}
+                height={40}
+              />
+            }
+            title={item?.title || ""}
+            q2={item?.question || ""}
+            desc={item?.description || ""}
+            note={item?.note || ""}
+            noteText={item?.note_text || ""}
+          />
+        );
+      })}
+    </div>
+  </div>
+</section>
 
   <section className="business-address">
   <div className="container">
