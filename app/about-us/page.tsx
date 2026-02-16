@@ -92,7 +92,7 @@ const pageName =
 
             <div className="experience-card">
               <div className="exp-icon" aria-hidden="true"> <Image
-                src="/images/map.png"
+                src="/images/loction.png"
                 alt="Check icon"
                 width={8}
                 height={8}
