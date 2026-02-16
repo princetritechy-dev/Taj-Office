@@ -18,8 +18,61 @@ async function getHomePage() {
 }
 
 export default async function HomePage() {
+    const [page, setPage] = useState<WPPage | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [errorText, setErrorText] = useState("");
+
+  useEffect(() => {
+    async function load() {
+      try {
+        const base = process.env.WP_API;
+        const id = "8";
+
+        if (!base) {
+          throw new Error(
+            "Missing NEXT_PUBLIC_WP_API. Add it in .env.local and restart `npm run dev`."
+          );
+        }
+
+        const url = `${base}/wp-json/custom/v1/page/${id}`;
+        const res = await fetch(url, { cache: "no-store" });
+
+        if (!res.ok) {
+          const t = await res.text();
+          throw new Error(`WP API Error: ${res.status}\n${t.slice(0, 300)}`);
+        }
+
+        const data: WPPage = await res.json();
+        setPage(data);
+      } catch (e: any) {
+        console.error(e);
+        setErrorText(e?.message || "Failed to load WP content");
+        setPage(null);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    load();
+  }, []);
+   const heroTitleFull = page?.acf?.main_heading || "Your UK Business Address. Anywhere.";
+
+  const [heroTitle1, heroTitle2] = useMemo(() => {
+    const parts = heroTitleFull.split(" Address.");
+    if (parts.length > 1) {
+      return [parts[0].trim(), `Address. ${parts.slice(1).join(" Address.").trim()}`];
+    }
+    const words = heroTitleFull.trim().split(/\s+/);
+    if (words.length <= 3) return [heroTitleFull, ""];
+    const cut = Math.max(2, Math.floor(words.length / 2));
+    return [words.slice(0, cut).join(" "), words.slice(cut).join(" ")];
+  }, [heroTitleFull]);
+
+  const heroDesc = page?.acf?.sub_heading || "";
+
+  if (loading) return <div className="container" style={{ padding: 24 }}>Loading...</div>;
+  if (errorText) return <div className="container" style={{ padding: 24 }}>{errorText}</div>;
   const page = await getHomePage();
-  const h1 = page?.acf?.main_heading || "Your UK Business Address. Anywhere.";
 
   return (
     <div className="page">
@@ -41,13 +94,12 @@ export default async function HomePage() {
               <span>Live in 24 HOURS</span>
             </div>
 
-            <h1 className="h1">{h1}</h1>
+            <h1 className="h1">{heroTitle1} <br />
+              {heroTitle2 ? heroTitle2.split(" ").slice(0, 1).join(" ") : ""}{" "}
+              {heroTitle2 ? <span>{heroTitle2.split(" ").slice(1).join(" ")}</span> : null}</h1>
 
             <p className="lead">
-              A trusted UK business address from £20 a month. Choose a
-              professional location for your company and enjoy simple pricing,
-              friendly support and a service that helps you present your
-              business well from day one.
+             {heroDesc}
             </p>
 
             <div className="heroCtas">
