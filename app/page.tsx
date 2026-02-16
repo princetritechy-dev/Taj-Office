@@ -3,23 +3,45 @@ import PlatformCard from "./PlatformCard";
 import Header from "./components/header";
 import Footer from "./components/footer";
 
-export const dynamic = "force-dynamic"; // ✅ IMPORTANT for Vercel
+const WP_BASE =
+  "https://lavender-alligator-176962.hostingersite.com/index.php/wp-json/wp/v2";
+
+/** ----------------- helpers ----------------- */
+async function wpFetch<T>(url: string): Promise<T | null> {
+  const res = await fetch(url, { cache: "no-store" });
+  if (!res.ok) return null;
+  return (await res.json()) as T;
+}
 
 async function getHomePage() {
-  const res = await fetch(
-    "https://lavender-alligator-176962.hostingersite.com/index.php/wp-json/wp/v2/pages?slug=home",
-    { cache: "no-store" }
-  );
-
-  if (!res.ok) return null;
-
-  const data = await res.json();
-  return data?.[0] ?? null;
+  return await wpFetch<any>(`${WP_BASE}/pages?slug=home`);
 }
+
+async function getMediaUrlById(id: number): Promise<{ src: string; alt: string } | null> {
+  const media = await wpFetch<any>(`${WP_BASE}/media/${id}`);
+  if (!media) return null;
+
+  const src =
+    media?.source_url ||
+    media?.media_details?.sizes?.large?.source_url ||
+    media?.media_details?.sizes?.full?.source_url ||
+    "";
+
+  const alt = media?.alt_text || media?.title?.rendered || "";
+
+  if (!src) return null;
+  return { src, alt };
+}
+
+function safeHtml(html?: string) {
+  if (!html) return "";
+  return html;
+}
+
 
 export default async function HomePage() {
   const page = await getHomePage();
-  const h1 = page?.acf?.main_heading || "Your UK Business Address. Anywhere.";
+  const h1 = page?.acf?.main_heading;
 
   return (
     <div className="page">
