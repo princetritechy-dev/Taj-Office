@@ -1,37 +1,47 @@
 "use client";
 
-
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import "./about.css"; 
 
-
+export const dynamic = "force-dynamic";
 const WP_ENDPOINT = "https://lavender-alligator-176962.hostingersite.com/index.php/wp-json/wp/v2/pages/24";
 
-export default function AboutUsPage() {
-  const [page, setPage] = useState<any>(null);
+async function getMediaById(id: number) {
+  const res = await fetch(
+    `https://lavender-alligator-176962.hostingersite.com/index.php/wp-json/wp/v2/media/${id}`,
+    { cache: "no-store" }
+  );
+  if (!res.ok) return null;
 
-  useEffect(() => {
-    async function fetchPage() {
-      const res = await fetch(WP_ENDPOINT);
-      const data = await res.json();
-      setPage(data);
-    }
+  const data = await res.json();
+  return {
+    src: data?.source_url as string,
+    alt: (data?.alt_text || data?.title?.rendered || "") as string,
+  };
+}
+async function getAboutPage() {
+  const res = await fetch(WP_PAGE_ENDPOINT, { cache: "no-store" });
+  if (!res.ok) return null;
 
-    fetchPage();
-  }, []);
+  return await res.json();
+}
 
+
+export default async function AboutUsPage() {
+  const page = await getAboutPage();
 
   const banner = page?.acf?.[""] || {};
- const kicker = banner?.heading;
-const subText =
-  banner?.subheading;
-const pageName =
-  banner?.page_name ||
-  page?.title?.rendered ||
-  "ABOUT US";
+
+  const kicker = banner?.heading;
+  const subText =
+    banner?.subheading;
+  const pageName = banner?.page_name;
+
+  // background image (ID)
+  const bgId = banner?.background_image;
+  const bgMedia = bgId ? await getMediaById(bgId) : null
   return (
     <main className="about-page">
       <Header />
@@ -259,6 +269,7 @@ const pageName =
     </main>
   );
 }
+
 
 
 
