@@ -111,6 +111,10 @@ const platformIcons = await Promise.all(
 );
 
   
+  function decodeHtmlEntities(h1: any): import("react").ReactNode {
+    throw new Error("Function not implemented.");
+  }
+
   return (
     <div className="page">
       <Header />
@@ -131,7 +135,13 @@ const platformIcons = await Promise.all(
               <span>Live in 24 HOURS</span>
             </div>
 
-            <h1 className="h1">{h1} <br /> {subheading}</h1>
+            <h1
+                className="h1"
+                dangerouslySetInnerHTML={{
+                  __html: h1 || "",
+                }}
+              />
+
 
             <p className="lead">
               {hero_para}
