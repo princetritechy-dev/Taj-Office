@@ -1,4 +1,4 @@
-"use client";
+
 
 import Image from "next/image";
 import Header from "../components/header";
@@ -6,25 +6,105 @@ import Footer from "../components/footer";
 
 import "./why-work.css"; // ✅ only this page css
 
-export default function ListingPage() {
+
+
+export const dynamic = "force-dynamic";
+
+const WP_BASE = "https://lavender-alligator-176962.hostingersite.com/index.php/wp-json/wp/v2/pages/336";
+const WP_MEDIA = "https://lavender-alligator-176962.hostingersite.com/index.php/wp-json/wp/v2";
+const stripQuoteDiv = (s: string) => {
+  if (!s) return "";
+
+  return s
+    // remove raw <div class="quote">...</div> (including empty)
+    .replace(/<div[^>]*class=["']quote["'][^>]*>[\s\S]*?<\/div>/gi, "")
+    // remove escaped &lt;div class="quote"&gt;...&lt;/div&gt;
+    .replace(/&lt;div[^&]*class=&quot;quote&quot;[^&]*&gt;[\s\S]*?&lt;\/div&gt;/gi, "")
+    .trim();
+};
+
+async function wpFetch(url: string) {
+  const res = await fetch(url, { cache: "no-store" });
+
+  if (!res.ok) {
+    const body = await res.text();
+    console.error("WP FETCH FAILED:", res.status, res.statusText);
+    console.error("URL:", url);
+    console.error("BODY:", body.slice(0, 400));
+    return null;
+  }
+
+  return res.json();
+}
+
+
+async function getMediaUrl(id?: number | null): Promise<string | null> {
+  if (!id) return null;
+  const media = await wpFetch(`${WP_MEDIA}/media/${id}`);
+  return media?.source_url || null;
+}
+
+
+
+export default async function WhyWork() {
+  const page = await wpFetch(`${WP_BASE}`);
+  const acf = page?.acf || {};
+
+  const s1 = acf?.first_section_content || {};
+  const s2 = acf?.second_section_content || {};
+  const s3 = acf?.third_section_content || {};
+  const s4 = acf?.fourth_section_content || {};
+  const s5 = acf?.fifth_section_content || {};
+  const s6 = acf?.sixth_section_content || {};
+
+  // Images
+  const heroBg = await getMediaUrl(s1?.background_image);
+  const subIcon = await getMediaUrl(s2?.sub_section_icon);
+  const s5Bg = await getMediaUrl(s5?.background_image);
+  const s6ImageUrl = await getMediaUrl(s6?.section_image);
+
+
+//Heading
+const h1 = s1?.section_heading;
+const h3 = s2?.section_heading;
+
+  // Arrays
+
+    const keyPoints = s3?.right_section_key_points ?? [];
+
+    const keyPointsWithIcons = await Promise.all(
+      keyPoints.map(async (kp: any) => ({
+        ...kp,
+        iconUrl: await getMediaUrl(kp?.point_icon),
+      }))
+    );
+
+
+    
+
+    const itemsRaw = s4?.section_items || [];
+
+    const items = await Promise.all(
+      itemsRaw.map(async (item: any) => ({
+        ...item,
+        iconUrl: await getMediaUrl(item?.item_icon),
+      }))
+    );
   return (
     <main className="listing-page">
       <Header />
 
       {/* HERO */}
-      <section className="hero">
+      <section className="hero" style={heroBg ? { backgroundImage: `url(${heroBg})` } : undefined}>
         <div className="container hero-inner">
           <div className="pill">PARTNERSHIP PROGRAM</div>
+          <h1 dangerouslySetInnerHTML={{ __html: h1 || "" }} />
 
-          <h1>
-            Why work with <br /> Virtual Office Anywhere
-          </h1>
 
           <div className="hero-divider" />
 
           <p>
-            Generate additional revenue from virtual office services, without the
-            hassle that usually comes with running them.
+            {s1?.section_paragraph}
           </p>
 
           <div className="hero-down" aria-hidden="true">
@@ -48,33 +128,30 @@ export default function ListingPage() {
       <section className="float-wrap">
         <div className="container">
           <div className="float-card">
-            <h3>
-              Virtual Office Anywhere partners with office buildings and <br />
-              virtual office providers.
-            </h3>
+            <h3
+              dangerouslySetInnerHTML={{ __html: h3 || "" }}
+            />
 
             <p>
-              We operate deliberately. We don’t aim to list hundreds of buildings
-              or flood a single address with large volumes of companies.
+              {s2?.section_paragraph}
             </p>
 
             <div className="promise">
               <div className="promise-icon" aria-hidden="true">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z"
-                    stroke="#13b6a6"
-                    strokeWidth="2"
-                    strokeLinejoin="round"
+                {subIcon && (
+                  <Image
+                    src={subIcon}
+                    alt="Icon"
+                    width={18}
+                    height={18}
                   />
-                </svg>
+                )}
               </div>
 
               <div>
-                <div className="promise-small">OUR PROMISE</div>
+                <div className="promise-small">{s2?.sub_section_heading}</div>
                 <div className="promise-text">
-                  We work with a small number of office partners so each location
-                  stays credible and well managed.
+                  {s2?.sub_section_paragraph}
                 </div>
               </div>
             </div>
@@ -86,74 +163,55 @@ export default function ListingPage() {
       <section className="section">
         <div className="container split">
           <div className="rev-card">
-            <div className="rev-top">REVENUE SPLIT</div>
+            <div className="rev-top">{s3?.left_section_heading}</div>
 
             <div className="rev-numbers">
-              <div className="big">60</div>
+              <div className="big">{s3?.left_section_number_first}</div>
               <div className="slash">/</div>
-              <div className="small">40</div>
+              <div className="small">{s3?.left_section_number_second}</div>
             </div>
 
             <div className="rev-bar">
               <span />
             </div>
 
-            <div className="rev-note">
-              The larger share goes to the <strong>building partner</strong>.
-            </div>
+             <div
+                className="rev-note"
+                dangerouslySetInnerHTML={{ __html: s3?.left_section_paragraph ?? "" }}
+              />
           </div>
 
           <div className="split-text">
-            <h2>A fair and transparent split</h2>
+            <h2>{s3?.right_section_heading}</h2>
             <p>
-              We believe the building should benefit properly from the address it
-              provides, and we structure our partnerships to reflect that.
+              {s3?.right_section_paragraph}
             </p>
 
-            <ul className="ticks">
-              <li>
-                <span className="tick">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M20 6L9 17l-5-5"
-                      stroke="currentColor"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
-                No hidden fees
-              </li>
-              <li>
-                <span className="tick">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M20 6L9 17l-5-5"
-                      stroke="currentColor"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
-                No complex pricing models
-              </li>
-              <li>
-                <span className="tick">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M20 6L9 17l-5-5"
-                      stroke="currentColor"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
-                See exactly what is generated from your address
-              </li>
-            </ul>
+             <ul className="ticks">
+                {keyPointsWithIcons.map((kp: any, idx: number) => (
+                  <li key={idx}>
+                    <span className="tick">
+                      {kp.iconUrl ? (
+                        <img src={kp.iconUrl} alt="" width={22} height={22} />
+                      ) : 
+                      (
+                        // fallback tick if icon missing
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                          <path
+                            d="M20 6L9 17l-5-5"
+                            stroke="currentColor"
+                            strokeWidth="3"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      )}
+                    </span>
+
+                    {kp.point_description}
+                  </li>
+                ))}
+              </ul>
           </div>
         </div>
       </section>
@@ -162,106 +220,59 @@ export default function ListingPage() {
       <section className="section how-we-support">
         <div className="container">
           <div className="title-center">
-            <h2>How we support you</h2>
+            <h2>{s4?.section_heading}</h2>
             <div className="underline" />
           </div>
 
           <div className="cards">
-            <div className="info-card">
-              <div className="ic" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M12 21s-7-4.4-7-11V6l7-3 7 3v4c0 6.6-7 11-7 11z"
-                    stroke="#13b6a6"
-                    strokeWidth="2"
-                  />
-                  <path
-                    d="M9 12l2 2 4-5"
-                    stroke="#13b6a6"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-              <h3>We handle the work</h3>
-              <p>
-                We manage client onboarding, including KYC and AML checks,
-                handled thoroughly in-house.
-              </p>
-            </div>
+              {items.map((item: any, index: number) => (
+                <div className="info-card" key={index}>
+                  <div className="ic" aria-hidden="true">
+                    {item.iconUrl ? (
+                      <img src={item.iconUrl} alt="" width={20} height={20} />
+                    ) : null}
+                  </div>
 
-            <div className="info-card">
-              <div className="ic" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                  <path d="M4 14h16v6H4v-6z" stroke="#13b6a6" strokeWidth="2" />
-                  <path
-                    d="M7 14V7a5 5 0 0 1 10 0v7"
-                    stroke="#13b6a6"
-                    strokeWidth="2"
-                  />
-                </svg>
-              </div>
-              <h3>Low effort for your team</h3>
-              <p>
-                Your role is simple. Mail is received and stored securely. You
-                take care of the basics.
-              </p>
-            </div>
+                  <h3>{item?.item_heading}</h3>
 
-            <div className="info-card">
-              <div className="ic" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M11 21a9 9 0 1 1 6.36-2.64L21 22"
-                    stroke="#13b6a6"
-                    strokeWidth="2"
-                    strokeLinecap="round"
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: item?.item_description || "",
+                    }}
                   />
-                  <path
-                    d="M8 11h6"
-                    stroke="#13b6a6"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </div>
-              <h3>Strong listings</h3>
-              <p>
-                We create high quality, SEO optimised listings to protect the
-                location and attract legitimate businesses.
-              </p>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
       </section>
 
       {/* DARK */}
-      <section className="dark">
+      <section className="dark"  style={
+    s5?.background_image
+      ? { backgroundImage: `url(${s5.background_image})` }
+      : undefined
+  }>
         <div className="container dark-inner">
-          <h2>
-            Built by people who use <br />
-            <span>virtual offices themselves</span>
-          </h2>
+          <h2
+              dangerouslySetInnerHTML={{
+            __html: s5?.main_heading,
+          }}/>
 
           <p>
-            We operate our own virtual office, so we understand how these
-            services work day to day.
+            {stripQuoteDiv(s5?.intro_text)}
           </p>
 
           <div className="quote">
             <em>
-              “We have seen the other side of the industry: unfair revenue splits,
-              poor marketing, and compliance checks not carried out to standard.”
+              {s5?.quote_text}
             </em>
             <strong>
-              Those experiences are exactly why we built Virtual Office Anywhere
-              differently.
+              {s5?.quote_highlight_line}
             </strong>
           </div>
 
           <div className="footer-line">
-            We care about long term partnerships, not quick wins.
+            {s5?.bottom_statement}
           </div>
         </div>
       </section>
@@ -272,36 +283,48 @@ export default function ListingPage() {
           <div className="cta">
             {/* ✅ Next/Image fill: parent must be relative + height */}
             <div className="cta-media">
-              <Image
-                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1400&auto=format&fit=crop"
-                alt="Partner with us"
-                fill
-                style={{ objectFit: "cover" }}
-                priority
-              />
+              {s6ImageUrl && (
+                <Image
+                  src={s6ImageUrl}
+                  alt={s6?.section_heading || "Partner with us"}
+                  fill
+                  style={{ objectFit: "cover" }}
+                  priority
+                />
+              )}
             </div>
 
             <div>
-              <h3>Partner with us</h3>
+              <h3>{s6?.section_heading}</h3>
               <p>
-                If you operate an office building and would like to explore
-                offering virtual office services without the operational overhead,
-                we would be happy to talk.
+                {s6?.section_paragraph}
               </p>
 
               <div className="btns">
-                <a className="btn primary" href="#">
-                  Get in touch
-                </a>
-                <a className="btn" href="#">
-                  Learn More
-                </a>
+                {s6?.button_one_label && s6?.button_one_link?.url && (
+                  <a
+                    className="btn primary"
+                    href={s6.button_one_link.url}
+                    target={s6.button_one_link.target || undefined}
+                    rel={s6.button_one_link.target === "_blank" ? "noopener noreferrer" : undefined}
+                  >
+                    {s6.button_one_label}
+                  </a>
+                )}
+
+                {s6?.button_two_label && s6?.button_two_link?.url && (
+                  <a
+                    className="btn"
+                    href={s6.button_two_link.url}
+                    target={s6.button_two_link.target || undefined}
+                    rel={s6.button_two_link.target === "_blank" ? "noopener noreferrer" : undefined}
+                  >
+                    {s6.button_two_label}
+                  </a>
+                )}
               </div>
 
-              <small>
-                We will walk you through how the partnership works and answer any
-                questions.
-              </small>
+              {s6?.bottom_text && <small>{s6.bottom_text}</small>}
             </div>
           </div>
         </div>
