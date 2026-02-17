@@ -1691,3 +1691,86 @@ section.section.sectionWhy .imgWrap {
     width:100% !important
 }
 }
+
+
+/* Menu CSS */
+.navWrapper{
+  position: relative;
+}
+ 
+/* ===== Desktop Menu ===== */
+.navLinks{
+  display:flex;
+  gap:28px;
+  align-items:center;
+}
+ 
+/* ===== Hide hamburger on desktop ===== */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  background:none;
+  border:none;
+  cursor:pointer;
+}
+ 
+/* Hamburger lines */
+.hamburger span{
+  width:26px;
+  height:2px;
+  background:#000;
+  display:block;
+  transition:.3s ease;
+}
+ 
+/* ===== MOBILE ===== */
+@media (max-width: 768px){
+ 
+  .hamburger{
+    display:flex;
+  }
+ 
+.navLinks {
+    opacity: 0;
+    pointer-events: none;
+    background: #fff;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    width: 89vw;
+    padding: 25px 20px;
+    transition: all .35s;
+    position: absolute;
+    top: 45px;
+    right: 2px;
+    transform: translateY(-120%);
+    box-shadow: 0 10px 25px #00000014;
+}
+ 
+  .navLinks a{
+    width:100%;
+    padding:12px 0;
+    border-bottom:1px solid #eee;
+  }
+ 
+  /* ACTIVE STATE */
+  .navWrapper.open .navLinks{
+    transform:translateY(0);
+    opacity:1;
+    pointer-events:auto;
+  }
+ 
+  /* Hamburger Animation */
+  .navWrapper.open .hamburger span:nth-child(1){
+    transform:rotate(45deg) translate(5px,5px);
+  }
+ 
+  .navWrapper.open .hamburger span:nth-child(2){
+    opacity:0;
+  }
+ 
+  .navWrapper.open .hamburger span:nth-child(3){
+    transform:rotate(-45deg) translate(5px,-5px);
+  }
+}
