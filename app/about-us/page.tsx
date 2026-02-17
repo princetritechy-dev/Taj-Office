@@ -1,4 +1,3 @@
-"use client";
 
 import Image from "next/image";
 import Header from "../components/header";
@@ -31,7 +30,7 @@ export default async function AboutUsPage() {
    console.log("ABOUT PAGE DATA---:", page.acf.secound_section__content.heading);
 
 
-  const h1 = page?.acf?.banner?.main_heading || "Your UK Business Address. Anywhere......";
+  const h1 = page?.acf?.banner?.main_heading;
   const benefits = page?.acf?.benefits_section ?? [];
 
 
@@ -47,9 +46,13 @@ const pageName =
   "ABOUT US";
   const section2 = page?.acf?.secound_section__content || {};
   const section3 = page?.acf?.third_section_content || {};
+  const services = page?.acf || {};
 
 const leftIconUrl = await getMediaUrl(section3?.left_section_icon_image);
 const rightIconUrl = await getMediaUrl(section3?.right_side_upper_section_icon);
+
+const servicesImageUrl = await getMediaUrl(services?.our_services_right_image);
+  const partnerImageUrl = await getMediaUrl(services?.partner_with_us_image);
 
 
   async function getMediaUrl(id: number | null | undefined): Promise<string | null> {
@@ -65,7 +68,7 @@ const rightIconUrl = await getMediaUrl(section3?.right_side_upper_section_icon);
   const media: { source_url?: string } = await res.json();
   return media?.source_url ?? null;
 }
-   const services = page?.acf || {};
+   
   return (
     <main className="about-page">
       <Header />
@@ -274,78 +277,7 @@ const rightIconUrl = await getMediaUrl(section3?.right_side_upper_section_icon);
         </div>
       </section>
 
-      {/* ================= OPTIONAL CTA (IMAGE CARD) ================= */}
-      <section className="section cta-wrap">
-        <div className="container">
-          <div className="cta">
-            <div className="cta-media">
-              <Image
-                src={partnerImageUrl ?? "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1400&auto=format&fit=crop"}
-                alt={page?.acf?.partner_with_us_heading || "Partner with us"}
-                fill
-                style={{ objectFit: "cover" }}
-                priority
-              />
-            </div>
-
-            <div className="cta-content">
-              <h3 className="cta-title">{page?.acf?.partner_with_us_heading}</h3>
-              <p className="cta-text">
-                dangerouslySetInnerHTML={{
-                  __html: page?.acf?.partner_with_us_paragraph,
-                }}
-              </p>
-
-              <div className="cta-btns">
-                 <a
-                    className="btn primary"
-                    href={page?.acf?.partner_with_us_button_one_link?.url}
-                    target={page?.acf?.partner_with_us_button_one_link?.target }
-                    rel={
-                      page?.acf?.partner_with_us_button_one_link?.target === "_blank"
-                        ? "noreferrer"
-                        : undefined
-                    }
-                  >
-                    {page?.acf?.partner_with_us_button_one }
-                  </a>
-
-                  <a
-                    className="btn"
-                    href={page?.acf?.partner_with_us_button_two_link?.url}
-                    target={page?.acf?.partner_with_us_button_two_link?.target}
-                    rel={
-                      page?.acf?.partner_with_us_button_two_link?.target === "_blank"
-                        ? "noreferrer"
-                        : undefined
-                    }
-                  >
-                    {page?.acf?.partner_with_us_button_two}
-                  </a>
-              </div>
-
-              <small className="cta-small">
-                 {page?.acf?.partner_with_us_lower_description}
-              </small>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <Footer />
     </main>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
