@@ -1,10 +1,74 @@
- "use client";
 
 import Header from "../components/header";
 import Footer from "../components/footer";
+import Image from "next/image";
 import "./listing.css";
 
-export default function LocationPage() {
+
+
+export const dynamic = "force-dynamic";
+
+const WP_ROOT ="https://lavender-alligator-176962.hostingersite.com/index.php/wp-json/wp/v2";
+
+async function wpFetch(url: string) {
+  const res = await fetch(url, { cache: "no-store" });
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(`WP fetch failed ${res.status}: ${url}\n${body.slice(0, 200)}`);
+  }
+  return res.json();
+}
+
+
+const mediaCache = new Map<number, string>();
+
+async function getMediaUrl(id?: number | null): Promise<string | null> {
+  if (!id) return null;
+  if (mediaCache.has(id)) return mediaCache.get(id)!;
+
+  const media = await wpFetch(`${WP_ROOT}/media/${id}`);
+  const url = media?.source_url ?? null;
+
+  if (url) mediaCache.set(id, url);
+  return url;
+}
+
+export default async function LocationPage() {
+  const page = await wpFetch(
+    `${WP_ROOT}/pages/424`
+  );
+
+  const acf = page?.acf || {};
+
+  const s1 = acf?.section_one_content || {};
+  const left = acf?.left_section_content || {};
+  const right = acf?.right_section_content || {};
+  const s3 = acf?.section_three_content || {};
+
+  const heroImg = await getMediaUrl(s1?.right_image);
+  const pillIcon = await getMediaUrl(s1?.pill_icon);
+  const servicesIcon = await getMediaUrl(left?.section_icon);
+  const mapImg = await getMediaUrl(right?.section_image);
+
+  const transportItemsRaw = right?.section_item || [];
+  const transportIcons = await Promise.all(
+    transportItemsRaw.map((it: any) => getMediaUrl(it?.icon))
+  );
+
+  const transportItems = transportItemsRaw.map((it: any, idx: number) => ({
+    ...it,
+    iconUrl: transportIcons[idx],
+  }));
+
+  const featuresRaw = s3?.features || [];
+  const featureIcons = await Promise.all(
+    featuresRaw.map((f: any) => getMediaUrl(f?.icon_image))
+  );
+
+  const features = featuresRaw.map((f: any, idx: number) => ({
+    ...f,
+    iconUrl: featureIcons[idx],
+  }));
   return (
     <main>
       <Header />
@@ -15,63 +79,58 @@ export default function LocationPage() {
           <div className="heroGrid">
             <div>
               <div className="badge">
-                <span className="dot" /> Available Now
+                <span className="dot" />{s1?.badge_text}
               </div>
 
-              <h1 className="h1">
-                45 Albemarle Street,
-                <br />
-                Mayfair
-              </h1>
+              <h1
+                className="h1"
+                dangerouslySetInnerHTML={{ __html: s1?.title || "" }}
+              />
 
               <div className="priceRow">
-                <div className="price">£25</div>
-                <div className="per">/pcm + VAT</div>
+                <div className="price">{s1?.price_amount}</div>
+                <div className="per">{s1?.price_suffix}</div>
               </div>
 
-              <p className="discount">10% discount on annual subscriptions</p>
+              <p className="discount">{s1?.discount_text}</p>
 
               <nav className="tabs" aria-label="tabs">
-                <a className="tab active" href="#">
-                  Services
-                </a>
-                <a className="tab" href="#">
-                  Location
-                </a>
-                <a className="tab" href="#">
-                  Compliance
-                </a>
+                {(s1?.tabs || []).map((t: any, i: number) => (
+                  <a key={i} className={`tab ${i === 0 ? "active" : ""}`} href={t?.tab_link}>
+                    {t?.tab_label}
+                  </a>
+                ))}
               </nav>
 
-              <p className="desc">
-                <b>Prestigious Mayfair</b> virtual office address.
-                <br />
-                Give your business the credibility of a prestigious Mayfair address in London’s most exclusive district, without the cost of physical office space.
-                Our virtual office service at 45 Albemarle Street offers a professional mailing address with comprehensive mail handling options.
-              </p>
+              <p
+                className="desc"
+                dangerouslySetInnerHTML={{
+                  __html: (s1?.description || "").replace(/\r?\n/g, "<br/>"),
+                }}
+              />
 
-              <button className="cta" type="button">
-                Add to Cart
-              </button>
+              <a className="cta" href={s1?.cta_button_link?.url || "#"}>
+                {s1?.cta_button_label}
+              </a>
+
             </div>
 
             <div className="heroCard">
               <div className="heroMedia">
-                <img
-                  src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=70"
-                  alt="Buildings"
-                />
+                {heroImg && (
+                  <Image
+                    src={heroImg}
+                    alt="Building"
+                    width={1400}
+                    height={900}
+                    style={{ width: "100%", height: "auto" }}
+                    priority
+                  />
+                )}
+
                 <div className="locPill">
-                  <svg className="locIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M12 22s7-5.2 7-12a7 7 0 1 0-14 0c0 6.8 7 12 7 12Z"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinejoin="round"
-                    />
-                    <circle cx="12" cy="10" r="2.5" stroke="currentColor" strokeWidth="2" />
-                  </svg>
-                  London, W1
+                  {pillIcon && <img src={pillIcon} alt="" width={18} />}
+                  {s1?.pill_text}
                 </div>
               </div>
             </div>
@@ -86,31 +145,14 @@ export default function LocationPage() {
             {/* Left: Services Card */}
             <div className="whiteCard">
               <h2 className="cardTitle">
-                <svg className="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 3 3 8l9 5 9-5-9-5Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-                  <path d="M3 12l9 5 9-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M3 16l9 5 9-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                Virtual Office Services
+                {servicesIcon && <img src={servicesIcon} alt="" className="ico" />}
+                {left?.section_heading}
               </h2>
 
               <ul className="list">
-                {[
-                  { text: "Registered office address" },
-                  { text: "Director service address" },
-                  { text: "Secure mail handling" },
-                  { text: "Free – Mail collection" },
-                  { text: "Telephone line and divert", small: "+ £10.99 per month" },
-                  { text: "“Pay-as-you-go” meeting rooms" },
-                ].map((item, idx) => (
-                  <li className="li" key={idx}>
-                    <svg className="check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-                      <path d="M20 6 9 17l-5-5" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    <div>
-                      {item.text}
-                      {item.small ? <small>{item.small}</small> : null}
-                    </div>
+                {(left?.section_list || []).map((item: any, idx: number) => (
+                  <li key={idx} className="li">
+                    ✔ {item?.list_item}
                   </li>
                 ))}
               </ul>
@@ -118,36 +160,30 @@ export default function LocationPage() {
 
             {/* Right: Transport + Map */}
             <div className="rightCol">
-              <h3>Transport Links</h3>
+              <h3>{right?.section_heading}</h3>
 
               <div className="transport">
-                {[
-                  { title: "Green Park Station", time: "~ 3 mins walk" },
-                  { title: "Victoria Station", time: "~ 12 mins walk" },
-                ].map((t, i) => (
+                {transportItems.map((t: any, i: number) => (
                   <div className="tItem" key={i}>
-                    <div className="tIcon">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6 17h12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                        <path d="M7 3h10a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-                        <path d="M8 7h8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                        <path d="M8 11h8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                        <path d="M8.5 20.5 7 22m9.5-1.5L18 22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                      </svg>
-                    </div>
-                    <div className="tText">
-                      <b>{t.title}</b>
+                    {t.iconUrl && <img src={t.iconUrl} width={20} alt="" />}
+                    <div>
+                      <b>{t.item_title}</b>
                       <span>{t.time}</span>
                     </div>
                   </div>
                 ))}
-              </div>
+                </div>
 
               <div className="mapCard">
-                <img
-                  src="https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&w=1400&q=60"
-                  alt="Map"
-                />
+                {mapImg && (
+                  <Image
+                    src={mapImg}
+                    alt="Map"
+                    width={1400}
+                    height={900}
+                    style={{ width: "100%", height: "auto" }}
+                  />
+                )}
                 <div className="mapBar">
                   <div className="mapLeft">
                     <svg className="pinMini" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
@@ -160,11 +196,11 @@ export default function LocationPage() {
                       <circle cx="12" cy="10" r="2.5" stroke="currentColor" strokeWidth="2" />
                     </svg>
                     <div className="mapTxt">
-                      <b>45 Albemarle Street</b>
-                      <span>W1S 4JL, London</span>
+                      <b>{right?.section_title}</b>
+                      <span>{right?.section_subtitle}</span>
                     </div>
                   </div>
-                  <div className="tag">Mayfair</div>
+                  <div className="tag">{right?.tag_text}</div>
                 </div>
               </div>
             </div>
@@ -176,35 +212,11 @@ export default function LocationPage() {
       <section className="featureStrip">
         <div className="wrap">
           <div className="features">
-            {[
-              { title: "Verified Clients Only", desc: "Strict compliance checks for safety", icon: "usercheck" },
-              { title: "Protecting your address", desc: "Keep your home address private", icon: "shield" },
-              { title: "Trusted Management", desc: "Professional on-site team", icon: "users" },
-            ].map((f, i) => (
-              <div className="featureItem" key={i}>
-                <div className="fIconWrap">
-                  {f.icon === "usercheck" ? (
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                      <path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke="currentColor" strokeWidth="2" />
-                      <path d="M17 11l1.5 1.5L22 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  ) : f.icon === "shield" ? (
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-                      <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  ) : (
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                      <path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke="currentColor" strokeWidth="2" />
-                      <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                      <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                    </svg>
-                  )}
-                </div>
-                <p className="fTitle">{f.title}</p>
-                <p className="fDesc">{f.desc}</p>
+            {features.map((f: any, i: number) => (
+              <div key={i} className="featureItem">
+               <div className="imgdiv"> {f.iconUrl && <img src={f.iconUrl} width={24} alt="" />}</div>
+                <p className="fTitle">{f.feature_title}</p>
+                <p className="fDesc">{f.feature_description}</p>
               </div>
             ))}
           </div>
@@ -215,4 +227,3 @@ export default function LocationPage() {
     </main>
   );
 }
-
