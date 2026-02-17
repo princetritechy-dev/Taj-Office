@@ -1,7 +1,5 @@
 "use client";
 
-
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Header from "../components/header";
 import Footer from "../components/footer";
@@ -338,6 +336,7 @@ const rightIconUrl = await getMediaUrl(section3?.right_side_upper_section_icon);
     </main>
   );
 }
+
 
 
 
