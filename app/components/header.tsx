@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 
@@ -16,13 +18,29 @@ export default function Header() {
           />
         </Link>
 
-        <nav className="navLinks" aria-label="Primary">
+        {/* <nav className="navLinks" aria-label="Primary">
           <Link href="/">Home</Link>
           <Link href="/about-us">About Us</Link>
           <Link href="/why-work-with-us">Why work with us</Link>
-          <Link href="/listing">Locations</Link>
+          <Link href="/Listing">Locations</Link>
           <Link href="/contact-us">Contact Us</Link>
-        </nav>
+        </nav> */}
+
+        <div className="navWrapper">
+            <button className="hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+            </button>
+            
+            <nav className="navLinks" aria-label="Primary">
+            <Link href="/">Home</Link>
+            <Link href="/about-us/">About Us</Link>
+            <Link href="/why-work-with-us/">Why work with us</Link>
+            <Link href="/Listing/">Locations</Link>
+            <Link href="/contact-us/">Contact Us</Link>
+            </nav>
+            </div>
       </div>
     </header>
   );
