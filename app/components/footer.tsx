@@ -1,5 +1,6 @@
-import Link from "next/link"
-import Image from "next/image"
+import Link from "next/link";
+import Image from "next/image";
+import Script from "next/script";
 export default function Footer(){
   return(
     <footer className="footer">
@@ -28,6 +29,6 @@ export default function Footer(){
             });
           }
         `}
-      </Script>
+      </Script></>
   )
 }
