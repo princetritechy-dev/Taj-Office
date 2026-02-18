@@ -17,5 +17,17 @@ export default function Footer(){
             </div>
             <div className="footerCopy">© 2025 Virtual Office Anywhere. All rights reserved.</div>
           </footer>
+    <Script id="hamburger-script" strategy="afterInteractive">
+        {`
+          const navWrapper = document.querySelector('.navWrapper');
+          const hamburger = document.querySelector('.hamburger');
+
+          if (hamburger) {
+            hamburger.addEventListener('click', () => {
+              navWrapper.classList.toggle('open');
+            });
+          }
+        `}
+      </Script></>
   )
 }
