@@ -28,6 +28,6 @@ export default function Footer(){
             });
           }
         `}
-      </Script></>
+      </Script>
   )
 }
