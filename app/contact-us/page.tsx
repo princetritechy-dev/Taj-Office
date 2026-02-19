@@ -2,8 +2,6 @@
 import Header from "../components/header";
 import Footer from "../components/footer";
 import "./contact.css"; // ✅ make sure file name is contact.css (not about.css)
-import ContactForm from "./ContactForm";
-
 
 export default function ContactUsPage() {
   return (
@@ -121,7 +119,36 @@ export default function ContactUsPage() {
           </div>
 
           {/* RIGHT FORM */}
-          <ContactForm />
+          <div className="contact-form">
+            <h2>Send us a message</h2>
+            <p>Fill out the form below and we'll get back to you shortly.</p>
+
+            <form>
+              <div className="form-row">
+                <input type="text" placeholder="First Name" />
+                <input type="text" placeholder="Last Name" />
+              </div>
+
+              <div className="form-row">
+                <input type="email" placeholder="Email Address" />
+                <input type="text" placeholder="Phone Number" />
+              </div>
+
+              <div className="form-row">
+                <select defaultValue="General Inquiry">
+                  <option value="General Inquiry">General Inquiry</option>
+                  <option value="Support">Support</option>
+                  <option value="Sales">Sales</option>
+                </select>
+              </div>
+
+              <div className="form-row">
+                <textarea placeholder="How can we help you today?" />
+              </div>
+
+              <button type="submit">Send Message ✈</button>
+            </form>
+          </div>
         </div>
       </section>
 
