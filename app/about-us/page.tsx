@@ -233,9 +233,12 @@ const servicesImageUrl = await getMediaUrl(services?.our_services_right_image);
       <section className="services-dark">
         <div className="container services-grid">
           <div className="services-left">
-            <h2 className="services-title">
-              {services?.our_services_heading || "Our Services"}
-            </h2>
+           <h2
+            className="services-title"
+            dangerouslySetInnerHTML={{
+              __html: services?.our_services_heading || "Our Services",
+            }}
+          />
 
             <p className="services-text">
               {services?.our_services_heading_subheading}
@@ -292,6 +295,7 @@ const servicesImageUrl = await getMediaUrl(services?.our_services_right_image);
     </main>
   );
 }
+
 
 
 
