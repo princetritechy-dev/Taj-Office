@@ -609,6 +609,11 @@
     padding-top: 10px;
 }
 
+.card-bottom {
+    position: absolute;
+    bottom: 35px;
+    width: 85%;
+}
 /* ================= RESPONSIVE ================= */
 @media (max-width: 980px) {
   .about-page .hero { padding: 90px 0 120px; min-height: 420px; }
