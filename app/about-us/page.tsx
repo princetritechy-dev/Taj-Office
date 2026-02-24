@@ -1,4 +1,4 @@
- 
+
 import Image from "next/image";
 import Header from "../components/header";
 import Footer from "../components/footer";
@@ -130,12 +130,15 @@ const servicesImageUrl = await getMediaUrl(services?.our_services_right_image);
               </div>
               <div>
                 <div className="exp-title">{section2?.box__heading}</div>
-                <p className="exp-text">
-                 {section2?.box_sub_heading}
-                </p>
-                <p className="exp-text small">
-                 {section2?.box_content}
-                </p>
+                <p
+                className="exp-text"
+                dangerouslySetInnerHTML={{ __html: section2?.box_sub_heading || "" }}
+                />
+
+                <p
+                className="exp-text small"
+                dangerouslySetInnerHTML={{ __html: section2?.box_content || "" }}
+                />
               </div>
             </div>
 
