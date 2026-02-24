@@ -1774,3 +1774,9 @@ section.section.sectionWhy .imgWrap {
     transform:rotate(-45deg) translate(5px,-5px);
   }
 }
+
+
+
+.statusPill {
+    display: none;
+}
