@@ -614,6 +614,19 @@
     bottom: 35px;
     width: 85%;
 }
+.border-bottom:after {
+    content: "";
+    width: 150px;
+    display: block;
+    height: 5px;
+    background: #00A699;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.qm-line1 {
+    line-height: 47px;
+}
 /* ================= RESPONSIVE ================= */
 @media (max-width: 980px) {
   .about-page .hero { padding: 90px 0 120px; min-height: 420px; }
