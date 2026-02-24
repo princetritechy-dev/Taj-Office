@@ -1,4 +1,4 @@
-
+ 
 import Image from "next/image";
 import Header from "../components/header";
 import Footer from "../components/footer";
@@ -114,7 +114,12 @@ const servicesImageUrl = await getMediaUrl(services?.our_services_right_image);
               {section2?.right_content}
             </p>
 
-            <div className="experience-card">
+            
+          </div>
+        </div>
+
+        <div className="real-row">
+             <div className="experience-card">
               <div className="exp-icon" aria-hidden="true"> <Image
                 src="/images/map.png"
                 alt="Check icon"
@@ -133,7 +138,7 @@ const servicesImageUrl = await getMediaUrl(services?.our_services_right_image);
                 </p>
               </div>
             </div>
-          </div>
+
         </div>
       </section>
 
@@ -284,4 +289,5 @@ const servicesImageUrl = await getMediaUrl(services?.our_services_right_image);
     </main>
   );
 }
+
 
