@@ -118,7 +118,7 @@ const servicesImageUrl = await getMediaUrl(services?.our_services_right_image);
           </div>
         </div>
 
-        <div className="real-row">
+        <div className="container real-row">
              <div className="experience-card">
               <div className="exp-icon" aria-hidden="true"> <Image
                 src="/images/map.png"
