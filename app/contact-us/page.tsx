@@ -49,7 +49,7 @@ export default function ContactUsPage() {
 
               <div className="info-item">
                 <div className="info-svg">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/20 00/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden="true">
                     <path
                       d="M21 16.5v3a2 2 0 0 1-2.2 2c-3.6-.4-6.9-2-9.6-4.6C6.5 14.2 4.9 10.9 4.5 7.3A2 2 0 0 1 6.5 5h3a2 2 0 0 1 2 1.7c.1.8.3 1.6.6 2.4a2 2 0 0 1-.4 2.1L10.5 12a16 16 0 0 0 3.5 3.5l.8-1.2a2 2 0 0 1 2.1-.4c.8.3 1.6.5 2.4.6A2 2 0 0 1 21 16.5Z"
                       stroke="currentColor"
@@ -63,7 +63,7 @@ export default function ContactUsPage() {
                 <div className="info-con">
                   <strong>Phone</strong>
                   <br />
-                  +44 (0) 20 7123 4567
+                  +44 (0) 20 7907 9380
                   <br />
                   Mon - Fri, 9am - 6pm
                 </div>
@@ -91,7 +91,7 @@ export default function ContactUsPage() {
                 <div className="info-con">
                   <strong>Email</strong>
                   <br />
-                  hello@loremipsum.com
+                 info@virtualofficeanywhere.co.uk 
                 </div>
               </div>
             </div>
@@ -147,3 +147,4 @@ export default function ContactUsPage() {
     </main>
   );
 }
+
