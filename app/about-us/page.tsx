@@ -96,8 +96,11 @@ const servicesImageUrl = await getMediaUrl(services?.our_services_right_image);
         <div className="container quality-grid">
           {/* Left logo/heading */}
           <div className="quality-left">
-            <div className="quality-mark">
-              <div className="qm-line1">{section2?.heading}</div>
+           <div className="quality-mark">
+              <div
+                className="qm-line1"
+                dangerouslySetInnerHTML={{ __html: section2?.heading || "" }}
+              />
             </div>
             <div className="quality-caption">{section2?.sub_heading}</div>
           </div>
@@ -281,3 +284,4 @@ const servicesImageUrl = await getMediaUrl(services?.our_services_right_image);
     </main>
   );
 }
+
