@@ -172,9 +172,9 @@ const servicesImageUrl = await getMediaUrl(services?.our_services_right_image);
               {section3?.left_section_summary}
             </p>
 
-            <div className="card-divider" />
 
             <div className="card-bottom">
+                <div className="card-divider" />
               <div className="card-label">{(section3?.left_section_lower_heading).toUpperCase()}</div>
               <div className="card-small">
                 {section3?.left_section_lower_paragraph}
@@ -292,5 +292,6 @@ const servicesImageUrl = await getMediaUrl(services?.our_services_right_image);
     </main>
   );
 }
+
 
 
