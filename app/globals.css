@@ -384,7 +384,7 @@ p.muted-two {
     width: 47%;
 }
 .checkList li::before {
-  content: url('https://taj-office.vercel.app/images/icon.png');
+  content: url('https://taj-virtual.vercel.app/images/icon.png');
   vertical-align: middle;
 }
  
