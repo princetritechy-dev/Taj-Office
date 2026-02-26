@@ -5,6 +5,33 @@ import Footer from "./components/footer";
 
 export const dynamic = "force-dynamic"; // ✅ IMPORTANT for Vercel
 
+type ContentBox = {
+  content_box: string;
+};
+
+type DifferenceContent = {
+  first_difference_content: {
+    difference_content: ContentBox[];
+  };
+  second_difference_content: {
+    difference_content: ContentBox[];
+  };
+  third_difference_content: {
+    difference_content: ContentBox[];
+  };
+};
+
+type WPPage = {
+      first_difference_content?: {
+      difference_content: ContentBox[];
+    };
+    second_difference_content?: {
+      difference_content: ContentBox[];
+    };
+    third_difference_content?: {
+      difference_content: ContentBox[];
+    }
+};
 
 async function getMediaById(id: number) {
   const res = await fetch(
@@ -409,6 +436,79 @@ const platformIcons = await Promise.all(
             />
           </div>
         </div>
+      </section>
+
+      <section className="section-see-difference">
+              <div className="container">
+                <div className="diffHead">
+                  <h2 className="h2 diffTitle">See the Difference</h2>
+                  <p className="muted diffSub">Why businesses switch to Virtual Office Anywhere.</p>
+                </div>
+
+                <div className="diffWrap">
+  {/* LEFT LABELS */}
+  <div className="diffLeft">
+    {Array.isArray(page?.acf?.first_difference_content?.difference_content) ? (
+      page?.acf?.first_difference_content?.difference_content?.map((item: ContentBox, index: number) => (
+        <div key={index} className="diffLabel">
+          {item.content_box}
+        </div>
+      ))
+    ) : (
+      <div>No data available</div> // Display a fallback message if it's not an array
+    )}
+  </div>
+
+  {/* CENTER MAIN CARD */}
+  <div className="diffCenter">
+    <div className="diffMainCard">
+      <div className="diffBrand">
+        <Image
+          src="/images/logo2.png"
+          alt="Virtual Office Anywhere"
+          width={180}
+          height={80}
+          className="diffLogo"
+          priority
+        />
+      </div>
+
+      <div className="diffMainList">
+        {Array.isArray(page?.acf?.second_difference_content?.difference_content) ? (
+          page?.acf?.second_difference_content?.difference_content?.map((item: ContentBox, index: number) => (
+            <div key={index} className="diffMainItem per-month">
+              {item.content_box}
+            </div>
+          ))
+        ) : (
+          <div>No data available</div>
+        )}
+      </div>
+
+      <button className="btn btnPrimary full diffBtn">Choose Us</button>
+    </div>
+  </div>
+
+  {/* RIGHT PROVIDERS CARD */}
+  <div className="diffRight">
+    <div className="diffOtherCard">
+      <div className="diffOtherHead">Large Mass Providers</div>
+      <div className="diffOtherList">
+        {Array.isArray(page?.acf?.third_difference_content?.difference_content) ? (
+          page?.acf?.third_difference_content?.difference_content?.map((item: ContentBox, index: number) => (
+            <div key={index} className="diffOtherItem">
+              {item.content_box}
+            </div>
+          ))
+        ) : (
+          <div>No data available</div>
+        )}
+      </div>
+    </div>
+  </div>
+</div>
+
+              </div>
       </section>
 
       <Footer />
