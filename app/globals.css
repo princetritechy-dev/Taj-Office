@@ -901,12 +901,12 @@ section.section-platform {
 section.section-see-difference {
     padding: 80px 0px !important;
 }
-.section-see-difference .diffMainItem.per-month {
+/* .section-see-difference .diffMainItem.per-month {
     background-color: #ffffff10;
     border-radius: 10px;
     color: #00A699;
     font-weight: 700;
-}
+} */
 .section-see-difference .diffRight {
     background: #F8FAFC !important;
     padding: 30px 20px;
