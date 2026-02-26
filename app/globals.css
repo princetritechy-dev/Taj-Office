@@ -972,8 +972,8 @@ section.section-see-difference {
   gap:10px;
   align-items:center;
   padding: 10px 64px;
-  background: rgba(255,255,255,.06);
-  border-radius: 14px;
+  /* background: rgba(255,255,255,.06); */
+  /* border-radius: 14px; */
 }
 .diffBrandIcon{
   width:34px;
