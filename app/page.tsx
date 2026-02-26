@@ -477,7 +477,9 @@ const platformIcons = await Promise.all(
         {Array.isArray(page?.acf?.second_difference_content?.difference_content) ? (
           page?.acf?.second_difference_content?.difference_content?.map((item: ContentBox, index: number) => (
             <div key={index} className="diffMainItem per-month">
-              {item.content_box}
+              <div
+                  dangerouslySetInnerHTML={{ __html: item.content_box }}
+                />
             </div>
           ))
         ) : (
