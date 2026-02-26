@@ -1691,6 +1691,21 @@ section.section.sectionWhy .imgWrap {
 .platformCard{
     width:100% !important
 }
+.section-see-difference .diffWrap {
+    flex-direction: column;
+}
+.section-see-difference .diffLeft {
+    width: 100% !important;
+}
+.section-see-difference .diffCenter {
+    width: 100%;
+}
+.section-see-difference .diffRight {
+    width: 100%;
+}
+.section-see-difference .diffLabel {
+    width: 100%;
+}
 }
 
 
