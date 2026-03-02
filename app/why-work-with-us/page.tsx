@@ -60,7 +60,7 @@ export default async function WhyWork() {
   // Images
   const heroBg = await getMediaUrl(s1?.background_image);
   const subIcon = await getMediaUrl(s2?.sub_section_icon);
-  const s5Bg = await getMediaUrl(s5?.background_image);
+  const darkBg = await getMediaUrl(s5?.background_image);
   const s6ImageUrl = await getMediaUrl(s6?.section_image);
 
 
@@ -95,7 +95,14 @@ const h3 = s2?.section_heading;
       <Header />
 
       {/* HERO */}
-      <section className="hero" style={heroBg ? { backgroundImage: `url(${heroBg})` } : undefined}>
+      <section
+        className="hero"
+        style={
+          {
+            "--hero-bg": heroBg ? `url(${heroBg})` : "none",
+          } as React.CSSProperties
+        }
+      >
         <div className="container hero-inner">
           <div className="pill">PARTNERSHIP PROGRAM</div>
           <h1 dangerouslySetInnerHTML={{ __html: h1 || "" }} />
@@ -229,7 +236,7 @@ const h3 = s2?.section_heading;
                 <div className="info-card" key={index}>
                   <div className="ic" aria-hidden="true">
                     {item.iconUrl ? (
-                      <img src={item.iconUrl} alt="" width={20} height={20} />
+                      <img src={item.iconUrl} alt="" width={40} height={40} />
                     ) : null}
                   </div>
 
@@ -247,11 +254,14 @@ const h3 = s2?.section_heading;
       </section>
 
       {/* DARK */}
-      <section className="dark"  style={
-    s5?.background_image
-      ? { backgroundImage: `url(${s5.background_image})` }
-      : undefined
-  }>
+      <section
+        className="dark"
+        style={
+          {
+            "--dark-bg": darkBg ? `url(${darkBg})` : "none",
+          } as React.CSSProperties
+        }
+      >
         <div className="container dark-inner">
           <h2
               dangerouslySetInnerHTML={{
