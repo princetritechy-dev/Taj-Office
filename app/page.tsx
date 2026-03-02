@@ -398,7 +398,7 @@ const platformIcons = await Promise.all(
             key={idx}
             icon={
               <Image
-                src={icon?.src` || `/images/${idx + 1}.png`}
+                src={icon?.src || `/images/${idx + 1}.png`}
                 alt={icon?.alt || ""}
                 width={30}
                 height={36}
