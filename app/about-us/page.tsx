@@ -37,6 +37,7 @@ export default async function AboutUsPage() {
 
   
   const banner = page?.acf?.[""] || {};
+  const heroBgUrl = await getMediaUrl(banner?.background_image);
  const kicker = banner?.heading;
 const subText =
   banner?.subheading;
@@ -53,6 +54,15 @@ const rightIconUrl = await getMediaUrl(section3?.right_side_upper_section_icon);
 
 const servicesImageUrl = await getMediaUrl(services?.our_services_right_image);
   const partnerImageUrl = await getMediaUrl(services?.partner_with_us_image);
+  const buttonsWithIcons = await Promise.all(
+  services.our_services_button.map(async (btn: any) => {
+    const iconUrl = await getMediaUrl(btn.our_services_button_icon);
+    return {
+      ...btn,
+      iconUrl,
+    };
+  })
+);
 
 
   async function getMediaUrl(id: number | null | undefined): Promise<string | null> {
@@ -74,7 +84,12 @@ const servicesImageUrl = await getMediaUrl(services?.our_services_right_image);
       <Header />
 
       {/* ================= HERO ================= */}
-      <section className="hero">
+      <section className="hero" style={
+        {
+          "--hero-bg": heroBgUrl ? `url(${heroBgUrl})` : "none",
+        } as React.CSSProperties
+        }
+        >
         <div className="container hero-inner">
           <div className="hero-top">
             <div className="hero-kicker">{kicker}</div>
@@ -120,16 +135,18 @@ const servicesImageUrl = await getMediaUrl(services?.our_services_right_image);
 
         <div className="container real-row">
              <div className="experience-card">
-              <div className="exp-icon" aria-hidden="true"> <Image
-                src="/images/map.png"
+              <div className="exp-icon" aria-hidden="true"> 
+                <Image
+                src="/images/loction.png"
                 alt="Check icon"
-                width={8}
-                height={8}
+                width={30}
+                height={30}
                 className="dotIcon"
               />
+              <div className="exp-title">{section2?.box__heading}</div>
               </div>
               <div>
-                <div className="exp-title">{section2?.box__heading}</div>
+                
                 <p
                 className="exp-text"
                 dangerouslySetInnerHTML={{ __html: section2?.box_sub_heading || "" }}
@@ -159,13 +176,16 @@ const servicesImageUrl = await getMediaUrl(services?.our_services_right_image);
           {/* Big left card */}
           <div className="card big-card">
             <div className="card-icon" aria-hidden="true"> 
-              <Image
-                src={leftIconUrl ?? "/images/weight.png"}
+              {leftIconUrl && (
+                <Image
+                src={leftIconUrl}
                 alt="Check icon"
                 width={8}
                 height={8}
                 className="dotIcon"
               />
+              )}
+              
             </div>
             <h3 className="card-title">{section3?.left_section_heading}</h3>
             <p className="card-text">
@@ -186,7 +206,14 @@ const servicesImageUrl = await getMediaUrl(services?.our_services_right_image);
           <div className="right-stack">
             <div className="card pricing-card">
               <div className="pricing-top">
-                <div className="dot" aria-hidden="true" />
+                {rightIconUrl && (
+                    <Image
+                      src={rightIconUrl}
+                      alt="Pricing Icon"
+                      width={40}
+                      height={40}
+                    />
+                  )}
                 <div className="pricing-title">{section3?.right_side_upper_section_heading}</div>
               </div>
 
@@ -245,25 +272,36 @@ const servicesImageUrl = await getMediaUrl(services?.our_services_right_image);
             </p>
 
             <div className="service-pills">
-              {services?.our_services_button?.map((btn: any, index: number) => (
-                <span key={index} className="pill-btn">
-                {btn?.our_services_button_label}
-                </span>
-                ))}
-            </div>
+  {buttonsWithIcons.map((btn: any, index: number) => (
+    <span key={index} className="pill-btn">
+      {btn.iconUrl && (
+        <Image
+          src={btn.iconUrl}
+          alt={btn.our_services_button_label}
+          width={24}
+          height={24}
+          className="pill-icon"
+        />
+      )}
+      {btn.our_services_button_label}
+    </span>
+  ))}
+</div>
           </div>
 
           <div className="services-right">
             <div className="service-card">
               <div className="service-card-top">
                 <div className="service-ic" aria-hidden="true"> 
-                 <Image
-                src="/images/meeting.png"
-                alt="Check icon"
-                width={15}
-                height={15}
-                className="dotIcon"
-              />
+                 {servicesImageUrl ? (
+                  <Image
+                    src={servicesImageUrl}
+                    alt={services?.our_services_right_title || "Service icon"}
+                    width={50}
+                    height={50}
+                    className="dotIcon"
+                  />
+                ) : null}
                 </div>
                 <div className="service-card-title">{services?.our_services_right_title}</div>
               </div>
@@ -295,8 +333,3 @@ const servicesImageUrl = await getMediaUrl(services?.our_services_right_image);
     </main>
   );
 }
-
-
-
-
-
