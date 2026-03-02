@@ -45,6 +45,8 @@ export default async function LocationPage() {
   const right = acf?.right_section_content || {};
   const s3 = acf?.section_three_content || {};
 
+
+  const sectionOneBg = await getMediaUrl(s1?.bg_image);
   const heroImg = await getMediaUrl(s1?.right_image);
   const pillIcon = await getMediaUrl(s1?.pill_icon);
   const servicesIcon = await getMediaUrl(left?.section_icon);
@@ -74,7 +76,14 @@ export default async function LocationPage() {
       <Header />
 
       {/* HERO */}
-      <section className="hero">
+      <section
+          className="hero"
+          style={
+            {
+              "--section-bg": sectionOneBg ? `url(${sectionOneBg})` : "none",
+            } as React.CSSProperties
+          }
+        >
         <div className="wrap">
           <div className="heroGrid">
             <div>
