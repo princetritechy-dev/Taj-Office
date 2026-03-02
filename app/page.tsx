@@ -9,6 +9,11 @@ type ContentBox = {
   content_box: string;
 };
 
+type ACFImage = {
+  url: string;
+  alt?: string;
+};
+
 type DifferenceContent = {
   first_difference_content: {
     difference_content: ContentBox[];
@@ -19,6 +24,10 @@ type DifferenceContent = {
   third_difference_content: {
     difference_content: ContentBox[];
   };
+
+  acf?: {
+    hero_image?: ACFImage;
+  }
 };
 
 type WPPage = {
@@ -162,38 +171,35 @@ const platformIcons = await Promise.all(
               <span>Live in 24 HOURS</span>
             </div>
 
-            <h1
-                className="h1"
-                dangerouslySetInnerHTML={{
-                  __html: h1 || "",
-                }}
-              />
+            <h1 className="h1">
+              {heroTitle1} <br />
+              {heroTitle2 ? heroTitle2.split(" ").slice(0, 1).join(" ") : ""}{" "}
+              {heroTitle2 ? <span>{heroTitle2.split(" ").slice(1).join(" ")}</span> : null}
+            </h1>
 
+            <p className="lead">{heroDesc}</p>
 
-            <p className="lead">
-              {hero_para}
-            </p>
-
-            <div className="heroCtas">
-              {heroButtons.map((btn: any, index: number) => {
-                const label = btn?.button_text;
-                const link = btn?.button_link || "#";
-            
-                return (
+            {page?.acf?.hero_buttons?.length ? (
+              <div className="heroCtas">
+                {page.acf.hero_buttons.map((btn, index) => (
                   <a
                     key={index}
-                    href={link}
+                    href={btn?.button_link?.url || "#"}
+                    target={btn?.button_link?.target || "_self"}
                     className={`btn ${index === 0 ? "btnPrimary" : "btnGhost"}`}
                   >
-                    {label}
+                    {btn?.button_text || btn?.button_link?.title || "Button"}
                   </a>
-                );
-              })}
-            </div>
+                ))}
+              </div>
+            ) : null}
+
+
+
             <div className="heroNote">
-              <p>
-                {hero_note}
-              </p>
+                {page?.acf?.hero_note && (
+                  <p>{page.acf.hero_note}</p>
+                )}
             </div>
           </div>
 
@@ -202,13 +208,15 @@ const platformIcons = await Promise.all(
               <div className="collage">
                 <div className="collageTop">
                   <div className="imgWrap">
-                  <Image
-                    src={heroImage?.src}
-                    alt={heroImage?.alt}
-                    fill
-                    className="collageImg"
-                    priority
-                  />
+                    {page?.acf?.hero_image?.url && (
+                      <Image
+                        src={page.acf.hero_image.url}
+                        alt={page.acf.hero_image.alt ?? "Hero Image"}
+                        fill
+                        className="collageImg"
+                        priority
+                      />
+                    )}
                   </div>
                 </div>
               </div>
