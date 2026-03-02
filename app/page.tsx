@@ -1,17 +1,14 @@
-"use client";
-
-import React, { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import PlatformCard from "./PlatformCard";
 import Header from "./components/header";
 import Footer from "./components/footer";
 
-export const dynamic = "force-dynamic"; // (optional; mostly for server components)
-
+export const dynamic = "force-dynamic"; // ✅ IMPORTANT for Vercel
 
 type ContentBox = {
   content_box: string;
 };
+
 type DifferenceContent = {
   first_difference_content: {
     difference_content: ContentBox[];
@@ -24,69 +21,8 @@ type DifferenceContent = {
   };
 };
 
-
-type Step = {
-  title: string;
-  description: string;
-};
-type ACFImage = {
-  url: string;
-  alt?: string;
-};
-type platform = {
-  icon_image: ACFImage;
-  feature_title: string;
-  feature_subtitle: string;
-}
-
-type FAQ = {
-  question: string;
-  answer: string;
-};
-type HeroButton = {
-  button_text?: string;
-  button_link?: {
-    title?: string;
-    url?: string;
-    target?: string;
-  };
-};
-type Benefit = {
-  benefit_content?: string;
-}
-
 type WPPage = {
-  id: number;
-  title: string;
-  slug: string;
-  acf?: {
-    main_heading?: string;
-    sub_heading?: string;
-    bottom_content?: string;
-    address_content?: string;
-    hero_buttons?: HeroButton[];
-    hero_note?: string;
-    hero_image?: ACFImage;
-    why_section?: {
-      why_image_first?: ACFImage;  // Image for "Why First"
-      why_image_second?: ACFImage; // Image for "Why Second"
-      why_heading?: string;
-      why_sub_heading?: string;
-      why_paragraph_one?: string;
-      why_paragraph_two?: string;
-    };
-    benefits_section?: Benefit[];
-    what_you_recieve_section?: {
-      icon_image?: ACFImage;
-      title?: string;
-      question?: string;
-      description?: string;
-      note?: string;
-      note_text?: string;
-    }[];
-    how_it_work_section?: Step[];
-    platform_features_section?: platform[];
-    first_difference_content?: {
+      first_difference_content?: {
       difference_content: ContentBox[];
     };
     second_difference_content?: {
@@ -95,95 +31,116 @@ type WPPage = {
     third_difference_content?: {
       difference_content: ContentBox[];
     }
-  };
 };
 
-const faqs: FAQ[] = [
-    {
-      question: "What is a virtual office and how does it work?",
-      answer:
-        "A virtual office gives your company a professional UK business address with mail handling. You use the address on your website, invoices and registrations.",
-    },
-    {
-      question: "Do you charge setup fees or add ons?",
-      answer:
-        "No. We have two simple packages with everything included. No setup fees, no hidden extras.",
-    },
-    {
-      question: "Can I use the address as my registered office?",
-      answer:
-        "Yes. Our Mayfair address is suitable for registered office use and helps keep your home address private.",
-    },
-    {
-      question: "How does a virtual office help with SEO?",
-      answer:
-        "Search engines use local business signals. A clear, local address can improve trust and visibility for location-based searches.",
-    },
-    {
-      question: "How long does setup take?",
-      answer:
-        "Most clients can be set up the same day once documents are uploaded and approved.",
-    },
-  ];
+async function getMediaById(id: number) {
+  const res = await fetch(
+    `https://lavender-alligator-176962.hostingersite.com/index.php/wp-json/wp/v2/media/${id}`,
+    { cache: "no-store" }
+  );
+
+  if (!res.ok) return null;
+
+  const data = await res.json();
+
+  return {
+    src: data?.source_url,
+    alt: data?.alt_text || data?.title?.rendered || "",
+  };
+}
+
+async function getHomePage() {
+  const res = await fetch(
+    "https://lavender-alligator-176962.hostingersite.com/index.php/wp-json/wp/v2/pages?slug=home",
+    { cache: "no-store" }
+  );
+
+  if (!res.ok) return null;
+
+  const data = await res.json();
+  return data?.[0] ?? null;
+}
+
+export default async function HomePage() {
+  const page = await getHomePage();
+
+  console.log("WP PAGE DATA:", {
+    title: page?.title?.rendered,
+    hasACF: !!page?.acf,
+    acfKeys: page?.acf ? Object.keys(page.acf) : [],
+  });
+
+  console.log(page?.acf?.benefits_section); 
+
+  const h1 = page?.acf?.banner?.main_heading;
+  const subheading = page?.acf?.banner?.sub_heading;
+  const hero_para = page?.acf?.banner?.bottom_content;
+  const heroButtons = page?.acf?.banner?.hero_buttons || [];
+  const heroImageId = page?.acf?.banner?.hero_image;
+  let heroImage = null;
+  if (heroImageId) {
+    heroImage = await getMediaById(heroImageId);
+  }
+  const hero_note = page?.acf?.banner?.address_content;
+
+
+
+
+const whySection = page?.acf?.why_section || {};
+
+const whyHeading = whySection?.why_heading || "";
+const whySubHeading = whySection?.why_sub_heading || "";
+const whyP1 = whySection?.why_paragraph_one || "";
+const whyP2 = whySection?.why_paragraph_two || "";
+
+let whyImage1 = null;
+let whyImage2 = null;
+
+if (whySection?.why_image_first) {
+  whyImage1 = await getMediaById(whySection.why_image_first);
+}
+
+if (whySection?.why_image_second) {
+  whyImage2 = await getMediaById(whySection.why_image_second);
+}
+
+const benefits = page?.acf?.benefits_section ?? [];
+
+
+
+const receiveItems = Array.isArray(page?.acf?.what_you_recieve_section)
+  ? page.acf.what_you_recieve_section
+  : [];
+const receiveIcons = await Promise.all(
+  receiveItems.map(async (item: any) => {
+    const id = item?.icon_image;
+    if (!id) return null;
+    return await getMediaById(id);
+  })
+);
+
+const howSteps = Array.isArray(page?.acf?.how_it_work_section)
+  ? page.acf.how_it_work_section
+  : [];
+
+
+
+const platformItems = Array.isArray(page?.acf?.platform_features_section)
+  ? page.acf.platform_features_section
+  : [];
+
+const platformIcons = await Promise.all(
+  platformItems.map(async (item: any) => {
+    const id = item?.icon_image;
+    if (!id) return null;
+    return await getMediaById(id);
+  })
+);
 
   
-
-export default function HomePage() {
-  const [page, setPage] = useState<WPPage | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [errorText, setErrorText] = useState("");
-
-  useEffect(() => {
-    async function load() {
-      try {
-        const base = process.env.NEXT_PUBLIC_WP_API;
-        const id = process.env.NEXT_PUBLIC_HOME_PAGE_ID || "8";
-
-        if (!base) {
-          throw new Error(
-            "Missing NEXT_PUBLIC_WP_API. Add it in .env.local and restart `npm run dev`."
-          );
-        }
-
-        const url = `${base}/wp-json/custom/v1/page/${id}`;
-        const res = await fetch(url, { cache: "no-store" });
-
-        if (!res.ok) {
-          const t = await res.text();
-          throw new Error(`WP API Error: ${res.status}\n${t.slice(0, 300)}`);
-        }
-
-        const data: WPPage = await res.json();
-        setPage(data);
-      } catch (e: any) {
-        console.error(e);
-        setErrorText(e?.message || "Failed to load WP content");
-        setPage(null);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    load();
-  }, []);
-
-  const heroTitleFull = page?.acf?.main_heading || "Your UK Business Address. Anywhere.";
-
-  const [heroTitle1, heroTitle2] = useMemo(() => {
-    const parts = heroTitleFull.split(" Address.");
-    if (parts.length > 1) {
-      return [parts[0].trim(), `Address. ${parts.slice(1).join(" Address.").trim()}`];
-    }
-    const words = heroTitleFull.trim().split(/\s+/);
-    if (words.length <= 3) return [heroTitleFull, ""];
-    const cut = Math.max(2, Math.floor(words.length / 2));
-    return [words.slice(0, cut).join(" "), words.slice(cut).join(" ")];
-  }, [heroTitleFull]);
-
-  const heroDesc = page?.acf?.sub_heading || "";
-
-  if (loading) return <div className="container" style={{ padding: 24 }}>Loading...</div>;
-  if (errorText) return <div className="container" style={{ padding: 24 }}>{errorText}</div>;
+  function decodeHtmlEntities(h1: any): import("react").ReactNode {
+    throw new Error("Function not implemented.");
+  }
 
   return (
     <div className="page">
@@ -205,35 +162,38 @@ export default function HomePage() {
               <span>Live in 24 HOURS</span>
             </div>
 
-            <h1 className="h1">
-              {heroTitle1} <br />
-              {heroTitle2 ? heroTitle2.split(" ").slice(0, 1).join(" ") : ""}{" "}
-              {heroTitle2 ? <span>{heroTitle2.split(" ").slice(1).join(" ")}</span> : null}
-            </h1>
+            <h1
+                className="h1"
+                dangerouslySetInnerHTML={{
+                  __html: h1 || "",
+                }}
+              />
 
-            <p className="lead">{heroDesc}</p>
 
-            {page?.acf?.hero_buttons?.length ? (
-              <div className="heroCtas">
-                {page.acf.hero_buttons.map((btn, index) => (
+            <p className="lead">
+              {hero_para}
+            </p>
+
+            <div className="heroCtas">
+              {heroButtons.map((btn: any, index: number) => {
+                const label = btn?.button_text;
+                const link = btn?.button_link || "#";
+            
+                return (
                   <a
                     key={index}
-                    href={btn?.button_link?.url || "#"}
-                    target={btn?.button_link?.target || "_self"}
+                    href={link}
                     className={`btn ${index === 0 ? "btnPrimary" : "btnGhost"}`}
                   >
-                    {btn?.button_text || btn?.button_link?.title || "Button"}
+                    {label}
                   </a>
-                ))}
-              </div>
-            ) : null}
-
-
-
+                );
+              })}
+            </div>
             <div className="heroNote">
-                {page?.acf?.hero_note && (
-                  <p>{page.acf.hero_note}</p>
-                )}
+              <p>
+                {hero_note}
+              </p>
             </div>
           </div>
 
@@ -242,15 +202,13 @@ export default function HomePage() {
               <div className="collage">
                 <div className="collageTop">
                   <div className="imgWrap">
-                    {page?.acf?.hero_image?.url && (
-                      <Image
-                        src={page.acf.hero_image.url}
-                        alt={page.acf.hero_image.alt ?? "Hero Image"}
-                        fill
-                        className="collageImg"
-                        priority
-                      />
-                    )}
+                  <Image
+                    src={heroImage?.src}
+                    alt={heroImage?.alt}
+                    fill
+                    className="collageImg"
+                    priority
+                  />
                   </div>
                 </div>
               </div>
@@ -266,42 +224,39 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
       {/* ================= WHY CHOOSE ================= */}
       <section className="section sectionWhy">
         <div className="container whyGrid">
           <div className="whyImages">
             <div className="whyCard whyCardTall">
               <div className="imgWrap">
-                {page?.acf?.why_section?.why_image_first?.url && (
-                  <Image
-                    src={page.acf.why_section.why_image_first.url}
-                    alt={page.acf.why_section.why_image_first.alt || "Why Image First"}
-                    fill
-                    className="whyImg"
-                  />
-                )}
+                <Image
+                src={whyImage1?.src || ""}
+                alt={whyImage1?.alt || ""}
+                fill
+                className="whyImg"
+              />
               </div>
             </div>
 
             <div className="whyCard whyCardTop">
               <div className="imgWrap">
-                {page?.acf?.why_section?.why_image_second?.url && (
-                  <Image
-                    src={page.acf.why_section.why_image_second.url}
-                    alt={page.acf.why_section.why_image_second.alt || "Why Image Second"}
-                    fill
-                    className="whyImg"
-                  />
-                )}
+                <Image
+                  src={whyImage2?.src}
+                  alt={whyImage2?.alt}
+                  fill
+                  className="whyImg"
+                />
               </div>
             </div>
           </div>
 
           <div className="whyText">
-            <h2 className="h2">{page?.acf?.why_section?.why_heading}</h2>
-            <h3 className="subhead">{page?.acf?.why_section?.why_sub_heading}</h3>
-            <p className="muted">{page?.acf?.why_section?.why_paragraph_one}</p>
-            <p className="muted-two">{page?.acf?.why_section?.why_paragraph_two}</p>
+            <h2 className="h2">{whyHeading}</h2>
+            <h3 className="subhead">{whySubHeading}</h3>
+            <p className="muted">{whyP1}</p>
+            <p className="muted-two">{whyP2}</p>
           </div>
         </div>
 
@@ -310,136 +265,154 @@ export default function HomePage() {
             Benefits of choosing a virtual office with us
           </div>
 
-
           <div className="benefitsGrid">
-          {page?.acf?.benefits_section?.map((benefit: Benefit, index) => (
-          <ul className="checkList" key={index}>
-            <li>
-              <span>{benefit?.benefit_content}</span> {/* Update 'benefit_content' field name */}
-            </li>
-          </ul>
-        ))}
-      </div>
-
-
+            <ul className="checkList">
+              {benefits.map((item: any, i: number) =>
+                item?.benefit_content ? (
+                  <li key={i}>{item.benefit_content}</li>
+                ) : null
+              )}
+            </ul>            
+          </div>
         </div>
       </section>
 
       {/* ================= WHAT YOU RECEIVE ================= */}
       <section className="section">
-        <div className="container">
-          <div className="centerTitle">
-            <h2 className="h2">What You Receive</h2>
-            <div className="titleUnderline" aria-hidden="true" />
-          </div>
-
-          <div className="cardsGrid">
-              {page?.acf?.what_you_recieve_section?.map((item, index) => (
-                <FeatureCard
-                  key={index}
-                  icon={item.icon_image?.url ? (
-                    <Image
-                      src={item.icon_image.url}
-                      alt={item.icon_image.alt || "Icon Image"}
-                      width={40}
-                      height={40}
-                    />
-                  ) : null} 
-                  title={item.title || "Default Title"}
-                  q2={item.question || "What This Means"} 
-                  desc={item.description || "Description not available."} 
-                  note={item.note || "Why it helps"} 
-                  
-                  noteText={item.note_text || "Default note text"}  
-                />
-              ))}
-            </div>
-
-
-
-
-
-
-        </div>
-      </section>
-
-      {/* ================= HOW IT WORKS ================= */}
-      <section className="section-how-work">
   <div className="container">
     <div className="centerTitle">
-      <div className="pill soft-two">Simple process</div>
-      <h2 className="h2">How It Works</h2>
-      <p className="muted centerMax">
-        A simple setup with support at every step. We keep the process clear so you
-        always know what comes next.
-      </p>
+      <h2 className="h2">What You Receive</h2>
+      <div className="titleUnderline" aria-hidden="true" />
     </div>
 
-    <div className="howWrap">
-      {/* Track (circles + line) */}
-      <div className="howTrack" aria-hidden="true">
-        <div className="howLine" />
-        <div className="howNodes">
-          <div className="howNode">
-            <div className="howCircle howCircleIdle">1</div>
-          </div>
+    <div className="cardsGrid">
+      {receiveItems.map((item: any, idx: number) => {
+        const icon = receiveIcons[idx];
 
-          <div className="howNode">
-            <div className="howCircle howCircleActive">
-              2
-              <span className="howActiveRing" />
-            </div>
-          </div>
-
-          <div className="howNode">
-            <div className="howCircle howCircleDone">
-              ✓
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Cards */}
-      <div className="howCards">
-        {(page?.acf?.how_it_work_section) && page.acf.how_it_work_section.map((Step, index) => (
-              <StepCard
-                title={Step.title}
-                desc={Step.description}
+        return (
+          <FeatureCard
+            key={idx}
+            icon={
+              <Image
+                src={icon?.src }
+                alt={icon?.alt || ""}
+                width={40}
+                height={40}
               />
-        ))}
-
-      </div>
-
-      <div className="howFoot muted centerMax">
-        Compliance is part of UK regulations, and we manage the process carefully without making it complicated for you.
-      </div>
+            }
+            title={item?.title || ""}
+            q2={item?.question || ""}
+            desc={item?.description || ""}
+            note={item?.note || ""}
+            noteText={item?.note_text || ""}
+          />
+        );
+      })}
     </div>
   </div>
 </section>
 
-      {/* ================= PLATFORM FEATURES ================= */}
-      <section className="section-platform">
-        <div className="container platform">
-          <div className="platformTitle">
-            <h2 className="h2">Platform Features</h2>
-            <p className="muted">
-              Everything you need in one place. Your client dashboard gives you
-              access to tools that make managing your virtual office simple.
-            </p>
-          </div>
+  <section className="business-address">
+  <div className="container">
+    <div className="left">
+      <p  className="feature-location">Featured Location</p>
+      <h2>Pick Your Perfect Business Address</h2>
+      <p>Choose a professional location that supports the image you want for your business. Our Mayfair address is known for its reputation, stability, and high-quality surroundings.</p>
+      <div className="mayfair"> 
+        <div className="mygairimage"> 
+          <Image
+  src="/images/map.png"
+  alt="Map icon"
+  width={24}
+  height={24}
+  className="checkIcon"
+/>
 
-          <div className="platformGrid">
-          {page?.acf?.platform_features_section?.map((platform, index) => (
-            <PlatformCard
-              key={index}
-              icon={<Image src={platform.icon_image.url} alt={platform.feature_title} width={30} height={36} />}
-              title={platform.feature_title}
-              subtitle={platform.feature_subtitle}
-            />
-          ))}
+
+        </div>
+        <div className="mayfair-content"> 
+          <h3 className="address">Mayfair, London W1</h3>
+          <p className="address">Mayfair, London W1</p>
+        </div>
+
+      </div>
+      <a href="#" className="view-plans-btn">View Plans</a>
+    </div>
+    <div className="right">
+   <Image
+  src="/images/right.jpg"
+  alt="Featured location"
+  width={600}
+  height={600}
+  className="checkIcon"
+/>
+
+    </div>
+  </div>
+</section>
+
+<section className="how-it-works">
+  <div className="container">
+    <p className="simple">Simple Process</p>
+    <h2>How It Works</h2>
+    <p>
+      A simple walk-through process at every step. We help the process clear so
+      you know what comes next.
+    </p>
+
+    <div className="steps">
+      {howSteps.map((step: any, index: number) => (
+        <div className="step" key={index}>
+          <span className="step-number">
+            {index === howSteps.length - 1 ? "✔" : index + 1}
+          </span>
+
+          <div className="step-inner">
+            <h3>{step?.title || ""}</h3>
+            <p>{step?.description || ""}</p>
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+      {/* ================= PLATFORM FEATURES ================= */}
+      <section className="section-platform">
+  <div className="container platform">
+    <div className="platformTitle">
+      <h2 className="h2">Platform Features</h2>
+      <p className="muted">
+        Everything you need in one place. Your client dashboard gives you
+        access to tools that make managing your virtual office simple.
+      </p>
+    </div>
+
+    <div className="platformGrid">
+      {platformItems.map((item: any, idx: number) => {
+        const icon = platformIcons[idx];
+
+        return (
+          <PlatformCard
+            key={idx}
+            icon={
+              <Image
+                src={icon?.src || `/images/${idx + 1}.png`}
+                alt={icon?.alt || ""}
+                width={30}
+                height={36}
+              />
+            }
+            title={item?.feature_title || ""}
+            subtitle={item?.feature_subtitle || ""}
+            ghost={idx === platformItems.length - 1}
+          />
+        );
+      })}
+    </div>
+  </div>
+</section>
 
       {/* ================= TESTIMONIALS ================= */}
       <section className="section dark">
@@ -465,8 +438,6 @@ export default function HomePage() {
         </div>
       </section>
 
-
-      {/* ================= SEE THE DIFFERENCE ================= */}
       <section className="section-see-difference">
               <div className="container">
                 <div className="diffHead">
@@ -506,7 +477,9 @@ export default function HomePage() {
         {Array.isArray(page?.acf?.second_difference_content?.difference_content) ? (
           page?.acf?.second_difference_content?.difference_content?.map((item: ContentBox, index: number) => (
             <div key={index} className="diffMainItem per-month">
-              <div dangerouslySetInnerHTML={{ __html: item.content_box }} />
+              <div
+                  dangerouslySetInnerHTML={{ __html: item.content_box }}
+                />
             </div>
           ))
         ) : (
@@ -539,6 +512,7 @@ export default function HomePage() {
 
               </div>
       </section>
+
       <Footer />
     </div>
   );
@@ -568,14 +542,9 @@ function FeatureCard(props: {
   );
 }
 
-function StepCard(props: {
-  title: string;
-  desc: string;
-  active?: boolean;
-  done?: boolean;
-}) {
+function StepCard(props: { title: string; desc: string }) {
   return (
-    <div className={`stepCard ${props.active ? "active" : ""} ${props.done ? "done" : ""}`}>
+    <div className="stepCard">
       <div className="stepTitle">{props.title}</div>
       <div className="stepDesc">{props.desc}</div>
     </div>
@@ -590,13 +559,22 @@ function TestimonialCard(props: {
 }) {
   return (
     <div className="testCard">
-      <div className="testStars" aria-hidden="true">★★★★★</div>
+      <div className="testStars" aria-hidden="true">
+        ★★★★★
+      </div>
+
       <div className="testQuote">“{props.quote}”</div>
 
       <div className="testPerson">
         <div className="testAvatar">
           {props.avatar ? (
-            <Image src={props.avatar} alt="" width={28} height={28} className="testAvatarImg" />
+            <Image
+              src={props.avatar}
+              alt=""
+              width={28}
+              height={28}
+              className="testAvatarImg"
+            />
           ) : (
             <span className="testAvatarFallback" aria-hidden="true" />
           )}
