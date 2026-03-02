@@ -16,13 +16,27 @@
 /* HERO */
 .hero{
   position:relative;
-  background:
-    radial-gradient(1200px 600px at 75% 20%, rgba(25,194,176,.35), transparent 55%),
-    radial-gradient(900px 500px at 15% 30%, rgba(255,255,255,.10), transparent 60%),
-    linear-gradient(135deg, var(--bg1), var(--bg2));
-  color:var(--text);
   overflow:hidden;
+  isolation:isolate;
   padding:56px 0;
+  color:#fff;
+}
+
+/* ✅ background image */
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image: var(--section-bg);
+  background-size:cover;
+  background-repeat:no-repeat;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
 }
  
 .heroGrid{
@@ -260,7 +274,7 @@
 }
 /* Bottom feature strip */
 .featureStrip{
-  background:linear-gradient(135deg, #273655, #22314f);
+  background:#2E3C5C;
   color:#ffffff;
   padding:60px 0;
 }
