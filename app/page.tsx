@@ -14,11 +14,11 @@ type ACFImage = {
   alt?: string;
 };
 
-type platform = {
+type Platform = {
   icon_image: ACFImage;
   feature_title: string;
   feature_subtitle: string;
-}
+};
 
 type DifferenceContent = {
   first_difference_content: {
@@ -42,7 +42,7 @@ type WPPage = {
     third_difference_content?: {
       difference_content: ContentBox[];
     };
-  platform_features_section?: platform[];
+  platform_features_section?: Platform[];
 };
 
 async function getMediaById(id: number) {
