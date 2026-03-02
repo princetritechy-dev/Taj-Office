@@ -9,17 +9,6 @@ type ContentBox = {
   content_box: string;
 };
 
-type ACFImage = {
-  url: string;
-  alt?: string;
-};
-
-type Platform = {
-  icon_image: ACFImage;
-  feature_title: string;
-  feature_subtitle: string;
-};
-
 type DifferenceContent = {
   first_difference_content: {
     difference_content: ContentBox[];
@@ -41,8 +30,7 @@ type WPPage = {
     };
     third_difference_content?: {
       difference_content: ContentBox[];
-    };
-  platform_features_section?: Platform[];
+    }
 };
 
 async function getMediaById(id: number) {
@@ -392,27 +380,39 @@ const platformIcons = await Promise.all(
 
       {/* ================= PLATFORM FEATURES ================= */}
       <section className="section-platform">
-        <div className="container platform">
-          <div className="platformTitle">
-            <h2 className="h2">Platform Features</h2>
-            <p className="muted">
-              Everything you need in one place. Your client dashboard gives you
-              access to tools that make managing your virtual office simple.
-            </p>
-          </div>
+  <div className="container platform">
+    <div className="platformTitle">
+      <h2 className="h2">Platform Features</h2>
+      <p className="muted">
+        Everything you need in one place. Your client dashboard gives you
+        access to tools that make managing your virtual office simple.
+      </p>
+    </div>
 
-          <div className="platformGrid">
-          {page?.acf?.platform_features_section?.map((platform, index) => (
-            <PlatformCard
-              key={index}
-              icon={<Image src={platform.icon_image.url} alt={platform.feature_title} width={30} height={36} />}
-              title={platform.feature_title}
-              subtitle={platform.feature_subtitle}
-            />
-          ))}
-          </div>
-        </div>
-      </section>
+    <div className="platformGrid">
+      {platformItems.map((item: any, idx: number) => {
+        const icon = platformIcons[idx];
+
+        return (
+          <PlatformCard
+            key={idx}
+            icon={
+              <Image
+                src={icon?.src || `/images/${idx + 1}.png`}
+                alt={icon?.alt || ""}
+                width={30}
+                height={36}
+              />
+            }
+            title={item?.feature_title || ""}
+            subtitle={item?.feature_subtitle || ""}
+            ghost={idx === platformItems.length - 1}
+          />
+        );
+      })}
+    </div>
+  </div>
+</section>
 
       {/* ================= TESTIMONIALS ================= */}
       <section className="section dark">
