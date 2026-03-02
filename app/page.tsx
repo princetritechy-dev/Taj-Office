@@ -9,6 +9,12 @@ type ContentBox = {
   content_box: string;
 };
 
+type platform = {
+  icon_image: ACFImage;
+  feature_title: string;
+  feature_subtitle: string;
+}
+
 type DifferenceContent = {
   first_difference_content: {
     difference_content: ContentBox[];
@@ -30,7 +36,8 @@ type WPPage = {
     };
     third_difference_content?: {
       difference_content: ContentBox[];
-    }
+    };
+  platform_features_section?: platform[];
 };
 
 async function getMediaById(id: number) {
