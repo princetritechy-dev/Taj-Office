@@ -9,6 +9,11 @@ type ContentBox = {
   content_box: string;
 };
 
+type ACFImage = {
+  url: string;
+  alt?: string;
+};
+
 type platform = {
   icon_image: ACFImage;
   feature_title: string;
