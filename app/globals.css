@@ -1566,12 +1566,13 @@ span.step-number:hover {
 }
 
 .steps::before {
-    content: '';
-    background: linear-gradient(45deg, #E5E7EB, #00A699, #e5e7eb);
-    width: 42%;
+    content: "";
+    background: linear-gradient(45deg, #e5e7eb, #00a699cc, #e5e7eb);
+    width: 58%;
     height: 5px;
-    position: absolute;
     margin-top: 28px;
+    position: absolute;
+    left: 18%;
 }
 p.simple {
     color: #00A699;
