@@ -11,11 +11,19 @@ export default function ContactUsPage() {
       <Header />
 
       <section className="contact-hero">
+        <div className="hero-row"> 
         <h5>GET IN TOUCH</h5>
         <h1>Contact Us</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
+        <div className="hero-content">
+        <span className="upper">
+          Sometimes the quickest way forward is simply to talk. If you are exploring a virtual office, comparing locations, or thinking about partnering with Virtual Office Anywhere, we encourage you to pick up the phone and speak with us directly.
+        </span>
+        <span className="lower">
+          Our friendly team are ready to help you. We believe business support should feel personal, clear, and accessible. No call centres, just real people ready to help you
+          find the right solution.
+        </span>
+        </div>
+        </div>
       </section>
       <section className="contact-wrapper">
         <div className="contact-inner-wrapper">
@@ -23,9 +31,9 @@ export default function ContactUsPage() {
           <div className="contact-info">
             <div className="contact-left">
               <h2>Contact Information</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p>Our team is available to talk through locations, pricing, availability, partnership opportunities, or any questions you may have.</p>
 
-              <div className="info-item">
+              {/* <div className="info-item">
                 <div className="info-svg">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden="true">
                     <path
@@ -45,7 +53,7 @@ export default function ContactUsPage() {
                   <br />
                   London, UK W1 2AB
                 </div>
-              </div>
+              </div> */}
 
               <div className="info-item">
                 <div className="info-svg">
@@ -61,11 +69,11 @@ export default function ContactUsPage() {
                 </div>
 
                 <div className="info-con">
-                  <strong>Phone</strong>
+                  <strong>GIVE US A CALL</strong>
                   <br />
                   +44 (0) 20 7907 9380
-                  <br />
-                  Mon - Fri, 9am - 6pm
+                  {/* <br />
+                  Mon - Fri, 9am - 6pm */}
                 </div>
               </div>
 
@@ -87,11 +95,12 @@ export default function ContactUsPage() {
                     />
                   </svg>
                 </div>
-
                 <div className="info-con">
-                  <strong>Email</strong>
+                  <strong>PREFER TO EMAIL?</strong>
                   <br />
-                 info@virtualofficeanywhere.co.uk 
+                  You can also reach us at:
+                  <br />
+                 info@virtualofficeanywhere.co.uk
                 </div>
               </div>
             </div>
@@ -147,4 +156,3 @@ export default function ContactUsPage() {
     </main>
   );
 }
-
