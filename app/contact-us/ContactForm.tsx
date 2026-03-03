@@ -82,7 +82,7 @@ export default function ContactForm() {
             </div>
 
             <button type="submit" disabled={loading}>
-              {loading ? "Sending..." : "Send Message ✈"}
+              {loading ? "Sending..." : "Send Message ✈ <i class="fa-sharp fa-solid fa-paper-plane-top"></i>"}
             </button>
           </form>
         </>
