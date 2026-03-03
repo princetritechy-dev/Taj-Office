@@ -71,7 +71,8 @@ export default function ContactUsPage() {
                 <div className="info-con">
                   <strong>GIVE US A CALL</strong>
                   <br />
-                  +44 (0) 20 7907 9380
+                  <a href="tel:+44 (0) 20 7907 9380">
+                  +44 (0) 20 7907 9380</a>
                   {/* <br />
                   Mon - Fri, 9am - 6pm */}
                 </div>
@@ -100,7 +101,8 @@ export default function ContactUsPage() {
                   <br />
                   You can also reach us at:
                   <br />
-                 info@virtualofficeanywhere.co.uk
+                  <a href="mailto:info@virtualofficeanywhere.co.uk">
+                 <strong>info@virtualofficeanywhere.co.uk</strong></a>
                 </div>
               </div>
             </div>
@@ -156,3 +158,4 @@ export default function ContactUsPage() {
     </main>
   );
 }
+
