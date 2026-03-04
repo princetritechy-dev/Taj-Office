@@ -15,7 +15,7 @@ export default function Footer(){
 
         </div>
       </div>
-      <div className="footerCopy">© 2025 Virtual Office Anywhere. All rights reserved.</div>
+      <div className="footerCopy">© 2026 Virtual Office Anywhere. All rights reserved.</div>
     </footer><Script id="hamburger-script" strategy="afterInteractive">
         {`
           const navWrapper = document.querySelector('.navWrapper');
